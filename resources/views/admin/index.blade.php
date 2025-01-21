@@ -7,16 +7,15 @@
       <nav>
         <ol class="breadcrumb mb-0">
           <li class="breadcrumb-item">
-            <a href="index.html"><i class="ti ti-smart-home"></i></a>
+            <a href="{{ route('admin.dashboard') }}"><i class="ti ti-smart-home"></i></a>
           </li>
           <li class="breadcrumb-item">
             Dashboard
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Admin Dashboard</li>
         </ol>
       </nav>
     </div>
-    <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+    {{-- <div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
       <div class="mb-2 me-2">
         <div class="dropdown">
           <a class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown"
@@ -43,13 +42,7 @@
           <input class="form-control yearpicker" type="text" value="2025">
         </div>
       </div>
-      <div class="head-icons ms-2">
-        <a class="" id="collapse-header" data-bs-toggle="tooltip" data-bs-placement="top"
-          data-bs-original-title="Collapse" href="javascript:void(0);">
-          <i class="ti ti-chevrons-up"></i>
-        </a>
-      </div>
-    </div>
+    </div> --}}
   </div>
   <!-- /Breadcrumb -->
 
@@ -58,10 +51,10 @@
     <div class="card-body d-flex align-items-center justify-content-between flex-wrap pb-1">
       <div class="d-flex align-items-center mb-3">
         <span class="avatar avatar-xl flex-shrink-0">
-          <img class="rounded-circle" src="{{ asset('assets/img/profiles/avatar-31.jpg') }}" alt="img">
+          <img class="rounded-circle" src="{{ asset('assets/img/logo/logo.png') }}" alt="img">
         </span>
         <div class="ms-3">
-          <h3 class="mb-2">Welcome Back, Adrian <a class="edit-icon" href="javascript:void(0);"><i
+          <h3 class="mb-2">Welcome Back, Admin <a class="edit-icon" href="javascript:void(0);"><i
                 class="ti ti-edit fs-14"></i></a></h3>
           <p>You have <span class="text-primary text-decoration-underline">21</span> Pending Approvals &
             <span class="text-primary text-decoration-underline">14</span> Leave Requests
@@ -70,9 +63,9 @@
       </div>
       <div class="d-flex align-items-center mb-1 flex-wrap">
         <a class="btn btn-secondary btn-md mb-2 me-2" data-bs-toggle="modal" data-bs-target="#add_project"
-          href="#"><i class="ti ti-square-rounded-plus me-1"></i>Add Project</a>
+          href="#"><i class="ti ti-square-rounded-plus me-1"></i>Add Employee</a>
         <a class="btn btn-primary btn-md mb-2" data-bs-toggle="modal" data-bs-target="#add_leaves"
-          href="#"><i class="ti ti-square-rounded-plus me-1"></i>Add Requests</a>
+          href="#"><i class="ti ti-square-rounded-plus me-1"></i>Add Task</a>
       </div>
     </div>
   </div>
@@ -102,7 +95,7 @@
               <span class="avatar rounded-circle bg-secondary mb-2">
                 <i class="ti ti-browser fs-16"></i>
               </span>
-              <h6 class="fs-13 fw-medium text-default mb-1">Total No of Project's</h6>
+              <h6 class="fs-13 fw-medium text-default mb-1">Total No of Groups</h6>
               <h3 class="mb-3">90/125 <span class="fs-12 fw-medium text-danger"><i
                     class="fa-solid fa-caret-down me-1"></i>-2.1%</span></h3>
               <a class="link-default" href="projects.html">View All</a>
@@ -115,7 +108,7 @@
               <span class="avatar rounded-circle bg-info mb-2">
                 <i class="ti ti-users-group fs-16"></i>
               </span>
-              <h6 class="fs-13 fw-medium text-default mb-1">Total No of Clients</h6>
+              <h6 class="fs-13 fw-medium text-default mb-1">Total No of Employees</h6>
               <h3 class="mb-3">69/86 <span class="fs-12 fw-medium text-danger"><i
                     class="fa-solid fa-caret-down me-1"></i>-11.2%</span></h3>
               <a class="link-default" href="clients.html">View All</a>
@@ -135,287 +128,9 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 d-flex">
-          <div class="card flex-fill">
-            <div class="card-body">
-              <span class="avatar rounded-circle bg-purple mb-2">
-                <i class="ti ti-moneybag fs-16"></i>
-              </span>
-              <h6 class="fs-13 fw-medium text-default mb-1">Earnings</h6>
-              <h3 class="mb-3">$21445 <span class="fs-12 fw-medium text-success"><i
-                    class="fa-solid fa-caret-up me-1"></i>+10.2%</span></h3>
-              <a class="link-default" href="expenses.html">View All</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 d-flex">
-          <div class="card flex-fill">
-            <div class="card-body">
-              <span class="avatar rounded-circle bg-danger mb-2">
-                <i class="ti ti-browser fs-16"></i>
-              </span>
-              <h6 class="fs-13 fw-medium text-default mb-1">Profit This Week</h6>
-              <h3 class="mb-3">$5,544 <span class="fs-12 fw-medium text-success"><i
-                    class="fa-solid fa-caret-up me-1"></i>+2.1%</span></h3>
-              <a class="link-default" href="purchase-transaction.html">View All</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 d-flex">
-          <div class="card flex-fill">
-            <div class="card-body">
-              <span class="avatar rounded-circle bg-success mb-2">
-                <i class="ti ti-users-group fs-16"></i>
-              </span>
-              <h6 class="fs-13 fw-medium text-default mb-1">Job Applicants</h6>
-              <h3 class="mb-3">98 <span class="fs-12 fw-medium text-success"><i
-                    class="fa-solid fa-caret-up me-1"></i>+2.1%</span></h3>
-              <a class="link-default" href="job-list.html">View All</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 d-flex">
-          <div class="card flex-fill">
-            <div class="card-body">
-              <span class="avatar rounded-circle bg-dark mb-2">
-                <i class="ti ti-user-star fs-16"></i>
-              </span>
-              <h6 class="fs-13 fw-medium text-default mb-1">New Hire</h6>
-              <h3 class="mb-3">45/48 <span class="fs-12 fw-medium text-danger"><i
-                    class="fa-solid fa-caret-down me-1"></i>-11.2%</span></h3>
-              <a class="link-default" href="candidates.html">View All</a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <!-- /Widget Info -->
-
-    <!-- Employees By Department -->
-    <div class="col-xxl-4 d-flex">
-      <div class="card flex-fill">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Employees By Department</h5>
-          <div class="dropdown mb-2">
-            <a class="btn btn-white btn-sm d-inline-flex align-items-center border" data-bs-toggle="dropdown"
-              href="javascript:void(0);">
-              <i class="ti ti-calendar me-1"></i>This Week
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end p-3">
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
-              </li>
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
-              </li>
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">Last Week</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card-body">
-          <div id="emp-department"></div>
-          <p class="fs-13"><i class="ti ti-circle-filled fs-8 text-primary me-2"></i>No of
-            Employees increased by <span class="text-success fw-bold">+20%</span> from last Week
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- /Employees By Department -->
-
-  </div>
-
-  <div class="row">
-
-    <!-- Total Employee -->
-    <div class="col-xxl-4 d-flex">
-      <div class="card flex-fill">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Employee Status</h5>
-          <div class="dropdown mb-2">
-            <a class="btn btn-white btn-sm d-inline-flex align-items-center border" data-bs-toggle="dropdown"
-              href="javascript:void(0);">
-              <i class="ti ti-calendar me-1"></i>This Week
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end p-3">
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
-              </li>
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
-              </li>
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">Today</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="d-flex align-items-center justify-content-between mb-1">
-            <p class="fs-13 mb-3">Total Employee</p>
-            <h3 class="mb-3">154</h3>
-          </div>
-          <div class="progress-stacked emp-stack mb-3">
-            <div class="progress" role="progressbar" aria-label="Segment one" aria-valuenow="15"
-              aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-              <div class="progress-bar bg-warning"></div>
-            </div>
-            <div class="progress" role="progressbar" aria-label="Segment two" aria-valuenow="30"
-              aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-              <div class="progress-bar bg-secondary"></div>
-            </div>
-            <div class="progress" role="progressbar" aria-label="Segment three" aria-valuenow="20"
-              aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-              <div class="progress-bar bg-danger"></div>
-            </div>
-            <div class="progress" role="progressbar" aria-label="Segment four" aria-valuenow="20"
-              aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-              <div class="progress-bar bg-pink"></div>
-            </div>
-          </div>
-          <div class="mb-3 border">
-            <div class="row gx-0">
-              <div class="col-6">
-                <div class="flex-fill border-end border-bottom p-2">
-                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-primary fs-12 me-2"></i>Fulltime
-                    <span class="text-gray-9">(48%)</span>
-                  </p>
-                  <h2 class="display-1">112</h2>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="flex-fill border-bottom p-2 text-end">
-                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-secondary fs-12 me-2"></i>Contract
-                    <span class="text-gray-9">(20%)</span>
-                  </p>
-                  <h2 class="display-1">112</h2>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="flex-fill border-end p-2">
-                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-danger fs-12 me-2"></i>Probation
-                    <span class="text-gray-9">(22%)</span>
-                  </p>
-                  <h2 class="display-1">12</h2>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="flex-fill p-2 text-end">
-                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-pink fs-12 me-2"></i>WFH <span
-                      class="text-gray-9">(20%)</span></p>
-                  <h2 class="display-1">04</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-          <h6 class="mb-2">Top Performer</h6>
-          <div
-            class="d-flex align-items-center justify-content-between border-primary bg-primary-100 br-5 mb-4 border p-2">
-            <div class="d-flex align-items-center overflow-hidden">
-              <span class="me-2">
-                <i class="ti ti-award-filled text-primary fs-24"></i>
-              </span>
-              <a class="avatar avatar-md me-2" href="employee-details.html">
-                <img class="rounded-circle border border-white"
-                  src="{{ asset('assets/img/profiles/avatar-24.jpg') }}" alt="img">
-              </a>
-              <div>
-                <h6 class="text-truncate fs-14 fw-medium mb-1"><a href="employee-details.html">Daniel
-                    Esbella</a></h6>
-                <p class="fs-13">IOS Developer</p>
-              </div>
-            </div>
-            <div class="text-end">
-              <p class="fs-13 mb-1">Performance</p>
-              <h5 class="text-primary">99%</h5>
-            </div>
-          </div>
-          <a class="btn btn-light btn-md w-100" href="employees.html">View All Employees</a>
-        </div>
-      </div>
-    </div>
-    <!-- /Total Employee -->
-
-    <!-- Attendance Overview -->
-    <div class="col-xxl-4 col-xl-6 d-flex">
-      <div class="card flex-fill">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Attendance Overview</h5>
-          <div class="dropdown mb-2">
-            <a class="btn btn-white btn-sm d-inline-flex align-items-center border" data-bs-toggle="dropdown"
-              href="javascript:void(0);">
-              <i class="ti ti-calendar me-1"></i>Today
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end p-3">
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
-              </li>
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
-              </li>
-              <li>
-                <a class="dropdown-item rounded-1" href="javascript:void(0);">Today</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="chartjs-wrapper-demo position-relative mb-4">
-            <canvas id="attendance" height="200"></canvas>
-            <div class="position-absolute attendance-canvas text-center">
-              <p class="fs-13 mb-1">Total Attendance</p>
-              <h3>120</h3>
-            </div>
-          </div>
-          <h6 class="mb-3">Status</h6>
-          <div class="d-flex align-items-center justify-content-between">
-            <p class="f-13 mb-2"><i class="ti ti-circle-filled text-success me-1"></i>Present</p>
-            <p class="f-13 fw-medium text-gray-9 mb-2">59%</p>
-          </div>
-          <div class="d-flex align-items-center justify-content-between">
-            <p class="f-13 mb-2"><i class="ti ti-circle-filled text-secondary me-1"></i>Late</p>
-            <p class="f-13 fw-medium text-gray-9 mb-2">21%</p>
-          </div>
-          <div class="d-flex align-items-center justify-content-between">
-            <p class="f-13 mb-2"><i class="ti ti-circle-filled text-warning me-1"></i>Permission</p>
-            <p class="f-13 fw-medium text-gray-9 mb-2">2%</p>
-          </div>
-          <div class="d-flex align-items-center justify-content-between mb-2">
-            <p class="f-13 mb-2"><i class="ti ti-circle-filled text-danger me-1"></i>Absent</p>
-            <p class="f-13 fw-medium text-gray-9 mb-2">15%</p>
-          </div>
-          <div
-            class="bg-light br-5 box-shadow-xs d-flex align-items-center justify-content-between flex-wrap p-2 pb-0">
-            <div class="d-flex align-items-center">
-              <p class="mb-2 me-2">Total Absenties</p>
-              <div class="avatar-list-stacked avatar-group-sm mb-2">
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/profiles/avatar-27.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/profiles/avatar-30.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img src="{{ asset('assets/img/profiles/avatar-14.jpg') }}" alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img src="{{ asset('assets/img/profiles/avatar-29.jpg') }}" alt="img">
-                </span>
-                <a class="avatar bg-primary avatar-rounded text-fixed-white fs-10" href="javascript:void(0);">
-                  +1
-                </a>
-              </div>
-            </div>
-            <a class="fs-13 link-primary text-decoration-underline mb-2" href="leaves.html">View
-              Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Attendance Overview -->
 
     <!-- Clock-In/Out -->
     <div class="col-xxl-4 col-xl-6 d-flex">
@@ -560,167 +275,234 @@
     </div>
     <!-- /Clock-In/Out -->
 
+    <!-- Punch-In/Out -->
+    <div class="col-xxl-4 col-xl-6 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
+          <h5 class="mb-2">Punch-In/Out</h5>
+          <div class="d-flex align-items-center">
+            <div class="dropdown mb-2">
+              <a class="dropdown-toggle btn btn-white btn-sm d-inline-flex align-items-center fs-13 me-2 border-0"
+                data-bs-toggle="dropdown" href="javascript:void(0);">
+                All Departments
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end p-3">
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Finance</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Development</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Marketing</a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown mb-2">
+              <a class="btn btn-white btn-sm d-inline-flex align-items-center border"
+                data-bs-toggle="dropdown" href="javascript:void(0);">
+                <i class="ti ti-calendar me-1"></i>Today
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end p-3">
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Today</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="d-flex align-items-center justify-content-between br-5 mb-3 border border-dashed p-2">
+              <div class="d-flex align-items-center">
+                <a class="avatar flex-shrink-0" href="javascript:void(0);">
+                  <img class="rounded-circle border border-2"
+                    src="{{ asset('assets/img/profiles/avatar-24.jpg') }}" alt="img">
+                </a>
+                <div class="ms-2">
+                  <h6 class="fs-14 fw-medium text-truncate">Daniel Esbella</h6>
+                  <p class="fs-13">UI/UX Designer</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <a class="link-default me-2" href="javascript:void(0);"><i class="ti ti-clock-share"></i></a>
+                <span class="fs-10 fw-medium d-inline-flex align-items-center badge badge-success"><i
+                    class="ti ti-circle-filled fs-5 me-1"></i>09:15</span>
+              </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between br-5 mb-3 border p-2">
+              <div class="d-flex align-items-center">
+                <a class="avatar flex-shrink-0" href="javascript:void(0);">
+                  <img class="rounded-circle border border-2"
+                    src="{{ asset('assets/img/profiles/avatar-23.jpg') }}" alt="img">
+                </a>
+                <div class="ms-2">
+                  <h6 class="fs-14 fw-medium">Doglas Martini</h6>
+                  <p class="fs-13">Project Manager</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <a class="link-default me-2" href="javascript:void(0);"><i class="ti ti-clock-share"></i></a>
+                <span class="fs-10 fw-medium d-inline-flex align-items-center badge badge-success"><i
+                    class="ti ti-circle-filled fs-5 me-1"></i>09:36</span>
+              </div>
+            </div>
+            <div class="br-5 mb-3 border p-2">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                  <a class="avatar flex-shrink-0" href="javascript:void(0);">
+                    <img class="rounded-circle border border-2"
+                      src="{{ asset('assets/img/profiles/avatar-27.jpg') }}" alt="img">
+                  </a>
+                  <div class="ms-2">
+                    <h6 class="fs-14 fw-medium text-truncate">Brian Villalobos</h6>
+                    <p class="fs-13">PHP Developer</p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center">
+                  <a class="link-default me-2" href="javascript:void(0);"><i
+                      class="ti ti-clock-share"></i></a>
+                  <span class="fs-10 fw-medium d-inline-flex align-items-center badge badge-success"><i
+                      class="ti ti-circle-filled fs-5 me-1"></i>09:15</span>
+                </div>
+              </div>
+              <div
+                class="d-flex align-items-center justify-content-between br-5 mt-2 flex-wrap border p-2 pb-0">
+                <div>
+                  <p class="d-inline-flex align-items-center mb-1"><i
+                      class="ti ti-circle-filled text-success fs-5 me-1"></i>Clock In</p>
+                  <h6 class="fs-13 fw-normal mb-2">10:30 AM</h6>
+                </div>
+                <div>
+                  <p class="d-inline-flex align-items-center mb-1"><i
+                      class="ti ti-circle-filled text-danger fs-5 me-1"></i>Clock Out</p>
+                  <h6 class="fs-13 fw-normal mb-2">09:45 AM</h6>
+                </div>
+                <div>
+                  <p class="d-inline-flex align-items-center mb-1"><i
+                      class="ti ti-circle-filled text-warning fs-5 me-1"></i>Production</p>
+                  <h6 class="fs-13 fw-normal mb-2">09:21 Hrs</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h6 class="mb-2">Late</h6>
+          <div class="d-flex align-items-center justify-content-between br-5 mb-3 border border-dashed p-2">
+            <div class="d-flex align-items-center">
+              <span class="avatar flex-shrink-0">
+                <img class="rounded-circle border border-2"
+                  src="{{ asset('assets/img/profiles/avatar-29.jpg') }}" alt="img">
+              </span>
+              <div class="ms-2">
+                <h6 class="fs-14 fw-medium text-truncate">Anthony Lewis <span
+                    class="fs-10 fw-medium d-inline-flex align-items-center badge badge-success"><i
+                      class="ti ti-clock-hour-11 me-1"></i>30 Min</span></h6>
+                <p class="fs-13">Marketing Head</p>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <a class="link-default me-2" href="javascript:void(0);"><i class="ti ti-clock-share"></i></a>
+              <span class="fs-10 fw-medium d-inline-flex align-items-center badge badge-danger"><i
+                  class="ti ti-circle-filled fs-5 me-1"></i>08:35</span>
+            </div>
+          </div>
+          <a class="btn btn-light btn-md w-100" href="attendance-report.html">View All Attendance</a>
+        </div>
+      </div>
+    </div>
+    <!-- /Punch-In/Out -->
+
   </div>
 
   <div class="row">
 
-    <!-- Jobs Applicants -->
-    <div class="col-xxl-4 d-flex">
+    <!-- Tasks -->
+    <div class="col-xxl-4 col-xl-6 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Jobs Applicants</h5>
-          <a class="btn btn-light btn-md mb-2" href="job-list.html">View All</a>
+          <h5 class="mb-2">Tasks</h5>
+          <div class="d-flex align-items-center">
+            <div class="dropdown mb-2 me-2">
+              <a class="btn btn-white btn-sm d-inline-flex align-items-center border"
+                data-bs-toggle="dropdown" href="javascript:void(0);">
+                <i class="ti ti-calendar me-1"></i>Today
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end p-3">
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Today</a>
+                </li>
+              </ul>
+            </div>
+            <a class="btn btn-primary btn-icon btn-xs rounded-circle d-flex align-items-center justify-content-center mb-2 p-0"
+              data-bs-toggle="modal" data-bs-target="#add_todo" href="#"><i
+                class="ti ti-plus fs-16"></i></a>
+          </div>
         </div>
         <div class="card-body">
-          <ul class="nav nav-tabs tab-style-1 nav-justified d-sm-flex d-block mb-4 p-0" role="tablist">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link fw-medium" data-bs-toggle="tab" data-bs-target="#openings" href="#openings"
-                role="tab" aria-current="page" aria-selected="true">Openings</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link fw-medium active" data-bs-toggle="tab" data-bs-target="#applicants"
-                href="#applicants" role="tab" aria-selected="false" tabindex="-1">Applicants</a>
-            </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane fade" id="openings">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden bg-gray-100" href="#">
-                    <img class="img-fluid rounded-circle h-auto w-auto"
-                      src="{{ asset('assets/img/icons/apple.svg') }}" alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="javascript:void(0);">Senior
-                        IOS
-                        Developer</a></p>
-                    <span class="fs-12">No of Openings : 25 </span>
-                  </div>
-                </div>
-                <a class="btn btn-light btn-sm btn-icon d-flex align-items-center justify-content-center p-0"
-                  href="javascript:void(0);"><i class="ti ti-edit"></i></a>
-              </div>
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden bg-gray-100" href="#">
-                    <img class="img-fluid h-auto w-auto" src="{{ asset('assets/img/icons/php.svg') }}"
-                      alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="javascript:void(0);">Junior
-                        PHP
-                        Developer</a></p>
-                    <span class="fs-12">No of Openings : 20 </span>
-                  </div>
-                </div>
-                <a class="btn btn-light btn-sm btn-icon d-flex align-items-center justify-content-center p-0"
-                  href="javascript:void(0);"><i class="ti ti-edit"></i></a>
-              </div>
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden bg-gray-100" href="#">
-                    <img class="img-fluid h-auto w-auto" src="{{ asset('assets/img/icons/react.svg') }}"
-                      alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="javascript:void(0);">Junior
-                        React Developer </a></p>
-                    <span class="fs-12">No of Openings : 30 </span>
-                  </div>
-                </div>
-                <a class="btn btn-light btn-sm btn-icon d-flex align-items-center justify-content-center p-0"
-                  href="javascript:void(0);"><i class="ti ti-edit"></i></a>
-              </div>
-              <div class="d-flex align-items-center justify-content-between mb-0">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden bg-gray-100" href="#">
-                    <img class="img-fluid h-auto w-auto"
-                      src="{{ asset('assets/img/icons/laravel-icon.svg') }}" alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="javascript:void(0);">Senior
-                        Laravel Developer</a></p>
-                    <span class="fs-12">No of Openings : 40 </span>
-                  </div>
-                </div>
-                <a class="btn btn-light btn-sm btn-icon d-flex align-items-center justify-content-center p-0"
-                  href="javascript:void(0);"><i class="ti ti-edit"></i></a>
-              </div>
+          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
+            <i class="ti ti-grid-dots me-2"></i>
+            <div class="form-check">
+              <input class="form-check-input" id="todo1" type="checkbox">
+              <label class="form-check-label fw-medium" for="todo1">Add Holidays</label>
             </div>
-            <div class="tab-pane fade show active" id="applicants">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden" href="#">
-                    <img class="img-fluid rounded-circle" src="{{ asset('assets/img/users/user-09.jpg') }}"
-                      alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="#">Brian
-                        Villalobos</a>
-                    </p>
-                    <span class="fs-13 d-inline-flex align-items-center">Exp : 5+ Years<i
-                        class="ti ti-circle-filled fs-4 text-primary mx-2"></i>USA</span>
-                  </div>
-                </div>
-                <span class="badge badge-secondary badge-xs">UI/UX Designer</span>
-              </div>
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden" href="#">
-                    <img class="img-fluid rounded-circle" src="{{ asset('assets/img/users/user-32.jpg') }}"
-                      alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="#">Anthony Lewis</a>
-                    </p>
-                    <span class="fs-13 d-inline-flex align-items-center">Exp : 4+ Years<i
-                        class="ti ti-circle-filled fs-4 text-primary mx-2"></i>USA</span>
-                  </div>
-                </div>
-                <span class="badge badge-info badge-xs">Python Developer</span>
-              </div>
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden" href="#">
-                    <img class="img-fluid rounded-circle" src="{{ asset('assets/img/users/user-32.jpg') }}"
-                      alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="#">Stephan Peralt</a>
-                    </p>
-                    <span class="fs-13 d-inline-flex align-items-center">Exp : 6+ Years<i
-                        class="ti ti-circle-filled fs-4 text-primary mx-2"></i>USA</span>
-                  </div>
-                </div>
-                <span class="badge badge-pink badge-xs">Android Developer</span>
-              </div>
-              <div class="d-flex align-items-center justify-content-between mb-0">
-                <div class="d-flex align-items-center">
-                  <a class="avatar flex-shrink-0 overflow-hidden" href="javascript:void(0);">
-                    <img class="img-fluid rounded-circle" src="{{ asset('assets/img/users/user-34.jpg') }}"
-                      alt="img">
-                  </a>
-                  <div class="ms-2 overflow-hidden">
-                    <p class="text-dark fw-medium text-truncate mb-0"><a href="javascript:void(0);">Doglas
-                        Martini</a></p>
-                    <span class="fs-13 d-inline-flex align-items-center">Exp : 2+ Years<i
-                        class="ti ti-circle-filled fs-4 text-primary mx-2"></i>USA</span>
-                  </div>
-                </div>
-                <span class="badge badge-purple badge-xs">React Developer</span>
-              </div>
+          </div>
+          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
+            <i class="ti ti-grid-dots me-2"></i>
+            <div class="form-check">
+              <input class="form-check-input" id="todo2" type="checkbox">
+              <label class="form-check-label fw-medium" for="todo2">Add Meeting to Client</label>
+            </div>
+          </div>
+          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
+            <i class="ti ti-grid-dots me-2"></i>
+            <div class="form-check">
+              <input class="form-check-input" id="todo3" type="checkbox">
+              <label class="form-check-label fw-medium" for="todo3">Chat with Adrian</label>
+            </div>
+          </div>
+          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
+            <i class="ti ti-grid-dots me-2"></i>
+            <div class="form-check">
+              <input class="form-check-input" id="todo4" type="checkbox">
+              <label class="form-check-label fw-medium" for="todo4">Management Call</label>
+            </div>
+          </div>
+          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
+            <i class="ti ti-grid-dots me-2"></i>
+            <div class="form-check">
+              <input class="form-check-input" id="todo5" type="checkbox">
+              <label class="form-check-label fw-medium" for="todo5">Add Payroll</label>
+            </div>
+          </div>
+          <div class="d-flex align-items-center todo-item br-5 mb-0 border p-2">
+            <i class="ti ti-grid-dots me-2"></i>
+            <div class="form-check">
+              <input class="form-check-input" id="todo6" type="checkbox">
+              <label class="form-check-label fw-medium" for="todo6">Add Policy for Increment </label>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- /Jobs Applicants -->
+    <!-- /Todo -->
 
-    <!-- Employees -->
+    <!-- Employees Tasks (here add a column name tasks which show the uncompleted task number) -->
     <div class="col-xxl-4 col-xl-6 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Employees</h5>
+          <h5 class="mb-2">Employees Tasks</h5>
           <a class="btn btn-light btn-md mb-2" href="employees.html">View All</a>
         </div>
         <div class="card-body p-0">
@@ -828,16 +610,20 @@
     </div>
     <!-- /Employees -->
 
-    <!-- Todo -->
-    <div class="col-xxl-4 col-xl-6 d-flex">
+  </div>
+
+  <div class="row">
+
+    <!-- Tasks Statistics -->
+    <div class="col-xxl-4 col-xl-5 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Todo</h5>
+          <h5 class="mb-2">Tasks Statistics</h5>
           <div class="d-flex align-items-center">
-            <div class="dropdown mb-2 me-2">
+            <div class="dropdown mb-2">
               <a class="btn btn-white btn-sm d-inline-flex align-items-center border"
                 data-bs-toggle="dropdown" href="javascript:void(0);">
-                <i class="ti ti-calendar me-1"></i>Today
+                <i class="ti ti-calendar me-1"></i>This Week
               </a>
               <ul class="dropdown-menu dropdown-menu-end p-3">
                 <li>
@@ -851,68 +637,55 @@
                 </li>
               </ul>
             </div>
-            <a class="btn btn-primary btn-icon btn-xs rounded-circle d-flex align-items-center justify-content-center mb-2 p-0"
-              data-bs-toggle="modal" data-bs-target="#add_todo" href="#"><i
-                class="ti ti-plus fs-16"></i></a>
           </div>
         </div>
         <div class="card-body">
-          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
-            <i class="ti ti-grid-dots me-2"></i>
-            <div class="form-check">
-              <input class="form-check-input" id="todo1" type="checkbox">
-              <label class="form-check-label fw-medium" for="todo1">Add Holidays</label>
+          <div class="chartjs-wrapper-demo position-relative mb-4">
+            <canvas id="mySemiDonutChart" height="190"></canvas>
+            <div class="position-absolute attendance-canvas text-center">
+              <p class="fs-13 mb-1">Total Tasks</p>
+              <h3>124/165</h3>
             </div>
           </div>
-          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
-            <i class="ti ti-grid-dots me-2"></i>
-            <div class="form-check">
-              <input class="form-check-input" id="todo2" type="checkbox">
-              <label class="form-check-label fw-medium" for="todo2">Add Meeting to Client</label>
+          <div class="d-flex align-items-center flex-wrap">
+            <div class="border-end mb-3 me-2 pe-2 text-center">
+              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
+                  class="ti ti-circle-filled fs-10 text-warning me-1"></i>Ongoing</p>
+              <h5>24%</h5>
+            </div>
+            <div class="border-end mb-3 me-2 pe-2 text-center">
+              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
+                  class="ti ti-circle-filled fs-10 text-info me-1"></i>On Hold </p>
+              <h5>10%</h5>
+            </div>
+            <div class="border-end mb-3 me-2 pe-2 text-center">
+              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
+                  class="ti ti-circle-filled fs-10 text-danger me-1"></i>Overdue</p>
+              <h5>16%</h5>
+            </div>
+            <div class="mb-3 me-2 pe-2 text-center">
+              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
+                  class="ti ti-circle-filled fs-10 text-success me-1"></i>Ongoing</p>
+              <h5>40%</h5>
             </div>
           </div>
-          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
-            <i class="ti ti-grid-dots me-2"></i>
-            <div class="form-check">
-              <input class="form-check-input" id="todo3" type="checkbox">
-              <label class="form-check-label fw-medium" for="todo3">Chat with Adrian</label>
+          <div class="bg-dark br-5 d-flex align-items-center justify-content-between p-3 pb-0">
+            <div class="mb-2">
+              <h4 class="text-success">389/689 hrs</h4>
+              <p class="fs-13 mb-0">Spent on Overall Tasks This Week</p>
             </div>
-          </div>
-          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
-            <i class="ti ti-grid-dots me-2"></i>
-            <div class="form-check">
-              <input class="form-check-input" id="todo4" type="checkbox">
-              <label class="form-check-label fw-medium" for="todo4">Management Call</label>
-            </div>
-          </div>
-          <div class="d-flex align-items-center todo-item br-5 mb-2 border p-2">
-            <i class="ti ti-grid-dots me-2"></i>
-            <div class="form-check">
-              <input class="form-check-input" id="todo5" type="checkbox">
-              <label class="form-check-label fw-medium" for="todo5">Add Payroll</label>
-            </div>
-          </div>
-          <div class="d-flex align-items-center todo-item br-5 mb-0 border p-2">
-            <i class="ti ti-grid-dots me-2"></i>
-            <div class="form-check">
-              <input class="form-check-input" id="todo6" type="checkbox">
-              <label class="form-check-label fw-medium" for="todo6">Add Policy for Increment </label>
-            </div>
+            <a class="btn btn-sm btn-light mb-2 text-nowrap" href="tasks.html">View All</a>
           </div>
         </div>
       </div>
     </div>
-    <!-- /Todo -->
+    <!-- /Tasks Statistics -->
 
-  </div>
-
-  <div class="row">
-
-    <!-- Sales Overview -->
+    <!-- Target Overview (monthly given target and completed target in percentage) -->
     <div class="col-xl-7 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Sales Overview</h5>
+          <h5 class="mb-2">Target Overview</h5>
           <div class="d-flex align-items-center">
             <div class="dropdown mb-2">
               <a class="dropdown-toggle btn btn-white btn-sm d-inline-flex align-items-center fs-13 me-2 border-0"
@@ -947,187 +720,162 @@
         </div>
       </div>
     </div>
-    <!-- /Sales Overview -->
+    <!-- /Target Overview -->
+  </div>
 
-    <!-- Invoices -->
-    <div class="col-xl-5 d-flex">
+  <div class="row">
+
+    <!-- Employees By Department -->
+    <div class="col-xxl-4 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Invoices</h5>
-          <div class="d-flex align-items-center">
-            <div class="dropdown mb-2">
-              <a class="dropdown-toggle btn btn-white btn-sm d-inline-flex align-items-center fs-13 me-2 border-0"
-                data-bs-toggle="dropdown" href="javascript:void(0);">
-                Invoices
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end p-3">
-                <li>
-                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Invoices</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Paid</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Unpaid</a>
-                </li>
-              </ul>
-            </div>
-            <div class="dropdown mb-2">
-              <a class="btn btn-white btn-sm d-inline-flex align-items-center border"
-                data-bs-toggle="dropdown" href="javascript:void(0);">
-                <i class="ti ti-calendar me-1"></i>This Week
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end p-3">
-                <li>
-                  <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
-                </li>
-                <li>
-                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Today</a>
-                </li>
-              </ul>
-            </div>
+          <h5 class="mb-2">Employees By Branch</h5>
+          <div class="dropdown mb-2">
+            <a class="btn btn-white btn-sm d-inline-flex align-items-center border" data-bs-toggle="dropdown"
+              href="javascript:void(0);">
+              <i class="ti ti-calendar me-1"></i>This Week
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end p-3">
+              <li>
+                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Month</a>
+              </li>
+              <li>
+                <a class="dropdown-item rounded-1" href="javascript:void(0);">This Week</a>
+              </li>
+              <li>
+                <a class="dropdown-item rounded-1" href="javascript:void(0);">Last Week</a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card-body pt-2">
-          <div class="table-responsive pt-1">
-            <table class="table-nowrap table-borderless mb-0 table">
-              <tbody>
-                <tr>
-                  <td class="px-0">
-                    <div class="d-flex align-items-center">
-                      <a class="avatar" href="invoice-details.html">
-                        <img class="img-fluid rounded-circle"
-                          src="{{ asset('assets/img/users/user-39.jpg') }}" alt="img">
-                      </a>
-                      <div class="ms-2">
-                        <h6 class="fw-medium"><a href="invoice-details.html">Redesign Website</a></h6>
-                        <span class="fs-13 d-inline-flex align-items-center">#INVOO2<i
-                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Logistics</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fs-13 mb-1">Payment</p>
-                    <h6 class="fw-medium">$3560</h6>
-                  </td>
-                  <td class="px-0 text-end">
-                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
-                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-0">
-                    <div class="d-flex align-items-center">
-                      <a class="avatar" href="invoice-details.html">
-                        <img class="img-fluid rounded-circle"
-                          src="{{ asset('assets/img/users/user-40.jpg') }}" alt="img">
-                      </a>
-                      <div class="ms-2">
-                        <h6 class="fw-medium"><a href="invoice-details.html">Module Completion</a></h6>
-                        <span class="fs-13 d-inline-flex align-items-center">#INVOO5<i
-                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Yip Corp</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fs-13 mb-1">Payment</p>
-                    <h6 class="fw-medium">$4175</h6>
-                  </td>
-                  <td class="px-0 text-end">
-                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
-                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-0">
-                    <div class="d-flex align-items-center">
-                      <a class="avatar" href="invoice-details.html">
-                        <img class="img-fluid rounded-circle"
-                          src="{{ asset('assets/img/users/user-55.jpg') }}" alt="img">
-                      </a>
-                      <div class="ms-2">
-                        <h6 class="fw-medium"><a href="invoice-details.html">Change on Emp Module</a></h6>
-                        <span class="fs-13 d-inline-flex align-items-center">#INVOO3<i
-                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Ignis LLP</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fs-13 mb-1">Payment</p>
-                    <h6 class="fw-medium">$6985</h6>
-                  </td>
-                  <td class="px-0 text-end">
-                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
-                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-0">
-                    <div class="d-flex align-items-center">
-                      <a class="avatar" href="invoice-details.html">
-                        <img class="img-fluid rounded-circle"
-                          src="{{ asset('assets/img/users/user-42.jpg') }}" alt="img">
-                      </a>
-                      <div class="ms-2">
-                        <h6 class="fw-medium"><a href="invoice-details.html">Changes on the Board</a></h6>
-                        <span class="fs-13 d-inline-flex align-items-center">#INVOO2<i
-                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Ignis LLP</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fs-13 mb-1">Payment</p>
-                    <h6 class="fw-medium">$1457</h6>
-                  </td>
-                  <td class="px-0 text-end">
-                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
-                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-0">
-                    <div class="d-flex align-items-center">
-                      <a class="avatar" href="invoice-details.html">
-                        <img class="img-fluid rounded-circle"
-                          src="{{ asset('assets/img/users/user-44.jpg') }}" alt="img">
-                      </a>
-                      <div class="ms-2">
-                        <h6 class="fw-medium"><a href="invoice-details.html">Hospital Management</a></h6>
-                        <span class="fs-13 d-inline-flex align-items-center">#INVOO6<i
-                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>HCL Corp</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="fs-13 mb-1">Payment</p>
-                    <h6 class="fw-medium">$6458</h6>
-                  </td>
-                  <td class="px-0 text-end">
-                    <span class="badge badge-success-transparent badge-xs d-inline-flex align-items-center"><i
-                        class="ti ti-circle-filled fs-5 me-1"></i>Paid</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <a class="btn btn-light btn-md w-100 mt-2" href="invoice.html">View All</a>
+        <div class="card-body">
+          <div id="emp-department"></div>
+          <p class="fs-13"><i class="ti ti-circle-filled fs-8 text-primary me-2"></i>No of
+            Employees increased by <span class="text-success fw-bold">+20%</span> from last Year
+          </p>
         </div>
       </div>
     </div>
-    <!-- /Invoices -->
+    <!-- /Employees By Department -->
+
+    <!-- Total Employee -->
+    <div class="col-xxl-4 d-flex">
+      <div class="card flex-fill">
+        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
+          <h5 class="mb-2">Employee Status By Target</h5>
+          <div class="dropdown mb-2">
+            <a class="btn btn-white btn-sm d-inline-flex align-items-center border" data-bs-toggle="dropdown"
+              href="javascript:void(0);">
+              <i class="ti ti-calendar me-1"></i>January
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end p-3">
+              <li>
+                <a class="dropdown-item rounded-1" href="javascript:void(0);">January</a>
+              </li>
+              <li>
+                <a class="dropdown-item rounded-1" href="javascript:void(0);">February</a>
+              </li>
+              <li>
+                <a class="dropdown-item rounded-1" href="javascript:void(0);">March</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between mb-1">
+            <p class="fs-13 mb-3">Total Employee</p>
+            <h3 class="mb-3">154</h3>
+          </div>
+          <div class="progress-stacked emp-stack mb-3">
+            <div class="progress" role="progressbar" aria-label="Segment one" aria-valuenow="15"
+              aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+              <div class="progress-bar bg-warning"></div>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Segment two" aria-valuenow="30"
+              aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+              <div class="progress-bar bg-secondary"></div>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Segment three" aria-valuenow="20"
+              aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+              <div class="progress-bar bg-danger"></div>
+            </div>
+            <div class="progress" role="progressbar" aria-label="Segment four" aria-valuenow="20"
+              aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+              <div class="progress-bar bg-pink"></div>
+            </div>
+          </div>
+          <div class="mb-3 border">
+            <div class="row gx-0">
+              <div class="col-6">
+                <div class="flex-fill border-end border-bottom p-2">
+                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-primary fs-12 me-2"></i>Fulltime
+                    <span class="text-gray-9">(48%)</span>
+                  </p>
+                  <h2 class="display-1">112</h2>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="flex-fill border-bottom p-2 text-end">
+                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-secondary fs-12 me-2"></i>Contract
+                    <span class="text-gray-9">(20%)</span>
+                  </p>
+                  <h2 class="display-1">112</h2>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="flex-fill border-end p-2">
+                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-danger fs-12 me-2"></i>Probation
+                    <span class="text-gray-9">(22%)</span>
+                  </p>
+                  <h2 class="display-1">12</h2>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="flex-fill p-2 text-end">
+                  <p class="fs-13 mb-2"><i class="ti ti-square-filled text-pink fs-12 me-2"></i>WFH <span
+                      class="text-gray-9">(20%)</span></p>
+                  <h2 class="display-1">04</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h6 class="mb-2">Top Performer</h6>
+          <div
+            class="d-flex align-items-center justify-content-between border-primary bg-primary-100 br-5 mb-4 border p-2">
+            <div class="d-flex align-items-center overflow-hidden">
+              <span class="me-2">
+                <i class="ti ti-award-filled text-primary fs-24"></i>
+              </span>
+              <a class="avatar avatar-md me-2" href="employee-details.html">
+                <img class="rounded-circle border border-white"
+                  src="{{ asset('assets/img/profiles/avatar-24.jpg') }}" alt="img">
+              </a>
+              <div>
+                <h6 class="text-truncate fs-14 fw-medium mb-1"><a href="employee-details.html">Daniel
+                    Esbella</a></h6>
+                <p class="fs-13">IOS Developer</p>
+              </div>
+            </div>
+            <div class="text-end">
+              <p class="fs-13 mb-1">Performance</p>
+              <h5 class="text-primary">99%</h5>
+            </div>
+          </div>
+          <a class="btn btn-light btn-md w-100" href="employees.html">View All Employees</a>
+        </div>
+      </div>
+    </div>
+    <!-- /Total Employee -->
 
   </div>
 
   <div class="row">
 
-    <!-- Projects -->
+    <!-- Salary overview (PIN, Name, Basic, TADA, Action can be only edited) -->
     <div class="col-xxl-8 col-xl-7 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Projects</h5>
+          <h5 class="mb-2">Salary Overview</h5>
           <div class="d-flex align-items-center">
             <div class="dropdown mb-2">
               <a class="btn btn-white btn-sm d-inline-flex align-items-center border"
@@ -1427,12 +1175,29 @@
     </div>
     <!-- /Projects -->
 
-    <!-- Tasks Statistics -->
-    <div class="col-xxl-4 col-xl-5 d-flex">
+    <!-- Invoices -->
+    <div class="col-xl-5 d-flex">
       <div class="card flex-fill">
         <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Tasks Statistics</h5>
+          <h5 class="mb-2">Salary Invoices</h5>
           <div class="d-flex align-items-center">
+            <div class="dropdown mb-2">
+              <a class="dropdown-toggle btn btn-white btn-sm d-inline-flex align-items-center fs-13 me-2 border-0"
+                data-bs-toggle="dropdown" href="javascript:void(0);">
+                Invoices
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end p-3">
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Invoices</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Paid</a>
+                </li>
+                <li>
+                  <a class="dropdown-item rounded-1" href="javascript:void(0);">Unpaid</a>
+                </li>
+              </ul>
+            </div>
             <div class="dropdown mb-2">
               <a class="btn btn-white btn-sm d-inline-flex align-items-center border"
                 data-bs-toggle="dropdown" href="javascript:void(0);">
@@ -1452,338 +1217,133 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
-          <div class="chartjs-wrapper-demo position-relative mb-4">
-            <canvas id="mySemiDonutChart" height="190"></canvas>
-            <div class="position-absolute attendance-canvas text-center">
-              <p class="fs-13 mb-1">Total Tasks</p>
-              <h3>124/165</h3>
-            </div>
+        <div class="card-body pt-2">
+          <div class="table-responsive pt-1">
+            <table class="table-nowrap table-borderless mb-0 table">
+              <tbody>
+                <tr>
+                  <td class="px-0">
+                    <div class="d-flex align-items-center">
+                      <a class="avatar" href="invoice-details.html">
+                        <img class="img-fluid rounded-circle"
+                          src="{{ asset('assets/img/users/user-39.jpg') }}" alt="img">
+                      </a>
+                      <div class="ms-2">
+                        <h6 class="fw-medium"><a href="invoice-details.html">Redesign Website</a></h6>
+                        <span class="fs-13 d-inline-flex align-items-center">#INVOO2<i
+                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Logistics</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fs-13 mb-1">Payment</p>
+                    <h6 class="fw-medium">$3560</h6>
+                  </td>
+                  <td class="px-0 text-end">
+                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
+                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-0">
+                    <div class="d-flex align-items-center">
+                      <a class="avatar" href="invoice-details.html">
+                        <img class="img-fluid rounded-circle"
+                          src="{{ asset('assets/img/users/user-40.jpg') }}" alt="img">
+                      </a>
+                      <div class="ms-2">
+                        <h6 class="fw-medium"><a href="invoice-details.html">Module Completion</a></h6>
+                        <span class="fs-13 d-inline-flex align-items-center">#INVOO5<i
+                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Yip Corp</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fs-13 mb-1">Payment</p>
+                    <h6 class="fw-medium">$4175</h6>
+                  </td>
+                  <td class="px-0 text-end">
+                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
+                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-0">
+                    <div class="d-flex align-items-center">
+                      <a class="avatar" href="invoice-details.html">
+                        <img class="img-fluid rounded-circle"
+                          src="{{ asset('assets/img/users/user-55.jpg') }}" alt="img">
+                      </a>
+                      <div class="ms-2">
+                        <h6 class="fw-medium"><a href="invoice-details.html">Change on Emp Module</a></h6>
+                        <span class="fs-13 d-inline-flex align-items-center">#INVOO3<i
+                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Ignis LLP</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fs-13 mb-1">Payment</p>
+                    <h6 class="fw-medium">$6985</h6>
+                  </td>
+                  <td class="px-0 text-end">
+                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
+                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-0">
+                    <div class="d-flex align-items-center">
+                      <a class="avatar" href="invoice-details.html">
+                        <img class="img-fluid rounded-circle"
+                          src="{{ asset('assets/img/users/user-42.jpg') }}" alt="img">
+                      </a>
+                      <div class="ms-2">
+                        <h6 class="fw-medium"><a href="invoice-details.html">Changes on the Board</a></h6>
+                        <span class="fs-13 d-inline-flex align-items-center">#INVOO2<i
+                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>Ignis LLP</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fs-13 mb-1">Payment</p>
+                    <h6 class="fw-medium">$1457</h6>
+                  </td>
+                  <td class="px-0 text-end">
+                    <span class="badge badge-danger-transparent badge-xs d-inline-flex align-items-center"><i
+                        class="ti ti-circle-filled fs-5 me-1"></i>Unpaid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-0">
+                    <div class="d-flex align-items-center">
+                      <a class="avatar" href="invoice-details.html">
+                        <img class="img-fluid rounded-circle"
+                          src="{{ asset('assets/img/users/user-44.jpg') }}" alt="img">
+                      </a>
+                      <div class="ms-2">
+                        <h6 class="fw-medium"><a href="invoice-details.html">Hospital Management</a></h6>
+                        <span class="fs-13 d-inline-flex align-items-center">#INVOO6<i
+                            class="ti ti-circle-filled fs-4 text-primary mx-1"></i>HCL Corp</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="fs-13 mb-1">Payment</p>
+                    <h6 class="fw-medium">$6458</h6>
+                  </td>
+                  <td class="px-0 text-end">
+                    <span class="badge badge-success-transparent badge-xs d-inline-flex align-items-center"><i
+                        class="ti ti-circle-filled fs-5 me-1"></i>Paid</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="d-flex align-items-center flex-wrap">
-            <div class="border-end mb-3 me-2 pe-2 text-center">
-              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
-                  class="ti ti-circle-filled fs-10 text-warning me-1"></i>Ongoing</p>
-              <h5>24%</h5>
-            </div>
-            <div class="border-end mb-3 me-2 pe-2 text-center">
-              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
-                  class="ti ti-circle-filled fs-10 text-info me-1"></i>On Hold </p>
-              <h5>10%</h5>
-            </div>
-            <div class="border-end mb-3 me-2 pe-2 text-center">
-              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
-                  class="ti ti-circle-filled fs-10 text-danger me-1"></i>Overdue</p>
-              <h5>16%</h5>
-            </div>
-            <div class="mb-3 me-2 pe-2 text-center">
-              <p class="fs-13 d-inline-flex align-items-center mb-1"><i
-                  class="ti ti-circle-filled fs-10 text-success me-1"></i>Ongoing</p>
-              <h5>40%</h5>
-            </div>
-          </div>
-          <div class="bg-dark br-5 d-flex align-items-center justify-content-between p-3 pb-0">
-            <div class="mb-2">
-              <h4 class="text-success">389/689 hrs</h4>
-              <p class="fs-13 mb-0">Spent on Overall Tasks This Week</p>
-            </div>
-            <a class="btn btn-sm btn-light mb-2 text-nowrap" href="tasks.html">View All</a>
-          </div>
+          <a class="btn btn-light btn-md w-100 mt-2" href="invoice.html">View All</a>
         </div>
       </div>
     </div>
-    <!-- /Tasks Statistics -->
-
-  </div>
-
-  <div class="row">
-
-    <!-- Schedules -->
-    <div class="col-xxl-4 d-flex">
-      <div class="card flex-fill">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Schedules</h5>
-          <a class="btn btn-light btn-md mb-2" href="candidates.html">View All</a>
-        </div>
-        <div class="card-body">
-          <div class="bg-light br-5 mb-4 p-3">
-            <span class="badge badge-secondary badge-xs mb-1">UI/ UX Designer</span>
-            <h6 class="text-truncate mb-2">Interview Candidates - UI/UX Designer</h6>
-            <div class="d-flex align-items-center flex-wrap">
-              <p class="fs-13 mb-1 me-2"><i class="ti ti-calendar-event me-2"></i>Thu, 15 Feb 2025</p>
-              <p class="fs-13 mb-1"><i class="ti ti-clock-hour-11 me-2"></i>01:00 PM - 02:20 PM</p>
-            </div>
-            <div class="d-flex align-items-center justify-content-between border-top mt-2 pt-3">
-              <div class="avatar-list-stacked avatar-group-sm">
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-49.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-13.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-11.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-22.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-58.jpg') }}"
-                    alt="img">
-                </span>
-                <a class="avatar bg-primary avatar-rounded text-fixed-white fs-10 fw-medium"
-                  href="javascript:void(0);">
-                  +3
-                </a>
-              </div>
-              <a class="btn btn-primary btn-xs" href="#">Join Meeting</a>
-            </div>
-          </div>
-          <div class="bg-light br-5 mb-0 p-3">
-            <span class="badge badge-dark badge-xs mb-1">IOS Developer</span>
-            <h6 class="text-truncate mb-2">Interview Candidates - IOS Developer</h6>
-            <div class="d-flex align-items-center flex-wrap">
-              <p class="fs-13 mb-1 me-2"><i class="ti ti-calendar-event me-2"></i>Thu, 15 Feb 2025</p>
-              <p class="fs-13 mb-1"><i class="ti ti-clock-hour-11 me-2"></i>02:00 PM - 04:20 PM</p>
-            </div>
-            <div class="d-flex align-items-center justify-content-between border-top mt-2 pt-3">
-              <div class="avatar-list-stacked avatar-group-sm">
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-49.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-13.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-11.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-22.jpg') }}"
-                    alt="img">
-                </span>
-                <span class="avatar avatar-rounded">
-                  <img class="border border-white" src="{{ asset('assets/img/users/user-58.jpg') }}"
-                    alt="img">
-                </span>
-                <a class="avatar bg-primary avatar-rounded text-fixed-white fs-10 fw-medium"
-                  href="javascript:void(0);">
-                  +3
-                </a>
-              </div>
-              <a class="btn btn-primary btn-xs" href="#">Join Meeting</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Schedules -->
-
-    <!-- Recent Activities -->
-    <div class="col-xxl-4 col-xl-6 d-flex">
-      <div class="card flex-fill">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Recent Activities</h5>
-          <a class="btn btn-light btn-md mb-2" href="activity.html">View All</a>
-        </div>
-        <div class="card-body">
-          <div class="recent-item">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center w-100">
-                <a class="avatar flex-shrink-0" href="javscript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-38.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="flex-fill ms-2">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Matt Morgan</a>
-                    </h6>
-                    <p class="fs-13">05:30 PM</p>
-                  </div>
-                  <p class="fs-13">Added New Project <span class="text-primary">HRMS Dashboard</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="recent-item">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center w-100">
-                <a class="avatar flex-shrink-0" href="javscript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-01.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="flex-fill ms-2">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Jay Ze</a></h6>
-                    <p class="fs-13">05:00 PM</p>
-                  </div>
-                  <p class="fs-13">Commented on Uploaded Document</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="recent-item">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center w-100">
-                <a class="avatar flex-shrink-0" href="javscript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-19.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="flex-fill ms-2">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Mary Donald</a>
-                    </h6>
-                    <p class="fs-13">05:30 PM</p>
-                  </div>
-                  <p class="fs-13">Approved Task Projects</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="recent-item">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center w-100">
-                <a class="avatar flex-shrink-0" href="javscript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-11.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="flex-fill ms-2">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h6 class="fs-medium text-truncate"><a href="javscript:void(0);">George David</a>
-                    </h6>
-                    <p class="fs-13">06:00 PM</p>
-                  </div>
-                  <p class="fs-13">Requesting Access to Module Tickets</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="recent-item">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center w-100">
-                <a class="avatar flex-shrink-0" href="javscript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-20.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="flex-fill ms-2">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Aaron Zeen</a></h6>
-                    <p class="fs-13">06:30 PM</p>
-                  </div>
-                  <p class="fs-13">Downloaded App Reportss</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="recent-item">
-            <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center w-100">
-                <a class="avatar flex-shrink-0" href="javscript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-08.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="flex-fill ms-2">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <h6 class="fs-medium text-truncate"><a href="javscript:void(0);">Hendry Daniel</a>
-                    </h6>
-                    <p class="fs-13">05:30 PM</p>
-                  </div>
-                  <p class="fs-13">Completed New Project <span>HMS</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Recent Activities -->
-
-    <!-- Birthdays -->
-    <div class="col-xxl-4 col-xl-6 d-flex">
-      <div class="card flex-fill">
-        <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-2">
-          <h5 class="mb-2">Birthdays</h5>
-          <a class="btn btn-light btn-md mb-2" href="javascript:void(0);">View All</a>
-        </div>
-        <div class="card-body pb-1">
-          <h6 class="mb-2">Today</h6>
-          <div class="bg-light rounded-top mb-3 border border-dashed p-2">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <a class="avatar" href="javascript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-38.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="ms-2 overflow-hidden">
-                  <h6 class="fs-medium">Andrew Jermia</h6>
-                  <p class="fs-13">IOS Developer</p>
-                </div>
-              </div>
-              <a class="btn btn-secondary btn-xs" href="javascript:void(0);"><i
-                  class="ti ti-cake me-1"></i>Send</a>
-            </div>
-          </div>
-          <h6 class="mb-2">Tomorow</h6>
-          <div class="bg-light rounded-top mb-3 border border-dashed p-2">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <a class="avatar" href="javascript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-10.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="ms-2 overflow-hidden">
-                  <h6 class="fs-medium"><a href="javascript:void(0);">Mary Zeen</a></h6>
-                  <p class="fs-13">UI/UX Designer</p>
-                </div>
-              </div>
-              <a class="btn btn-secondary btn-xs" href="javascript:void(0);"><i
-                  class="ti ti-cake me-1"></i>Send</a>
-            </div>
-          </div>
-          <div class="bg-light rounded-top mb-3 border border-dashed p-2">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <a class="avatar" href="javascript:void(0);">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-09.jpg') }}"
-                    alt="img">
-                </a>
-                <div class="ms-2 overflow-hidden">
-                  <h6 class="fs-medium"><a href="javascript:void(0);">Antony Lewis</a></h6>
-                  <p class="fs-13">Android Developer</p>
-                </div>
-              </div>
-              <a class="btn btn-secondary btn-xs" href="javascript:void(0);"><i
-                  class="ti ti-cake me-1"></i>Send</a>
-            </div>
-          </div>
-          <h6 class="mb-2">25 Jan 2025</h6>
-          <div class="bg-light rounded-top mb-3 border border-dashed p-2">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <span class="avatar">
-                  <img class="rounded-circle" src="{{ asset('assets/img/users/user-12.jpg') }}"
-                    alt="img">
-                </span>
-                <div class="ms-2 overflow-hidden">
-                  <h6 class="fs-medium">Doglas Martini</h6>
-                  <p class="fs-13">.Net Developer</p>
-                </div>
-              </div>
-              <a class="btn btn-secondary btn-xs" href="javascript:void(0);"><i
-                  class="ti ti-cake me-1"></i>Send</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /Birthdays -->
+    <!-- /Invoices -->
 
   </div>
   <!-- /Page Wrapper -->

@@ -4,196 +4,24 @@
       <li class="menu-title"><span>MAIN MENU</span></li>
       <li>
         <ul>
-          <li class="submenu">
-            <a class="active subdrop" href="javascript:void(0);">
-              <i class="ti ti-smart-home"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-danger fs-10 fw-medium p-1 text-white">Hot</span>
-              <span class="menu-arrow"></span>
+          <li class="active">
+            <a href="{{ route('admin.dashboard') }}">
+              <i class="ti ti-smart-home"></i><span>Dashboard</span>
             </a>
-            <ul>
-              <li><a class="active" href="index.html">Admin Dashboard</a></li>
-              <li><a href="employee-dashboard.html">Employee Dashboard</a></li>
-              <li><a href="deals-dashboard.html">Deals Dashboard</a></li>
-              <li><a href="leads-dashboard.html">Leads Dashboard</a></li>
-            </ul>
           </li>
+        </ul>
+      </li>
+      <li>
+        <ul>
           <li class="submenu">
             <a href="javascript:void(0);">
-              <i class="ti ti-layout-grid-add"></i><span>Applications</span>
+              <i class="ti ti-box"></i><span>Groups</span>
               <span class="menu-arrow"></span>
             </a>
             <ul>
-              <li><a href="chat.html">Chat</a></li>
-              <li class="submenu submenu-two">
-                <a href="call.html">Calls<span class="menu-arrow inside-submenu"></span></a>
-                <ul>
-                  <li><a href="voice-call.html">Voice Call</a></li>
-                  <li><a href="video-call.html">Video Call</a></li>
-                  <li><a href="outgoing-call.html">Outgoing Call</a></li>
-                  <li><a href="incoming-call.html">Incoming Call</a></li>
-                  <li><a href="call-history.html">Call History</a></li>
-                </ul>
-              </li>
-              <li><a href="calendar.html">Calendar</a></li>
-              <li><a href="email.html">Email</a></li>
-              <li><a href="todo.html">To Do</a></li>
-              <li><a href="notes.html">Notes</a></li>
-              <li><a href="social-feed.html">Social Feed</a></li>
-              <li><a href="file-manager.html">File Manager</a></li>
-              <li><a href="kanban-view.html">Kanban</a></li>
-              <li><a href="invoices.html">Invoices</a></li>
+              <li><a href="projects-grid.html">Group List</a></li>
+              <li><a href="projects-grid.html">Add Group</a></li>
             </ul>
-          </li>
-          <li class="submenu">
-            <a href="#">
-              <i class="ti ti-user-star"></i><span>Super Admin</span>
-              <span class="menu-arrow"></span>
-            </a>
-            <ul>
-              <li><a href="dashboard.html">Dashboard</a></li>
-              <li><a href="companies.html">Companies</a></li>
-              <li><a href="subscription.html">Subscriptions</a></li>
-              <li><a href="packages.html">Packages</a></li>
-              <li><a href="domain.html">Domain</a></li>
-              <li><a href="purchase-transaction.html">Purchase Transaction</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="menu-title"><span>LAYOUT</span></li>
-      <li>
-        <ul>
-          <li>
-            <a href="layout-horizontal.html">
-              <i class="ti ti-layout-navbar"></i><span>Horizontal</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-detached.html">
-              <i class="ti ti-details"></i><span>Detached</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-modern.html">
-              <i class="ti ti-layout-board-split"></i><span>Modern</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-two-column.html">
-              <i class="ti ti-columns-2"></i><span>Two Column </span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-hovered.html">
-              <i class="ti ti-column-insert-left"></i><span>Hovered</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-box.html">
-              <i class="ti ti-layout-align-middle"></i><span>Boxed</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-horizontal-single.html">
-              <i class="ti ti-layout-navbar-inactive"></i><span>Horizontal Single</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-horizontal-overlay.html">
-              <i class="ti ti-layout-collage"></i><span>Horizontal Overlay</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-horizontal-box.html">
-              <i class="ti ti-layout-board"></i><span>Horizontal Box</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-horizontal-sidemenu.html">
-              <i class="ti ti-table"></i><span>Menu Aside</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-vertical-transparent.html">
-              <i class="ti ti-layout"></i><span>Transparent</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-without-header.html">
-              <i class="ti ti-layout-sidebar"></i><span>Without Header</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-rtl.html">
-              <i class="ti ti-text-direction-rtl"></i><span>RTL</span>
-            </a>
-          </li>
-          <li>
-            <a href="layout-dark.html">
-              <i class="ti ti-moon"></i><span>Dark</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="menu-title"><span>PROJECTS</span></li>
-      <li>
-        <ul>
-          <li>
-            <a href="clients-grid.html">
-              <i class="ti ti-users-group"></i><span>Clients</span>
-            </a>
-          </li>
-          <li class="submenu">
-            <a href="javascript:void(0);">
-              <i class="ti ti-box"></i><span>Projects</span>
-              <span class="menu-arrow"></span>
-            </a>
-            <ul>
-              <li><a href="projects-grid.html">Projects</a></li>
-              <li><a href="tasks.html">Tasks</a></li>
-              <li><a href="task-board.html">Task Board</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="menu-title"><span>CRM</span></li>
-      <li>
-        <ul>
-          <li>
-            <a href="contacts-grid.html">
-              <i class="ti ti-user-shield"></i><span>Contacts</span>
-            </a>
-          </li>
-          <li>
-            <a href="companies-grid.html">
-              <i class="ti ti-building"></i><span>Companies</span>
-            </a>
-          </li>
-          <li>
-            <a href="deals-grid.html">
-              <i class="ti ti-heart-handshake"></i><span>Deals</span>
-            </a>
-          </li>
-          <li>
-            <a href="leads-grid.html">
-              <i class="ti ti-user-check"></i><span>Leads</span>
-            </a>
-          </li>
-          <li>
-            <a href="pipeline.html">
-              <i class="ti ti-timeline-event-text"></i><span>Pipeline</span>
-            </a>
-          </li>
-          <li>
-            <a href="analytics.html">
-              <i class="ti ti-graph"></i><span>Analytics</span>
-            </a>
-          </li>
-          <li>
-            <a href="activity.html">
-              <i class="ti ti-activity"></i><span>Activities</span>
-            </a>
           </li>
         </ul>
       </li>
