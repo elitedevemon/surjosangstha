@@ -10,10 +10,13 @@ cfemail
 chartjs
 colorpicker
 Consolas
+Datalogger
 daterangepicker
 Daterangepikcer
 datetimepicker
 Datetimepicker
+Debugbar
+displayer
 Doglas
 dont
 endauth
@@ -30,6 +33,7 @@ fontawesome
 Fontawesome
 grayscale
 Hendry
+hiddens
 HRMS
 Inprogress
 INVOO
@@ -42,8 +46,12 @@ lightbox
 Lightbox
 linecap
 linejoin
+livewire
+Livewire
+macvim
 Menlo
 minmax
+netbeans
 noti
 Noto
 nowrap
@@ -57,6 +65,7 @@ peity
 Peity
 Peralt
 pestphp
+phpstorm
 phpunit
 pickr
 rangeslider
