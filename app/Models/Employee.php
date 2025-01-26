@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    /** @use HasFactory<\Database\Factories\EmployeeFactory> */
-    use HasFactory;
+  /** @use HasFactory<\Database\Factories\EmployeeFactory> */
+  use HasFactory;
+
+  public function contact(){
+    return $this->hasOne(EmployeeContactInfo::class);
+  }
 }

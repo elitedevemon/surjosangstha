@@ -34,7 +34,7 @@
               <span class="menu-arrow"></span>
             </a>
             <ul>
-              <li><a href="employees.html">Employee Lists</a></li>
+              <li><a href="{{ route('admin.employee.list') }}">Employee Lists</a></li>
               <li><a href="employees-grid.html">Employee Grid</a></li>
               <li><a href="employee-details.html">Employee Details</a></li>
               <li><a href="departments.html">Departments</a></li>

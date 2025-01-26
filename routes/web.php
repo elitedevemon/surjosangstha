@@ -24,4 +24,5 @@ require __DIR__ . '/auth.php';
 
 Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->group(function(){
   Route::get('/', 'index')->name('dashboard');
+  Route::get('/employee-list', 'employeeList')->name('employee.list');
 });

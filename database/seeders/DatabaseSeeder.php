@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\EmployeeAddress;
 use App\Models\EmployeeContactInfo;
 use App\Models\EmployeeDesignation;
+use App\Models\EmployeeSalary;
 use App\Models\EmployeeUploadFile;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
     EmployeeContactInfo::factory(10)->create();
     EmployeeUploadFile::factory(10)->create();
     EmployeeAddress::factory(10)->create();
+    EmployeeSalary::factory(10)->create();
 
     // User::factory()->create([
     //     'name' => 'Test User',

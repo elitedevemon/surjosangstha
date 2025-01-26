@@ -2,7 +2,7 @@
 <html lang="en">
 
   @include('admin.layouts.header')
-  @yield('styles')
+  @stack('styles')
 
   <body>
 
@@ -42,7 +42,7 @@
     <!-- /Main Wrapper -->
 
     @include('admin.layouts.footer')
-    @yield('scripts')
+    @stack('scripts')
 
   </body>
 
