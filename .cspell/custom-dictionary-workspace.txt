@@ -20,6 +20,7 @@ displayer
 Doglas
 dont
 endauth
+enderror
 endforelse
 endpush
 Envoyer
@@ -33,6 +34,7 @@ Flot
 focusring
 fontawesome
 Fontawesome
+forelse
 grayscale
 Hendry
 hiddens
@@ -60,8 +62,11 @@ nowrap
 nunomaduro
 offcanvas
 Offcanvas
+offstyle
+onchange
 Onhold
 onlin
+onstyle
 optgroup
 peity
 Peity
@@ -101,6 +106,7 @@ tablist
 tagsinput
 Tagsinput
 Teressa
+theia
 themify
 Themify
 timepicker

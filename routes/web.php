@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,5 @@ require __DIR__ . '/auth.php';
 Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->group(function(){
   Route::get('/', 'index')->name('dashboard');
   Route::get('/employee-list', 'employeeList')->name('employee.list');
+  Route::resource('employee', EmployeeController::class);
 });

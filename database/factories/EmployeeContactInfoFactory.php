@@ -19,7 +19,7 @@ class EmployeeContactInfoFactory extends Factory
   {
     return [
       //employee_id, own_phone, own_nid, father_phone, father_nid, mother_phone, mother_nid, guarantor_1_phone, guarantor_1_nid, guarantor_2_phone, guarantor_2_nid, nominee_phone, nominee_nid
-      'employee_id' => $this->faker->randomElement(Employee::pluck('id')->toArray()),
+      'employee_id' => $this->faker->unique->randomElement(Employee::pluck('id')->toArray()),
       'own_phone' => $this->faker->phoneNumber,
       'own_nid' => $this->faker->randomNumber(8),
       'father_phone' => $this->faker->phoneNumber,

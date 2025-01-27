@@ -11,6 +11,12 @@
   <!-- Slimscroll JS -->
   <script src="{{ asset('assets/js/jquery.slimscroll.min.js') }}" type="text/javascript"></script>
 
+  <!--Sticky Sidebar JS -->
+  <script src="{{ asset('assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}" type="text/javascript">
+  </script>
+  <script src="{{ asset('assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"
+    type="text/javascript"></script>
+
   <!-- Chart JS -->
   <script src="{{ asset('assets/plugins/apexchart/apexcharts.min.js') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/plugins/apexchart/chart-data.js') }}" type="text/javascript"></script>

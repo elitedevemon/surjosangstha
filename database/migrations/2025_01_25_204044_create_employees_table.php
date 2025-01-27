@@ -15,6 +15,11 @@ return new class extends Migration {
       $table->id();
       $table->string('employee_code')->unique();
       $table->string('email');
+      $table->enum('gender', ['male', 'female'])->default('male');
+      $table->date('dob')->nullable();
+      $table->string('religion')->nullable();
+      $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->default('single');
+      $table->string('password')->default(bcrypt('password'));
       $table->foreignId('employee_designation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->foreignId('branch_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->string('name');
@@ -22,6 +27,7 @@ return new class extends Migration {
       $table->string('mother_name');
       $table->date('application_date');
       $table->date('joining_date');
+      $table->enum('status', [true, false])->default(true);
       $table->timestamps();
     });
   }

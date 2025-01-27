@@ -16,6 +16,7 @@ return new class extends Migration {
       $table->string('branch_name');
       $table->string('branch_code')->unique();
       $table->string('branch_address');
+      $table->enum('status', [true, false])->default(true);
       $table->timestamps();
     });
   }
