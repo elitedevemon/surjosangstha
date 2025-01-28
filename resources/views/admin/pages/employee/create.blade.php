@@ -4,8 +4,17 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Add Employee</h5>
-      <form action="{{ route('admin.employee.store') }}" method="POST">
+      <form action="{{ route('admin.employee.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @if ($errors->any())
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <!-- Employee Information -->
         <div class="card">
           <div class="card-body">
@@ -18,12 +27,12 @@
                   <div class="form-group col-6">
                     <label for="name">Name</label>
                     <input class="form-control @error('name') is-invalid @enderror" id="name"
-                      name="name" type="text" placeholder="Enter name" required>
+                      name="name" type="text" placeholder="Enter name" required value="{{ old('name') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="email">Email</label>
                     <input class="form-control" id="email" name="email" type="email" required
-                      placeholder="Enter email">
+                      placeholder="Enter email" value="{{ old('email') }}">
                   </div>
                 </div>
 
@@ -32,27 +41,27 @@
                   <div class="form-group col-4">
                     <label for="own_village">Village</label>
                     <input class="form-control" id="own_village" name="own_village" type="text" required
-                      placeholder="Village">
+                      placeholder="Village" value="{{ old('own_village') }}">
                   </div>
                   <div class="form-group col-4">
                     <label for="own_union">Union</label>
                     <input class="form-control" id="own_union" name="own_union" type="text" required
-                      placeholder="Union">
+                      placeholder="Union" value="{{ old('own_union') }}">
                   </div>
                   <div class="form-group col-4">
                     <label for="own_post_office">Post Office</label>
                     <input class="form-control" id="own_post_office" name="own_post_office" type="text"
-                      required placeholder="Post Office">
+                      required placeholder="Post Office" value="{{ old('own_post_office') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="own_thana">Thana</label>
                     <input class="form-control" id="own_thana" name="own_thana" type="text" required
-                      placeholder="Thana">
+                      placeholder="Thana" value="{{ old('own_thana') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="own_district">District</label>
                     <input class="form-control" id="own_district" name="own_district" type="text" required
-                      placeholder="District">
+                      placeholder="District" value="{{ old('own_district') }}">
                   </div>
                 </div>
 
@@ -61,7 +70,7 @@
                   <div class="form-group col-4">
                     <label for="own_phone">Phone</label>
                     <input class="form-control" id="own_phone" name="own_phone" type="text" required
-                      placeholder="Enter phone">
+                      placeholder="Enter phone" value="{{ old('own_phone') }}">
                   </div>
                   <div class="form-group col-4">
                     <label for="branch_name">Branch</label>
@@ -93,12 +102,12 @@
                     <div class="form-group col-6">
                       <label for="own_nid">NID Number</label>
                       <input class="form-control" id="own_nid" name="own_nid" type="text" required
-                        placeholder="Enter NID number">
+                        placeholder="Enter NID number" value="{{ old('own_nid') }}">
                     </div>
                     <div class="form-group col-6">
                       <label for="dob">Date of Birth</label>
                       <input class="form-control" id="dob" name="dob" type="date"
-                        placeholder="Enter birth date">
+                        placeholder="Enter birth date" value="{{ old('dob') }}">
                     </div>
                   </div>
                 </div>
@@ -114,8 +123,7 @@
                           style="height: 160px; width: 160px">
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="own_photo"><i class="fa-solid fa-camera"></i></label>
-                        <input class="d-none" id="own_photo" name="own_photo" type="file" required
-                          onchange="document.querySelector('#employee_profile').src=window.URL.createObjectURL(this.files[0])">
+                        <input id="own_photo" name="own_photo" type="file" data-id="employee_profile" hidden required accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -133,8 +141,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="own_nid_front" name="own_nid_front" type="file"
-                          required
-                          onchange="document.querySelector('#employee_nid_front').src=window.URL.createObjectURL(this.files[0])">
+                          required data-id="employee_nid_front" accept=".jpg,.png,.jpeg">
                       </div>
 
                       {{-- NID Back --}}
@@ -148,8 +155,7 @@
                           for="own_nid_back"><i class="fa-solid fa-camera"></i></label>
 
                         <!-- NID back File Input -->
-                        <input class="d-none" id="own_nid_back" name="own_nid_back" type="file" required
-                          onchange="document.querySelector('#employee_nid_back').src=window.URL.createObjectURL(this.files[0])">
+                        <input class="d-none" id="own_nid_back" name="own_nid_back" type="file" required data-id="employee_nid_back" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -169,12 +175,12 @@
               <div class="form-group col-3">
                 <label for="father_name">Name</label>
                 <input class="form-control" id="father_name" name="father_name" type="text" required
-                  placeholder="Father Name">
+                  placeholder="Father Name" value="{{ old('father_name') }}">
               </div>
               <div class="form-group col-3">
                 <label for="father_phone">Phone</label>
                 <input class="form-control" id="father_phone" name="father_phone" type="text"
-                  placeholder="Father Phone">
+                  placeholder="Father Phone" value="{{ old('father_phone') }}">
               </div>
               <div class="form-group col-3">
                 <label for="father_nid">NID</label>
@@ -281,7 +287,7 @@
                   <div class="form-group col-6">
                     <label for="guarantor_1_phone">Phone</label>
                     <input class="form-control" id="guarantor_1_phone" name="guarantor_1_phone"
-                      type="email" required placeholder="Enter Phone">
+                      type="text" required placeholder="Enter Phone">
                   </div>
                   <div class="form-group col-12 mt-2">
                     <label for="guarantor_1_nid">NID</label>
@@ -331,8 +337,7 @@
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="guarantor_1_photo"><i class="fa-solid fa-camera"></i></label>
                         <input class="d-none" id="guarantor_1_photo" name="guarantor_1_photo" type="file"
-                          required
-                          onchange="document.querySelector('#guarantor_1_profile').src=window.URL.createObjectURL(this.files[0])">
+                          required data-id="guarantor_1_profile" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -350,8 +355,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="guarantor_1_nid_front" name="guarantor_1_nid_front"
-                          type="file" required
-                          onchange="document.querySelector('#guarantor_1_nid_front_photo').src=window.URL.createObjectURL(this.files[0])">
+                          type="file" required data-id="guarantor_1_nid_front_photo" accept=".jpg,.png,.jpeg">
                       </div>
 
                       {{-- NID Back --}}
@@ -366,8 +370,7 @@
 
                         <!-- NID back File Input -->
                         <input class="d-none" id="guarantor_1_nid_back" name="guarantor_1_nid_back"
-                          type="file" required
-                          onchange="document.querySelector('#guarantor_1_nid_back_photo').src=window.URL.createObjectURL(this.files[0])">
+                          type="file" required data-id="guarantor_1_nid_back_photo" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -453,8 +456,7 @@
                           style="height: 160px; width: 160px">
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="guarantor_2_photo"><i class="fa-solid fa-camera"></i></label>
-                        <input class="d-none" id="guarantor_2_photo" name="guarantor_2_photo" type="file"
-                          onchange="document.querySelector('#guarantor_2_profile').src=window.URL.createObjectURL(this.files[0])">
+                        <input class="d-none" id="guarantor_2_photo" name="guarantor_2_photo" type="file" data-id="guarantor_2_profile" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -472,8 +474,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="guarantor_2_nid_front" name="guarantor_2_nid_front"
-                          type="file"
-                          onchange="document.querySelector('#guarantor_2_nid_front_photo').src=window.URL.createObjectURL(this.files[0])">
+                          type="file" data-id="guarantor_2_nid_front_photo" accept=".jpg,.png,.jpeg">
                       </div>
 
                       {{-- NID Back --}}
@@ -488,8 +489,7 @@
 
                         <!-- NID back File Input -->
                         <input class="d-none" id="guarantor_2_nid_back" name="guarantor_2_nid_back"
-                          type="file"
-                          onchange="document.querySelector('#guarantor_2_nid_back_photo').src=window.URL.createObjectURL(this.files[0])">
+                          type="file" data-id="guarantor_2_nid_back_photo" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -575,8 +575,7 @@
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="nominee_photo"><i class="fa-solid fa-camera"></i></label>
                         <input class="d-none" id="nominee_photo" name="nominee_photo" type="file"
-                          required
-                          onchange="document.querySelector('#nominee_profile').src=window.URL.createObjectURL(this.files[0])">
+                          required data-id="nominee_profile" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -594,8 +593,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="nominee_nid_front" name="nominee_nid_front" type="file"
-                          required
-                          onchange="document.querySelector('#nominee_nid_front_photo').src=window.URL.createObjectURL(this.files[0])">
+                          required data-id="nominee_nid_front_photo" accept=".jpg,.png,.jpeg">
                       </div>
 
                       {{-- NID Back --}}
@@ -610,8 +608,7 @@
 
                         <!-- NID back File Input -->
                         <input class="d-none" id="nominee_nid_back" name="nominee_nid_back" type="file"
-                          required
-                          onchange="document.querySelector('#nominee_nid_back_photo').src=window.URL.createObjectURL(this.files[0])">
+                          required data-id="nominee_nid_back_photo" accept=".jpg,.png,.jpeg">
                       </div>
                     </div>
                   </div>
@@ -634,18 +631,18 @@
               </div>
               <div class="form-group col-3">
                 <label for="basic_salary">Salary</label>
-                <input class="form-control" id="basic_salary" name="basic_salary" type="text" required
+                <input class="form-control" id="basic_salary" name="basic_salary" type="number" required
                   placeholder="Enter Salary">
               </div>
               <div class="form-group col-3">
                 <label for="application_date">Application Date</label>
-                <input class="form-control" id="application_date" name="application_date" type="date" required
-                  placeholder="Enter application date">
+                <input class="form-control" id="application_date" name="application_date" type="date"
+                  required placeholder="Enter application date">
               </div>
               <div class="form-group col-3">
                 <label for="joining_date">Joining Date</label>
-                <input class="form-control" id="joining_date" name="joining_date" type="date"
-                  required placeholder="Enter Joining date">
+                <input class="form-control" id="joining_date" name="joining_date" type="date" required
+                  placeholder="Enter Joining date">
               </div>
             </div>
           </div>
@@ -768,17 +765,17 @@
           $('#guarantor_2_nid_back').attr('required', true);
         } else {
           $('#guarantor_2_access').addClass('d-none');
-          $('#guarantor_2_name').removeAttr('required');
-          $('#guarantor_2_phone').removeAttr('required');
-          $('#guarantor_2_nid').removeAttr('required');
-          $('#guarantor_2_village').removeAttr('required');
-          $('#guarantor_2_union').removeAttr('required');
-          $('#guarantor_2_post_office').removeAttr('required');
-          $('#guarantor_2_thana').removeAttr('required');
-          $('#guarantor_2_district').removeAttr('required');
-          $('#guarantor_2_photo').removeAttr('required');
-          $('#guarantor_2_nid_front').removeAttr('required');
-          $('#guarantor_2_nid_back').removeAttr('required');
+          $('#guarantor_2_name').val('').removeAttr('required');
+          $('#guarantor_2_phone').val('').removeAttr('required');
+          $('#guarantor_2_nid').val('').removeAttr('required');
+          $('#guarantor_2_village').val('').removeAttr('required');
+          $('#guarantor_2_union').val('').removeAttr('required');
+          $('#guarantor_2_post_office').val('').removeAttr('required');
+          $('#guarantor_2_thana').val('').removeAttr('required');
+          $('#guarantor_2_district').val('').removeAttr('required');
+          $('#guarantor_2_photo').val('').removeAttr('required');
+          $('#guarantor_2_nid_front').val('').removeAttr('required');
+          $('#guarantor_2_nid_back').val('').removeAttr('required');
         }
       });
 
@@ -815,6 +812,64 @@
           $('#nominee_district').val('').removeAttr('disabled');
         }
       });
+    });
+
+    $('input[type="file"]').change(function(event) {
+      const file = $(this).val();
+      const ext = file.split('.').pop().toLowerCase();
+      const id = $(this).data('id');
+
+      if ($.inArray(ext, ['jpg', 'jpeg', 'png']) == -1) {
+        // document.getElementById(id).src = window.URL.revokeObjectURL(this.files[0]);
+        alert('Please upload a valid image file');
+        $(this).val('');
+        return false;
+      }
+      if (this.files[0].size > 204800) {
+        alert("File size shouldn't exceed 200 KB.!");
+        this.value = "";
+        return false;
+      }else{
+        document.getElementById(id).src = window.URL.createObjectURL(this.files[0]);
+      }
+    });
+
+    $('button[type="submit"]').click(function(e) {
+      e.preventDefault();
+      $(this).html('Please wait... <i class="fas fa-spinner fa-spin"></i>').attr('disabled', true);
+      const own_photo = $('#own_photo').val();
+      const own_nid_front = $('#own_nid_front').val();
+      const own_nid_back = $('#own_nid_back').val();
+      const guarantor_1_photo = $('#guarantor_1_photo').val();
+      const guarantor_1_nid_front = $('#guarantor_1_nid_front').val();
+      const guarantor_1_nid_back = $('#guarantor_1_nid_back').val();
+      const guarantor_2_photo = $('#guarantor_2_photo').val();
+      const guarantor_2_nid_front = $('#guarantor_2_nid_front').val();
+      const guarantor_2_nid_back = $('#guarantor_2_nid_back').val();
+      const nominee_photo = $('#nominee_photo').val();
+      const nominee_nid_front = $('#nominee_nid_front').val();
+      const nominee_nid_back = $('#nominee_nid_back').val();
+
+      const multiple_guarantor = $('#multiple_guarantor').prop('checked');
+
+      if (own_photo == '' || own_nid_front == '' || own_nid_back == '' || guarantor_1_photo == '' ||
+        guarantor_1_nid_front == '' || guarantor_1_nid_back == '' || nominee_photo == '' ||
+        nominee_nid_front == '' || nominee_nid_back == '') {
+        alert('Please fill up all the fields');
+        $(this).html('Add Employee').removeAttr('disabled');
+        return false;
+      }
+
+      if (multiple_guarantor == true) {
+        if (guarantor_2_photo == '' || guarantor_2_nid_front == '' || guarantor_2_nid_back == '') {
+          alert('Please fill up the second guarantor information');
+          $(this).html('Add Employee').removeAttr('disabled');
+          return false;
+        }
+      }
+
+      $(this).closest('form').submit();
+
     });
   </script>
 @endpush

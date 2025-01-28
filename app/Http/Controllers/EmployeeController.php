@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeRegisterRequest;
 use App\Models\Branch;
 use App\Models\Employee;
 use App\Models\EmployeeDesignation;
@@ -22,17 +23,18 @@ class EmployeeController extends Controller
    */
   public function create()
   {
-    $branches = Branch::all();
-    $designations = EmployeeDesignation::all();
+    $branches = Branch::where('status', 'active')->get();
+    $designations = EmployeeDesignation::where('status', 'active')->get();
     return view('admin.pages.employee.create', compact(['branches', 'designations']));
   }
 
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(EmployeeRegisterRequest $request)
   {
     return $request;
+    image($request->own_photo);
   }
 
   /**

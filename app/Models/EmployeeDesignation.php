@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeeDesignation extends Model
 {
-    /** @use HasFactory<\Database\Factories\EmployeeDesignationFactory> */
-    use HasFactory;
+  /** @use HasFactory<\Database\Factories\EmployeeDesignationFactory> */
+  use HasFactory;
+
+  protected $guarded = [];
 }

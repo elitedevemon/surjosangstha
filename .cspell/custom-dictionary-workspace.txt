@@ -16,9 +16,11 @@ Daterangepikcer
 datetimepicker
 Datetimepicker
 Debugbar
+describedby
 displayer
 Doglas
 dont
+enctype
 endauth
 enderror
 endforelse
@@ -64,6 +66,7 @@ offcanvas
 Offcanvas
 offstyle
 onchange
+onclick
 Onhold
 onlin
 onstyle
@@ -112,6 +115,8 @@ Themify
 timepicker
 timesheets
 Timesheets
+toastr
+Toatr
 Tomorow
 twocol
 typicon

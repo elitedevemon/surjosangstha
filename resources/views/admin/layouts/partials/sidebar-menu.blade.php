@@ -28,6 +28,7 @@
       <li class="menu-title"><span>HRM</span></li>
       <li>
         <ul>
+          <!-- Employees menu -->
           <li class="submenu">
             <a href="javascript:void(0);" class="{{ Route::is('admin.employee*') ? 'subdrop' : '' }}">
               <i class="ti ti-users"></i><span>Employees</span>
@@ -39,6 +40,30 @@
               <li><a href="#">Salary Info</a></li>
               <li><a href="#">PF Info</a></li>
               <li><a href="#">DPS Info</a></li>
+            </ul>
+          </li>
+
+          <!-- Branches menu -->
+          <li class="submenu">
+            <a href="javascript:void(0);" class="{{ Route::is('admin.branch*') ? 'subdrop' : '' }}">
+              <i class="ti ti-users"></i><span>Branch</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul  style="{{ Route::is('admin.branch*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.branch.index') || Route::is('admin.branch.show') ? 'active' : '' }}"><a href="{{ route('admin.branch.index') }}">Branch List</a></li>
+              <li class="{{ Route::is('admin.branch.create') ? 'active' : '' }}"><a href="{{ route('admin.branch.create') }}">Add Branch</a></li>
+            </ul>
+          </li>
+
+          <!-- Designation menu -->
+          <li class="submenu">
+            <a href="javascript:void(0);" class="{{ Route::is('admin.designation*') ? 'subdrop' : '' }}">
+              <i class="ti ti-users"></i><span>Designation</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul  style="{{ Route::is('admin.designation*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.designation.index') || Route::is('admin.designation.show') ? 'active' : '' }}"><a href="{{ route('admin.designation.index') }}">Designation List</a></li>
+              <li class="{{ Route::is('admin.designation.create') ? 'active' : '' }}"><a href="{{ route('admin.designation.create') }}">Add Designation</a></li>
             </ul>
           </li>
           <li class="submenu">

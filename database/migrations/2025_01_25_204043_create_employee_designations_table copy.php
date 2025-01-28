@@ -13,7 +13,7 @@ return new class extends Migration {
     Schema::create('employee_designations', function (Blueprint $table) {
       $table->id();
       $table->string('designation');
-      $table->enum('status', [true, false])->default(true);
+      $table->enum('status', ['active', 'inactive'])->default('active');
       $table->timestamps();
     });
   }

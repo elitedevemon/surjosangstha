@@ -1,6 +1,6 @@
 <?php
 
-function message($message)
+function image($image)
 {
-  return $message;
+  dd($image);
 }

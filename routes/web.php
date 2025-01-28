@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +29,8 @@ Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->
   Route::get('/', 'index')->name('dashboard');
   Route::get('/employee-list', 'employeeList')->name('employee.list');
   Route::resource('employee', EmployeeController::class);
+  Route::resource('branch', BranchController::class)->except('show');
+  Route::post('branch/change/status/', [BranchController::class, 'changeStatus'])->name('branch.change.status');
+  Route::resource('designation', EmployeeDesignationController::class)->except('show');
+  Route::post('designation/change/status/', [EmployeeDesignationController::class, 'changeStatus'])->name('designation.change.status');
 });
