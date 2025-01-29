@@ -15,7 +15,7 @@ return new class extends Migration {
       $table->id();
       $table->string('employee_code')->unique();
       $table->string('email');
-      $table->enum('gender', ['male', 'female'])->default('male');
+      $table->enum('gender', ['male', 'female'])->nullable();
       $table->date('dob')->nullable();
       $table->string('religion')->nullable();
       $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->default('single');

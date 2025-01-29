@@ -73,8 +73,8 @@
                       placeholder="Enter phone" value="{{ old('own_phone') }}">
                   </div>
                   <div class="form-group col-4">
-                    <label for="branch_name">Branch</label>
-                    <select class="form-select" id="branch_name" name="branch_name" aria-label="Employee Branch"
+                    <label for="branch_id">Branch</label>
+                    <select class="form-select" id="branch_id" name="branch_id" aria-label="Employee Branch"
                       required>
                       <option disabled selected>--Select Branch--</option>
                       @forelse ($branches as $branch)
@@ -85,8 +85,8 @@
                     </select>
                   </div>
                   <div class="form-group col-4">
-                    <label for="designation">Designation</label>
-                    <select class="form-select" id="designation" name="designation"
+                    <label for="employee_designation_id">Designation</label>
+                    <select class="form-select" id="employee_designation_id" name="employee_designation_id"
                       aria-label="Employee Designation" required>
                       <option disabled selected>--Select Designation--</option>
                       @forelse ($designations as $designation)
@@ -120,10 +120,10 @@
                         style="height: 40%; width: 40%; overflow: hidden;">
                         <img class="rounded-circle" id="employee_profile"
                           src="{{ asset('assets/img/profiles/profile.jpg') }}" alt="Profile Picture"
-                          style="height: 160px; width: 160px">
+                          style="height: 160px">
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="own_photo"><i class="fa-solid fa-camera"></i></label>
-                        <input id="own_photo" name="own_photo" type="file" data-id="employee_profile" hidden required accept=".jpg,.png,.jpeg">
+                        <input id="own_photo" name="own_photo" type="file" data-id="employee_profile" hidden required accept=".jpg,.png,.jpeg" value="{{ old('own_photo') }}">
                       </div>
                     </div>
                   </div>
@@ -141,7 +141,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="own_nid_front" name="own_nid_front" type="file"
-                          required data-id="employee_nid_front" accept=".jpg,.png,.jpeg">
+                          required data-id="employee_nid_front" accept=".jpg,.png,.jpeg" value="{{ old('own_nid_front') }}">
                       </div>
 
                       {{-- NID Back --}}
@@ -155,7 +155,7 @@
                           for="own_nid_back"><i class="fa-solid fa-camera"></i></label>
 
                         <!-- NID back File Input -->
-                        <input class="d-none" id="own_nid_back" name="own_nid_back" type="file" required data-id="employee_nid_back" accept=".jpg,.png,.jpeg">
+                        <input class="d-none" id="own_nid_back" name="own_nid_back" type="file" required data-id="employee_nid_back" accept=".jpg,.png,.jpeg" value="{{ old('own_nid_back') }}">
                       </div>
                     </div>
                   </div>
@@ -185,32 +185,32 @@
               <div class="form-group col-3">
                 <label for="father_nid">NID</label>
                 <input class="form-control" id="father_nid" name="father_nid" type="text" required
-                  placeholder="Father NID number">
+                  placeholder="Father NID number" value="{{ old('father_nid') }}">
               </div>
               <div class="form-group col-3">
                 <label for="father_village">Village</label>
                 <input class="form-control" id="father_village" name="father_village" type="text"
-                  required placeholder="Father Village">
+                  required placeholder="Father Village" value="{{ old('father_village') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="father_union">Union</label>
                 <input class="form-control" id="father_union" name="father_union" type="text" required
-                  placeholder="Father Union">
+                  placeholder="Father Union" value="{{ old('father_union') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="father_post_office">Post Office</label>
                 <input class="form-control" id="father_post_office" name="father_post_office" type="text"
-                  required placeholder="Father Post Office">
+                  required placeholder="Father Post Office" value="{{ old('father_post_office') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="father_thana">Thana</label>
                 <input class="form-control" id="father_thana" name="father_thana" type="text" required
-                  placeholder="Father Thana">
+                  placeholder="Father Thana" value="{{ old('father_thana') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="father_district">District</label>
                 <input class="form-control" id="father_district" name="father_district" type="text"
-                  required placeholder="Father District">
+                  required placeholder="Father District" value="{{ old('father_district') }}">
               </div>
             </div>
 
@@ -225,42 +225,42 @@
               <div class="form-group col-3">
                 <label for="mother_name">Name</label>
                 <input class="form-control" id="mother_name" name="mother_name" type="text" required
-                  placeholder="Mother Name">
+                  placeholder="Mother Name" value="{{ old('mother_name') }}">
               </div>
               <div class="form-group col-3">
                 <label for="mother_phone">Phone</label>
                 <input class="form-control" id="mother_phone" name="mother_phone" type="text"
-                  placeholder="Mother Phone">
+                  placeholder="Mother Phone" value="{{ old('mother_phone') }}">
               </div>
               <div class="form-group col-3">
                 <label for="mother_nid">NID</label>
                 <input class="form-control" id="mother_nid" name="mother_nid" type="text" required
-                  placeholder="Mother NID number">
+                  placeholder="Mother NID number" value="{{ old('mother_nid') }}">
               </div>
               <div class="form-group col-3">
                 <label for="mother_village">Village</label>
                 <input class="form-control" id="mother_village" name="mother_village" type="text"
-                  required placeholder="Mother Village">
+                  required placeholder="Mother Village" value="{{ old('mother_village') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="mother_union">Union</label>
                 <input class="form-control" id="mother_union" name="mother_union" type="text" required
-                  placeholder="Mother Union">
+                  placeholder="Mother Union" value="{{ old('mother_union') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="mother_post_office">Post Office</label>
                 <input class="form-control" id="mother_post_office" name="mother_post_office" type="text"
-                  required placeholder="Mother Post Office">
+                  required placeholder="Mother Post Office" value="{{ old('mother_post_office') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="mother_thana">Thana</label>
                 <input class="form-control" id="mother_thana" name="mother_thana" type="text" required
-                  placeholder="Mother Thana">
+                  placeholder="Mother Thana" value="{{ old('mother_thana') }}">
               </div>
               <div class="form-group col-3 mt-2">
                 <label for="mother_district">District</label>
                 <input class="form-control" id="mother_district" name="mother_district" type="text"
-                  required placeholder="Mother District">
+                  required placeholder="Mother District" value="{{ Old('mother_district') }}">
               </div>
             </div>
           </div>
@@ -282,17 +282,17 @@
                   <div class="form-group col-6">
                     <label for="guarantor_1_name">Name</label>
                     <input class="form-control" id="guarantor_1_name" name="guarantor_1_name" type="text"
-                      required placeholder="Enter name">
+                      required placeholder="Enter name" value="{{ old('guarantor_1_name') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="guarantor_1_phone">Phone</label>
                     <input class="form-control" id="guarantor_1_phone" name="guarantor_1_phone"
-                      type="text" required placeholder="Enter Phone">
+                      type="text" required placeholder="Enter Phone" value="{{ old('guarantor_2_name') }}">
                   </div>
                   <div class="form-group col-12 mt-2">
                     <label for="guarantor_1_nid">NID</label>
                     <input class="form-control" id="guarantor_1_nid" name="guarantor_1_nid" type="text"
-                      required placeholder="Enter NID number">
+                      required placeholder="Enter NID number" value="{{ old('guarantor_1_nid') }}">
                   </div>
                 </div>
 
@@ -301,27 +301,27 @@
                   <div class="form-group col-6">
                     <label for="guarantor_1_village">Village</label>
                     <input class="form-control" id="guarantor_1_village" name="guarantor_1_village"
-                      type="text" required placeholder="Village">
+                      type="text" required placeholder="Village" value="{{ old('guarantor_1_village') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="guarantor_1_union">Union</label>
                     <input class="form-control" id="guarantor_1_union" name="guarantor_1_union"
-                      type="text" required placeholder="Union">
+                      type="text" required placeholder="Union" value="{{ old('guarantor_1_union') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="guarantor_1_post_office">Post Office</label>
                     <input class="form-control" id="guarantor_1_post_office" name="guarantor_1_post_office"
-                      type="text" required placeholder="Post Office">
+                      type="text" required placeholder="Post Office" value="{{ old('guarantor_1_post_office') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="guarantor_1_thana">Thana</label>
                     <input class="form-control" id="guarantor_1_thana" name="guarantor_1_thana"
-                      type="text" required placeholder="Thana">
+                      type="text" required placeholder="Thana" value="{{ old('guarantor_1_thana') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="guarantor_1_district">District</label>
                     <input class="form-control" id="guarantor_1_district" name="guarantor_1_district"
-                      type="text" required placeholder="District">
+                      type="text" required placeholder="District" value="{{ old('guarantor_1_district') }}">
                   </div>
                 </div>
               </div>
@@ -333,11 +333,11 @@
                         style="height: 40%; width: 40%; overflow: hidden;">
                         <img class="rounded-circle" id="guarantor_1_profile"
                           src="{{ asset('assets/img/profiles/profile.jpg') }}" alt="Profile Picture"
-                          style="height: 160px; width: 160px">
+                          style="height: 160px">
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="guarantor_1_photo"><i class="fa-solid fa-camera"></i></label>
                         <input class="d-none" id="guarantor_1_photo" name="guarantor_1_photo" type="file"
-                          required data-id="guarantor_1_profile" accept=".jpg,.png,.jpeg">
+                          required data-id="guarantor_1_profile" accept=".jpg,.png,.jpeg" value="{{ old('guarantor_1_photo') }}">
                       </div>
                     </div>
                   </div>
@@ -355,7 +355,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="guarantor_1_nid_front" name="guarantor_1_nid_front"
-                          type="file" required data-id="guarantor_1_nid_front_photo" accept=".jpg,.png,.jpeg">
+                          type="file" required data-id="guarantor_1_nid_front_photo" accept=".jpg,.png,.jpeg" value="{{ old('guarantor_1_nid_front') }}">
                       </div>
 
                       {{-- NID Back --}}
@@ -370,7 +370,7 @@
 
                         <!-- NID back File Input -->
                         <input class="d-none" id="guarantor_1_nid_back" name="guarantor_1_nid_back"
-                          type="file" required data-id="guarantor_1_nid_back_photo" accept=".jpg,.png,.jpeg">
+                          type="file" required data-id="guarantor_1_nid_back_photo" accept=".jpg,.png,.jpeg" value="{{ old('guarantor_1_nid_back') }}">
                       </div>
                     </div>
                   </div>
@@ -380,7 +380,7 @@
 
             <!-- select if there have multiple guarantor -->
             <div class="form-check form-switch mt-4">
-              <input class="form-check-input" id="multiple_guarantor" type="checkbox" role="switch">
+              <input class="form-check-input" name="multiple_guarantor" id="multiple_guarantor" type="checkbox" role="switch" value="{{ old('multiple_guarantor') }}">
               <label for="multiple_guarantor">Multiple Guarantor</label>
             </div>
           </div>
@@ -402,17 +402,17 @@
                   <div class="form-group col-6">
                     <label for="guarantor_2_name">Name</label>
                     <input class="form-control" id="guarantor_2_name" name="guarantor_2_name" type="text"
-                      placeholder="Enter name">
+                      placeholder="Enter name" value="{{ old('guarantor_2_name') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="guarantor_2_phone">Phone</label>
                     <input class="form-control" id="guarantor_2_phone" name="guarantor_2_phone"
-                      type="text" placeholder="Enter Phone">
+                      type="text" placeholder="Enter Phone" value="{{ old('guarantor_2_phone') }}">
                   </div>
                   <div class="form-group col-12 mt-2">
                     <label for="guarantor_2_nid">NID</label>
                     <input class="form-control" id="guarantor_2_nid" name="guarantor_2_nid" type="text"
-                      placeholder="Enter NID number">
+                      placeholder="Enter NID number" value="{{ old('guarantor_2_nid') }}">
                   </div>
                 </div>
 
@@ -421,27 +421,27 @@
                   <div class="form-group col-6">
                     <label for="guarantor_2_village">Village</label>
                     <input class="form-control" id="guarantor_2_village" name="guarantor_2_village"
-                      type="text" placeholder="Village">
+                      type="text" placeholder="Village" value="{{ old('guarantor_2_village') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="guarantor_2_union">Union</label>
                     <input class="form-control" id="guarantor_2_union" name="guarantor_2_union"
-                      type="text" placeholder="Union">
+                      type="text" placeholder="Union" value="{{ old('guarantor_2_union') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="guarantor_2_post_office">Post Office</label>
                     <input class="form-control" id="guarantor_2_post_office" name="guarantor_2_post_office"
-                      type="text" placeholder="Post Office">
+                      type="text" placeholder="Post Office" value="{{ old('guarantor_2_post_office') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="guarantor_2_thana">Thana</label>
                     <input class="form-control" id="guarantor_2_thana" name="guarantor_2_thana"
-                      type="text" placeholder="Thana">
+                      type="text" placeholder="Thana" value="{{ old('guarantor_2_thana') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="guarantor_2_district">District</label>
                     <input class="form-control" id="guarantor_2_district" name="guarantor_2_district"
-                      type="text" placeholder="District">
+                      type="text" placeholder="District" value="{{ old('guarantor_2_district') }}">
                   </div>
                 </div>
               </div>
@@ -453,10 +453,10 @@
                         style="height: 40%; width: 40%; overflow: hidden;">
                         <img class="rounded-circle" id="guarantor_2_profile"
                           src="{{ asset('assets/img/profiles/profile.jpg') }}" alt="Profile Picture"
-                          style="height: 160px; width: 160px">
+                          style="height: 160px">
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="guarantor_2_photo"><i class="fa-solid fa-camera"></i></label>
-                        <input class="d-none" id="guarantor_2_photo" name="guarantor_2_photo" type="file" data-id="guarantor_2_profile" accept=".jpg,.png,.jpeg">
+                        <input class="d-none" id="guarantor_2_photo" name="guarantor_2_photo" type="file" data-id="guarantor_2_profile" accept=".jpg,.png,.jpeg" value="{{ old('guarantor_2_photo') }}">
                       </div>
                     </div>
                   </div>
@@ -474,7 +474,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="guarantor_2_nid_front" name="guarantor_2_nid_front"
-                          type="file" data-id="guarantor_2_nid_front_photo" accept=".jpg,.png,.jpeg">
+                          type="file" data-id="guarantor_2_nid_front_photo" accept=".jpg,.png,.jpeg" value="{{ old('guarantor_2_nid_front') }}">
                       </div>
 
                       {{-- NID Back --}}
@@ -489,7 +489,7 @@
 
                         <!-- NID back File Input -->
                         <input class="d-none" id="guarantor_2_nid_back" name="guarantor_2_nid_back"
-                          type="file" data-id="guarantor_2_nid_back_photo" accept=".jpg,.png,.jpeg">
+                          type="file" data-id="guarantor_2_nid_back_photo" accept=".jpg,.png,.jpeg" value="{{ old('guarantor_2_nid_back') }}">
                       </div>
                     </div>
                   </div>
@@ -515,22 +515,22 @@
                   <div class="form-group col-6">
                     <label for="nominee_name">Name</label>
                     <input class="form-control" id="nominee_name" name="nominee_name" type="text"
-                      required placeholder="Enter name">
+                      required placeholder="Enter name" value="{{ old('nominee_name') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="nominee_phone">Phone</label>
                     <input class="form-control" id="nominee_phone" name="nominee_phone" type="text"
-                      required placeholder="Enter Phone">
+                      required placeholder="Enter Phone" value="{{ old('nominee_phone') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="nominee_nid">NID</label>
                     <input class="form-control" id="nominee_nid" name="nominee_nid" type="text" required
-                      placeholder="Enter NID number">
+                      placeholder="Enter NID number" value="{{ old('nominee_nid') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="nominee_relation">Relation</label>
                     <input class="form-control" id="nominee_relation" name="nominee_relation" type="text"
-                      required placeholder="Relation with employee">
+                      required placeholder="Relation with employee" value="{{ old('nominee_relation') }}">
                   </div>
                 </div>
 
@@ -539,27 +539,27 @@
                   <div class="form-group col-6">
                     <label for="nominee_village">Village</label>
                     <input class="form-control" id="nominee_village" name="nominee_village" type="text"
-                      required placeholder="Village">
+                      required placeholder="Village" value="{{ old('nominee_village') }}">
                   </div>
                   <div class="form-group col-6">
                     <label for="nominee_union">Union</label>
                     <input class="form-control" id="nominee_union" name="nominee_union" type="text"
-                      required placeholder="Union">
+                      required placeholder="Union" value="{{ old('nominee_union') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="nominee_post_office">Post Office</label>
                     <input class="form-control" id="nominee_post_office" name="nominee_post_office"
-                      type="text" required placeholder="Post Office">
+                      type="text" required placeholder="Post Office" value="{{ old('nominee_post_office') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="nominee_thana">Thana</label>
                     <input class="form-control" id="nominee_thana" name="nominee_thana" type="text"
-                      required placeholder="Thana">
+                      required placeholder="Thana" value="{{ old('nominee_thana') }}">
                   </div>
                   <div class="form-group col-6 mt-2">
                     <label for="nominee_district">District</label>
                     <input class="form-control" id="nominee_district" name="nominee_district" type="text"
-                      required placeholder="District">
+                      required placeholder="District" value="{{ old('nominee_district') }}">
                   </div>
                 </div>
               </div>
@@ -571,11 +571,11 @@
                         style="height: 40%; width: 40%; overflow: hidden;">
                         <img class="rounded-circle" id="nominee_profile"
                           src="{{ asset('assets/img/profiles/profile.jpg') }}" alt="Profile Picture"
-                          style="height: 160px; width: 160px">
+                          style="height: 160px">
                         <label class="input-overlay d-flex align-items-center justify-content-center"
                           for="nominee_photo"><i class="fa-solid fa-camera"></i></label>
                         <input class="d-none" id="nominee_photo" name="nominee_photo" type="file"
-                          required data-id="nominee_profile" accept=".jpg,.png,.jpeg">
+                          required data-id="nominee_profile" accept=".jpg,.png,.jpeg" value="{{ old('nominee_photo') }}">
                       </div>
                     </div>
                   </div>
@@ -593,7 +593,7 @@
 
                         <!-- NID Front File Input -->
                         <input class="d-none" id="nominee_nid_front" name="nominee_nid_front" type="file"
-                          required data-id="nominee_nid_front_photo" accept=".jpg,.png,.jpeg">
+                          required data-id="nominee_nid_front_photo" accept=".jpg,.png,.jpeg" value="{{ old('nominee_nid_front') }}">
                       </div>
 
                       {{-- NID Back --}}
@@ -608,7 +608,7 @@
 
                         <!-- NID back File Input -->
                         <input class="d-none" id="nominee_nid_back" name="nominee_nid_back" type="file"
-                          required data-id="nominee_nid_back_photo" accept=".jpg,.png,.jpeg">
+                          required data-id="nominee_nid_back_photo" accept=".jpg,.png,.jpeg" value="{{ old('nominee_nid_back') }}">
                       </div>
                     </div>
                   </div>
@@ -627,22 +627,22 @@
               <div class="form-group col-3">
                 <label for="employee_code">Employee Code</label>
                 <input class="form-control" id="employee_code" name="employee_code" type="text" required
-                  placeholder="Enter Employee Code">
+                  placeholder="Enter Employee Code" value="{{ old('employee_code') }}">
               </div>
               <div class="form-group col-3">
                 <label for="basic_salary">Salary</label>
                 <input class="form-control" id="basic_salary" name="basic_salary" type="number" required
-                  placeholder="Enter Salary">
+                  placeholder="Enter Salary" value="{{ old('basic_salary') }}">
               </div>
               <div class="form-group col-3">
                 <label for="application_date">Application Date</label>
                 <input class="form-control" id="application_date" name="application_date" type="date"
-                  required placeholder="Enter application date">
+                  required placeholder="Enter application date" value="{{ old('application_date') }}">
               </div>
               <div class="form-group col-3">
                 <label for="joining_date">Joining Date</label>
                 <input class="form-control" id="joining_date" name="joining_date" type="date" required
-                  placeholder="Enter Joining date">
+                  placeholder="Enter Joining date" value="{{ old('joining_date') }}">
               </div>
             </div>
           </div>
@@ -700,51 +700,51 @@
         const prop = $(this).prop('checked');
         // alert(prop);
         if (prop) {
-          $('#father_village').val($('#own_village').val()).attr('disabled', true);
-          $('#father_union').val($('#own_union').val()).attr('disabled', true);
-          $('#father_post_office').val($('#own_post_office').val()).attr('disabled', true);
-          $('#father_thana').val($('#own_thana').val()).attr('disabled', true);
-          $('#father_district').val($('#own_district').val()).attr('disabled', true);
+          $('#father_village').val($('#own_village').val()).prop('readonly', true);
+          $('#father_union').val($('#own_union').val()).prop('readonly', true);
+          $('#father_post_office').val($('#own_post_office').val()).prop('readonly', true);
+          $('#father_thana').val($('#own_thana').val()).prop('readonly', true);
+          $('#father_district').val($('#own_district').val()).prop('readonly', true);
         } else {
-          $('#father_village').val('').removeAttr('disabled');
-          $('#father_union').val('').removeAttr('disabled');
-          $('#father_post_office').val('').removeAttr('disabled');
-          $('#father_thana').val('').removeAttr('disabled');
-          $('#father_district').val('').removeAttr('disabled');
+          $('#father_village').val('').removeAttr('readonly');
+          $('#father_union').val('').removeAttr('readonly');
+          $('#father_post_office').val('').removeAttr('readonly');
+          $('#father_thana').val('').removeAttr('readonly');
+          $('#father_district').val('').removeAttr('readonly');
         }
       });
 
       $('#mother_address').change(function() {
         const prop = $(this).prop('checked');
         if (prop) {
-          $('#mother_village').val($('#own_village').val()).attr('disabled', true);
-          $('#mother_union').val($('#own_union').val()).attr('disabled', true);
-          $('#mother_post_office').val($('#own_post_office').val()).attr('disabled', true);
-          $('#mother_thana').val($('#own_thana').val()).attr('disabled', true);
-          $('#mother_district').val($('#own_district').val()).attr('disabled', true);
+          $('#mother_village').val($('#own_village').val()).prop('readonly', true);
+          $('#mother_union').val($('#own_union').val()).prop('readonly', true);
+          $('#mother_post_office').val($('#own_post_office').val()).prop('readonly', true);
+          $('#mother_thana').val($('#own_thana').val()).prop('readonly', true);
+          $('#mother_district').val($('#own_district').val()).prop('readonly', true);
         } else {
-          $('#mother_village').val('').removeAttr('disabled');
-          $('#mother_union').val('').removeAttr('disabled');
-          $('#mother_post_office').val('').removeAttr('disabled');
-          $('#mother_thana').val('').removeAttr('disabled');
-          $('#mother_district').val('').removeAttr('disabled');
+          $('#mother_village').val('').removeAttr('readonly');
+          $('#mother_union').val('').removeAttr('readonly');
+          $('#mother_post_office').val('').removeAttr('readonly');
+          $('#mother_thana').val('').removeAttr('readonly');
+          $('#mother_district').val('').removeAttr('readonly');
         }
       });
 
       $('#guarantor_1_address').change(function() {
         const prop = $(this).prop('checked');
         if (prop) {
-          $('#guarantor_1_village').val($('#own_village').val()).attr('disabled', true);
-          $('#guarantor_1_union').val($('#own_union').val()).attr('disabled', true);
-          $('#guarantor_1_post_office').val($('#own_post_office').val()).attr('disabled', true);
-          $('#guarantor_1_thana').val($('#own_thana').val()).attr('disabled', true);
-          $('#guarantor_1_district').val($('#own_district').val()).attr('disabled', true);
+          $('#guarantor_1_village').val($('#own_village').val()).prop('readonly', true);
+          $('#guarantor_1_union').val($('#own_union').val()).prop('readonly', true);
+          $('#guarantor_1_post_office').val($('#own_post_office').val()).prop('readonly', true);
+          $('#guarantor_1_thana').val($('#own_thana').val()).prop('readonly', true);
+          $('#guarantor_1_district').val($('#own_district').val()).prop('readonly', true);
         } else {
-          $('#guarantor_1_village').val('').removeAttr('disabled');
-          $('#guarantor_1_union').val('').removeAttr('disabled');
-          $('#guarantor_1_post_office').val('').removeAttr('disabled');
-          $('#guarantor_1_thana').val('').removeAttr('disabled');
-          $('#guarantor_1_district').val('').removeAttr('disabled');
+          $('#guarantor_1_village').val('').removeAttr('readonly');
+          $('#guarantor_1_union').val('').removeAttr('readonly');
+          $('#guarantor_1_post_office').val('').removeAttr('readonly');
+          $('#guarantor_1_thana').val('').removeAttr('readonly');
+          $('#guarantor_1_district').val('').removeAttr('readonly');
         }
       });
 
@@ -752,17 +752,17 @@
         const prop = $(this).prop('checked');
         if (prop) {
           $('#guarantor_2_access').removeClass('d-none');
-          $('#guarantor_2_name').attr('required', true);
-          $('#guarantor_2_phone').attr('required', true);
-          $('#guarantor_2_nid').attr('required', true);
-          $('#guarantor_2_village').attr('required', true);
-          $('#guarantor_2_union').attr('required', true);
-          $('#guarantor_2_post_office').attr('required', true);
-          $('#guarantor_2_thana').attr('required', true);
-          $('#guarantor_2_district').attr('required', true);
-          $('#guarantor_2_photo').attr('required', true);
-          $('#guarantor_2_nid_front').attr('required', true);
-          $('#guarantor_2_nid_back').attr('required', true);
+          $('#guarantor_2_name').prop('required', true);
+          $('#guarantor_2_phone').prop('required', true);
+          $('#guarantor_2_nid').prop('required', true);
+          $('#guarantor_2_village').prop('required', true);
+          $('#guarantor_2_union').prop('required', true);
+          $('#guarantor_2_post_office').prop('required', true);
+          $('#guarantor_2_thana').prop('required', true);
+          $('#guarantor_2_district').prop('required', true);
+          $('#guarantor_2_photo').prop('required', true);
+          $('#guarantor_2_nid_front').prop('required', true);
+          $('#guarantor_2_nid_back').prop('required', true);
         } else {
           $('#guarantor_2_access').addClass('d-none');
           $('#guarantor_2_name').val('').removeAttr('required');
@@ -782,34 +782,34 @@
       $('#guarantor_2_address').change(function() {
         const prop = $(this).prop('checked');
         if (prop) {
-          $('#guarantor_2_village').val($('#own_village').val()).attr('disabled', true);
-          $('#guarantor_2_union').val($('#own_union').val()).attr('disabled', true);
-          $('#guarantor_2_post_office').val($('#own_post_office').val()).attr('disabled', true);
-          $('#guarantor_2_thana').val($('#own_thana').val()).attr('disabled', true);
-          $('#guarantor_2_district').val($('#own_district').val()).attr('disabled', true);
+          $('#guarantor_2_village').val($('#own_village').val()).prop('readonly', true);
+          $('#guarantor_2_union').val($('#own_union').val()).prop('readonly', true);
+          $('#guarantor_2_post_office').val($('#own_post_office').val()).prop('readonly', true);
+          $('#guarantor_2_thana').val($('#own_thana').val()).prop('readonly', true);
+          $('#guarantor_2_district').val($('#own_district').val()).prop('readonly', true);
         } else {
-          $('#guarantor_2_village').val('').removeAttr('disabled');
-          $('#guarantor_2_union').val('').removeAttr('disabled');
-          $('#guarantor_2_post_office').val('').removeAttr('disabled');
-          $('#guarantor_2_thana').val('').removeAttr('disabled');
-          $('#guarantor_2_district').val('').removeAttr('disabled');
+          $('#guarantor_2_village').val('').removeAttr('readonly');
+          $('#guarantor_2_union').val('').removeAttr('readonly');
+          $('#guarantor_2_post_office').val('').removeAttr('readonly');
+          $('#guarantor_2_thana').val('').removeAttr('readonly');
+          $('#guarantor_2_district').val('').removeAttr('readonly');
         }
       });
 
       $('#nominee_address').change(function() {
         const prop = $(this).prop('checked');
         if (prop) {
-          $('#nominee_village').val($('#own_village').val()).attr('disabled', true);
-          $('#nominee_union').val($('#own_union').val()).attr('disabled', true);
-          $('#nominee_post_office').val($('#own_post_office').val()).attr('disabled', true);
-          $('#nominee_thana').val($('#own_thana').val()).attr('disabled', true);
-          $('#nominee_district').val($('#own_district').val()).attr('disabled', true);
+          $('#nominee_village').val($('#own_village').val()).prop('readonly', true);
+          $('#nominee_union').val($('#own_union').val()).prop('readonly', true);
+          $('#nominee_post_office').val($('#own_post_office').val()).prop('readonly', true);
+          $('#nominee_thana').val($('#own_thana').val()).prop('readonly', true);
+          $('#nominee_district').val($('#own_district').val()).prop('readonly', true);
         } else {
-          $('#nominee_village').val('').removeAttr('disabled');
-          $('#nominee_union').val('').removeAttr('disabled');
-          $('#nominee_post_office').val('').removeAttr('disabled');
-          $('#nominee_thana').val('').removeAttr('disabled');
-          $('#nominee_district').val('').removeAttr('disabled');
+          $('#nominee_village').val('').removeAttr('readonly');
+          $('#nominee_union').val('').removeAttr('readonly');
+          $('#nominee_post_office').val('').removeAttr('readonly');
+          $('#nominee_thana').val('').removeAttr('readonly');
+          $('#nominee_district').val('').removeAttr('readonly');
         }
       });
     });
@@ -836,7 +836,7 @@
 
     $('button[type="submit"]').click(function(e) {
       e.preventDefault();
-      $(this).html('Please wait... <i class="fas fa-spinner fa-spin"></i>').attr('disabled', true);
+      $(this).html('Please wait... <i class="fas fa-spinner fa-spin"></i>').attr('disabled', 'true');
       const own_photo = $('#own_photo').val();
       const own_nid_front = $('#own_nid_front').val();
       const own_nid_back = $('#own_nid_back').val();

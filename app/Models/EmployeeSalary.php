@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeeSalary extends Model
 {
-    /** @use HasFactory<\Database\Factories\EmployeeSalaryFactory> */
-    use HasFactory;
+  /** @use HasFactory<\Database\Factories\EmployeeSalaryFactory> */
+  use HasFactory;
+
+  protected $guarded = [];
 }

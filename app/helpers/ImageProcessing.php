@@ -2,5 +2,6 @@
 
 function image($image, $path)
 {
-  $image->store($path, 'public');
+  $path = $image->store($path, 'public');
+  return $path;
 }

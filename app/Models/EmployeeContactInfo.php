@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeeContactInfo extends Model
 {
-    /** @use HasFactory<\Database\Factories\EmployeeContactInfoFactory> */
-    use HasFactory;
+  /** @use HasFactory<\Database\Factories\EmployeeContactInfoFactory> */
+  use HasFactory;
+
+  protected $guarded = [];
 }

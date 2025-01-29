@@ -11,26 +11,53 @@ class Employee extends Model
 {
   /** @use HasFactory<\Database\Factories\EmployeeFactory> */
   use HasFactory;
-  
+
   /**
    * Method employee_contact_info
    * description: This method is used to get the employee_contact_info information of the employee
    * @return HasOne
    */
-  public function contact(): HasOne{
+
+  protected $guarded = [];
+
+  
+  public function contact(): HasOne
+  {
     return $this->hasOne(EmployeeContactInfo::class);
   }
-  
+
+  public function address(): HasOne
+  {
+    return $this->hasOne(EmployeeAddress::class);
+  }
+
+  public function salary(): HasOne
+  {
+    return $this->hasOne(EmployeeSalary::class);
+  }
+
+  public function upload_file(): HasOne
+  {
+    return $this->hasOne(EmployeeUploadFile::class);
+  }
+
+  public function education_detail(): HasOne
+  {
+    return $this->hasOne(EmployeeEducationDetail::class);
+  }
+
   /**
    * Method employee_designation
    * description: This method is used to get the employee_designation of the employee
    * @return BelongsTo
    */
-  public function employee_designation(): BelongsTo{
+  public function employee_designation(): BelongsTo
+  {
     return $this->belongsTo(EmployeeDesignation::class);
   }
 
-  public function branch(): BelongsTo{
+  public function branch(): BelongsTo
+  {
     return $this->belongsTo(Branch::class);
   }
 }

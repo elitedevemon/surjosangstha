@@ -9,4 +9,6 @@ class EmployeeUploadFile extends Model
 {
     /** @use HasFactory<\Database\Factories\EmployeeUploadFileFactory> */
     use HasFactory;
+
+    protected $guarded = [];
 }

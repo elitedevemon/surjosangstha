@@ -33,7 +33,117 @@ class EmployeeController extends Controller
    */
   public function store(EmployeeRegisterRequest $request)
   {
-    image($request->own_photo, 'employee_profile');
+    // Get only the necessary fields from the request
+    $employeeData = $request->only([
+      'employee_code',
+      'email',
+      'dob',
+      'employee_designation_id',
+      'branch_id',
+      'name',
+      'father_name',
+      'mother_name',
+      'application_date',
+      'joining_date'
+    ]);
+
+    // Create the employee
+    $employee = Employee::create($employeeData);
+
+    // Create employee contact info
+    $employee->contact()->create($request->only([
+      'own_phone',
+      'own_nid',
+      'father_phone',
+      'father_nid',
+      'mother_phone',
+      'mother_nid',
+      'guarantor_1_phone',
+      'guarantor_1_nid',
+      'guarantor_2_phone',
+      'guarantor_2_nid',
+      'nominee_phone',
+      'nominee_nid'
+    ]));
+
+    // Create employee address
+    $employee->address()->create($request->only([
+      'own_village',
+      'own_union',
+      'own_post_office',
+      'own_thana',
+      'own_district',
+      'father_village',
+      'father_union',
+      'father_post_office',
+      'father_thana',
+      'father_district',
+      'mother_village',
+      'mother_union',
+      'mother_post_office',
+      'mother_thana',
+      'mother_district',
+      'guarantor_1_name',
+      'guarantor_1_village',
+      'guarantor_1_union',
+      'guarantor_1_post_office',
+      'guarantor_1_thana',
+      'guarantor_1_district',
+      'guarantor_2_name',
+      'guarantor_2_village',
+      'guarantor_2_union',
+      'guarantor_2_post_office',
+      'guarantor_2_thana',
+      'guarantor_2_district',
+      'nominee_relation',
+      'nominee_name',
+      'nominee_village',
+      'nominee_union',
+      'nominee_post_office',
+      'nominee_thana',
+      'nominee_district'
+    ]));
+
+    // Handle file uploads
+    $images = [
+      'own_photo',
+      'guarantor_1_photo',
+      'nominee_photo',
+      'own_nid_front',
+      'guarantor_1_nid_front',
+      'nominee_nid_front',
+      'own_nid_back',
+      'guarantor_1_nid_back',
+      'nominee_nid_back'
+    ];
+
+    $uploadFiles = [];
+    foreach ($images as $image) {
+      if ($request->hasFile($image)) {
+        $uploadFiles[$image] = image($request->file($image), $image);
+      }
+    }
+
+    // If multiple guarantors, handle additional file uploads
+    if ($request->multiple_guarantor) {
+      $additionalGuarantorImages = [
+        'guarantor_2_photo',
+        'guarantor_2_nid_front',
+        'guarantor_2_nid_back'
+      ];
+
+      foreach ($additionalGuarantorImages as $image) {
+        if ($request->hasFile($image)) {
+          $uploadFiles[$image] = image($request->file($image), $image);
+        }
+      }
+    }
+
+    // Create employee upload file
+    $employee->upload_file()->create($uploadFiles);
+
+    toastr()->success('Employee has been created successfully');
+    return back();
   }
 
   /**

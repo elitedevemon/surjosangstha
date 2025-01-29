@@ -32,9 +32,9 @@ class EmployeeRegisterRequest extends FormRequest
       'own_phone' => 'required|string',
       'own_nid' => 'required|integer',
       'dob' => 'required|date',
-      'own_photo' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=152,max_height=190',
-      'own_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200',
-      'own_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200',
+      'own_photo' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=480,max_height=600',
+      'own_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
+      'own_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
       'father_name' => 'required|string',
       'father_phone' => 'nullable|string',
       'father_nid' => 'required|string',
@@ -44,24 +44,24 @@ class EmployeeRegisterRequest extends FormRequest
       'guarantor_1_name' => 'required|string',
       'guarantor_1_phone' => 'required|string',
       'guarantor_1_nid' => 'required|string',
-      'guarantor_1_photo' => 'required|image|mimes:png,jpg,jpeg|max:200',
-      'guarantor_1_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200',
-      'guarantor_1_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200',
+      'guarantor_1_photo' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=480,max_height=600',
+      'guarantor_1_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
+      'guarantor_1_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
       'nominee_name' => 'required|string',
       'nominee_phone' => 'required|string',
       'nominee_nid' => 'required|string',
       'nominee_relation' => 'required|string',
-      'nominee_photo' => 'required|image|mimes:png,jpg,jpeg|max:200',
-      'nominee_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200',
-      'nominee_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200',
+      'nominee_photo' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=480,max_height=600',
+      'nominee_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
+      'nominee_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
       'employee_code' => 'required|string',
       'basic_salary' => 'required|integer',
       'application_date' => 'required|date',
       'joining_date' => 'required|date',
     ];
 
-    if ($this->request->get('guarantor_2_name')) {
-      array_merge($rules, [
+    if ($this->input('multiple_guarantor') == 'on') {
+      $rules += [
         'guarantor_2_name' => 'required|string',
         'guarantor_2_phone' => 'required|string',
         'guarantor_2_nid' => 'required|string',
@@ -70,10 +70,10 @@ class EmployeeRegisterRequest extends FormRequest
         'guarantor_2_post_office' => 'required|string',
         'guarantor_2_thana' => 'required|string',
         'guarantor_2_district' => 'required|string',
-        'guarantor_2_photo' => 'required|image|mimes:png,jpg,jpeg|max:200',
-        'guarantor_2_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200',
-        'guarantor_2_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200',
-      ]);
+        'guarantor_2_photo' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=480,max_height=600',
+        'guarantor_2_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
+        'guarantor_2_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
+      ];
     }
     return $rules;
   }
