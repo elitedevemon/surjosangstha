@@ -1,6 +1,6 @@
 <?php
 
-function image($image)
+function image($image, $path)
 {
-  dd($image);
+  $image->store($path, 'public');
 }

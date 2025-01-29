@@ -33,8 +33,7 @@ class EmployeeController extends Controller
    */
   public function store(EmployeeRegisterRequest $request)
   {
-    return $request;
-    image($request->own_photo);
+    image($request->own_photo, 'employee_profile');
   }
 
   /**
