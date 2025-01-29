@@ -142,6 +142,22 @@ class EmployeeController extends Controller
     // Create employee upload file
     $employee->upload_file()->create($uploadFiles);
 
+    $house_route_allowance = $request->basic_salary * 35/100;
+    $medical_allowance = ceil($request->basic_salary * 10/100);
+    $phone_bill = ceil($request->basic_salary * 20/100);
+    $festival_bonus = ceil($request->basic_salary * 50/100);
+    $total_salary = $house_route_allowance * 2 + $medical_allowance + $phone_bill + $request->basic_salary;
+
+    $employee->salary()->create([
+      'basic_salary' => $request->basic_salary,
+      'house_rent' => $house_route_allowance,
+      'medical_allowance' => $medical_allowance,
+      'route_allowance' => $house_route_allowance,
+      'phone_bill' => $phone_bill,
+      'festival_bonus' => $festival_bonus,
+      'total_salary' => $total_salary
+    ]);
+
     toastr()->success('Employee has been created successfully');
     return back();
   }

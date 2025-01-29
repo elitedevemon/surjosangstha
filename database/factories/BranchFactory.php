@@ -19,7 +19,7 @@ class BranchFactory extends Factory
     return [
       //branch_name, branch_code, branch_address
       'branch_name' => $this->faker->name,
-      'branch_code' => $this->faker->unique()->randomNumber(5),
+      'branch_code' => $this->faker->randomNumber(5),
       'branch_address' => $this->faker->address,
     ];
   }

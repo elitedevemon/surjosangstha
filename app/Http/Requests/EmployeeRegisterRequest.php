@@ -32,6 +32,8 @@ class EmployeeRegisterRequest extends FormRequest
       'own_phone' => 'required|string',
       'own_nid' => 'required|integer',
       'dob' => 'required|date',
+      'employee_designation_id' => 'required',
+      'branch_id' => 'required',
       'own_photo' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=480,max_height=600',
       'own_nid_front' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',
       'own_nid_back' => 'required|image|mimes:png,jpg,jpeg|max:200|dimensions:max_width=1020,max_height=650',

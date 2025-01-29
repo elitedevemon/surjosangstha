@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Branch;
 use App\Models\EmployeeDesignation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,10 +20,14 @@ class EmployeeFactory extends Factory
   {
     return [
       //employee_code, email, designation_id, branch_id, name, father_name, mother_name, application_date, joining_date
-      'employee_code' => $this->faker->unique()->randomNumber(5),
-      'email' => $this->faker->unique()->safeEmail,
+      'employee_code' => $this->faker->numberBetween(99999, 9999999),
+      'email' => $this->faker->safeEmail,
+      'gender' => $this->faker->randomElement(['male', 'female']),
+      'dob' => $this->faker->date,
+      'religion' => $this->faker->word,
+      'marital_status' => $this->faker->randomElement(['single','married','divorced','widowed' ]),
       'employee_designation_id' => $this->faker->randomElement(EmployeeDesignation::pluck('id')->toArray()),
-      'branch_id' => $this->faker->randomElement(\App\Models\Branch::pluck('id')->toArray()),
+      'branch_id' => $this->faker->randomElement(Branch::pluck('id')->toArray()),
       'name' => $this->faker->name,
       'father_name' => $this->faker->name,
       'mother_name' => $this->faker->name,

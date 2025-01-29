@@ -15,12 +15,13 @@ return new class extends Migration {
       $table->id();
       $table->foreignId('employee_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
       $table->string('basic_salary');
-      $table->string('house_rent');
-      $table->string('medical_allowance');
-      $table->string('route_allowance');
-      $table->string('phone_bill');
+      $table->string('house_rent')->comment('35%');
+      $table->string('medical_allowance')->comment('10%');
+      $table->string('route_allowance')->comment('35%');
+      $table->string('phone_bill')->comment('20%');
+      $table->string('festival_bonus')->nullable()->comment('50%');
       $table->string('special_allowance')->nullable();
-      $table->string('festive_bonus')->nullable();
+      $table->string('total_salary')->comment('total amount');
       $table->timestamps();
     });
   }

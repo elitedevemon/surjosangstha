@@ -37,7 +37,7 @@
             <ul  style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}"><a href="{{ route('admin.employee.list') }}">Employee Lists</a></li>
               <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a href="{{ route('admin.employee.create') }}">Add Employee</a></li>
-              <li><a href="#">Salary Info</a></li>
+              <li><a href="{{ route('admin.salary-info.index') }}">Salary Info</a></li>
               <li><a href="#">PF Info</a></li>
               <li><a href="#">DPS Info</a></li>
             </ul>

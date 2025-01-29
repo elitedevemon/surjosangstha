@@ -27,7 +27,7 @@ return new class extends Migration {
       $table->string('mother_name');
       $table->date('application_date');
       $table->date('joining_date');
-      $table->enum('status', [true, false])->default(true);
+      $table->enum('status', ['active', 'inactive'])->default('active');
       $table->timestamps();
     });
   }

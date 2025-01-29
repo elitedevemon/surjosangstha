@@ -287,7 +287,7 @@
                   <div class="form-group col-6">
                     <label for="guarantor_1_phone">Phone</label>
                     <input class="form-control" id="guarantor_1_phone" name="guarantor_1_phone"
-                      type="text" required placeholder="Enter Phone" value="{{ old('guarantor_2_name') }}">
+                      type="text" required placeholder="Enter Phone" value="{{ old('guarantor_1_phone') }}">
                   </div>
                   <div class="form-group col-12 mt-2">
                     <label for="guarantor_1_nid">NID</label>
@@ -380,7 +380,7 @@
 
             <!-- select if there have multiple guarantor -->
             <div class="form-check form-switch mt-4">
-              <input class="form-check-input" name="multiple_guarantor" id="multiple_guarantor" type="checkbox" role="switch" value="{{ old('multiple_guarantor') }}">
+              <input class="form-check-input" name="multiple_guarantor" id="multiple_guarantor" type="checkbox" role="switch">
               <label for="multiple_guarantor">Multiple Guarantor</label>
             </div>
           </div>

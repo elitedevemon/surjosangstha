@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
+use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,10 +28,20 @@ require __DIR__ . '/auth.php';
 
 Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->group(function(){
   Route::get('/', 'index')->name('dashboard');
+
+  # employee related routes
   Route::get('/employee-list', 'employeeList')->name('employee.list');
   Route::resource('employee', EmployeeController::class);
+  #salary info
+  Route::resource('salary-info', EmployeeSalaryController::class)->except('show', 'create', 'destroy', 'store');
+
+  # branch related routes
   Route::resource('branch', BranchController::class)->except('show');
   Route::post('branch/change/status/', [BranchController::class, 'changeStatus'])->name('branch.change.status');
+
+  # designation related routes
   Route::resource('designation', EmployeeDesignationController::class)->except('show');
   Route::post('designation/change/status/', [EmployeeDesignationController::class, 'changeStatus'])->name('designation.change.status');
+
+  
 });
