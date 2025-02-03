@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
+use App\Http\Controllers\EmployeeDpsController;
 use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +44,9 @@ Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->
   Route::resource('designation', EmployeeDesignationController::class)->except('show');
   Route::post('designation/change/status/', [EmployeeDesignationController::class, 'changeStatus'])->name('designation.change.status');
 
-  
+  # DPS related routes
+  Route::get('/employee-dps', [EmployeeDpsController::class, 'index'])->name('dps.index');
+  Route::get('/employee-dps/create', [EmployeeDpsController::class, 'create'])->name('dps.create');
+  Route::post('/employee-dps/store', [EmployeeDpsController::class, 'store'])->name('dps.store');
+  Route::post('/employee-dps/info', [EmployeeDpsController::class, 'info'])->name('dps.info');
 });

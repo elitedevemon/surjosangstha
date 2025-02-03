@@ -47,6 +47,11 @@ class Employee extends Model
     return $this->hasOne(EmployeeEducationDetail::class);
   }
 
+  public function dps()
+  {
+    return $this->hasOne(EmployeeDps::class);
+  }
+
   /**
    * Method employee_designation
    * description: This method is used to get the employee_designation of the employee

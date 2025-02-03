@@ -22,6 +22,7 @@
           </select>
         </div>
         <button type="submit" class="btn btn-primary mt-4">Add Designation</button>
+      </form>
     </div>
   </div>
 @endsection

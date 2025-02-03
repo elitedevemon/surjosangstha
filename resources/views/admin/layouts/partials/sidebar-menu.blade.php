@@ -66,6 +66,20 @@
               <li class="{{ Route::is('admin.designation.create') ? 'active' : '' }}"><a href="{{ route('admin.designation.create') }}">Add Designation</a></li>
             </ul>
           </li>
+
+          <!-- DPS menu -->
+          <li class="submenu">
+            <a href="javascript:void(0);" class="{{ Route::is('admin.dps*') ? 'subdrop' : '' }}">
+              <i class="ti ti-users"></i><span>DPS</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul  style="{{ Route::is('admin.dps*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.dps.index') ? 'active' : '' }}"><a href="{{ route('admin.dps.index') }}">DPS List</a></li>
+              <li class="{{ Route::is('admin.dps.create') ? 'active' : '' }}"><a href="{{ route('admin.dps.create') }}">Add New DPS</a></li>
+            </ul>
+          </li>
+
+
           <li class="submenu">
             <a href="javascript:void(0);">
               <i class="ti ti-ticket"></i><span>Tickets</span>
