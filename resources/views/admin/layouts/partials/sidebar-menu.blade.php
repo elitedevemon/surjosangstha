@@ -11,6 +11,16 @@
           </li>
         </ul>
       </li>
+      <!-- Commands -->
+      <li>
+        <ul>
+          <li class="{{ Route::is('admin.command*') ? 'active' : '' }}">
+            <a href="{{ route('admin.command.index') }}">
+              <i class="ti ti-smart-home"></i><span>Commands</span>
+            </a>
+          </li>
+        </ul>
+      </li>
       <li>
         <ul>
           <li class="submenu">

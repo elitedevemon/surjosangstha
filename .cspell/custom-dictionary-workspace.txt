@@ -2,6 +2,7 @@
 Absenties
 apexchart
 apexcharts
+barryvdh
 bezier
 borderless
 bussiness
@@ -11,6 +12,7 @@ chartjs
 colorpicker
 Consolas
 Datalogger
+datatables
 daterangepicker
 Daterangepikcer
 datetimepicker
@@ -126,5 +128,7 @@ valuemin
 valuenow
 Villalobos
 vite
+yajra
 yearpicker
+yoeunes
 Zeen

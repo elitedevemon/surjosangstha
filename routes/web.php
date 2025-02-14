@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
@@ -49,4 +50,10 @@ Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->
   Route::get('/employee-dps/create', [EmployeeDpsController::class, 'create'])->name('dps.create');
   Route::post('/employee-dps/store', [EmployeeDpsController::class, 'store'])->name('dps.store');
   Route::post('/employee-dps/info', [EmployeeDpsController::class, 'info'])->name('dps.info');
+
+  # Commands
+  Route::prefix('commands')->name('command.')->controller(AdminCommands::class)->group(function(){
+    Route::get('/','index')->name('index');
+    Route::post('/artisan/run', 'runCommand')->name('run.artisan');
+  });
 });

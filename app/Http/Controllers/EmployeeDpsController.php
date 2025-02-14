@@ -43,13 +43,12 @@ class EmployeeDpsController extends Controller
       $total_balance += $interest; // Add interest to balance
     }
 
-    return round($total_balance, 2); // Round off to 2 decimal places
-
     $employee = Employee::findOrFail($request->employee_id);
-    $info = view('admin.pages.dps.partials.dps_info', compact(['employee', 'amount', 'rate', 'validity']))->render();
+    $info = view('admin.pages.dps.partials.dps_info', compact(['employee', 'amount', 'rate', 'validity', 'total_balance']))->render();
     return response()->json([
       'status' => 'success',
-      'info' => $info
+      'info' => $info, 
+      'total_balance' => $total_balance,
     ]);
   }
 }

@@ -31,23 +31,26 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $employee->employee_code }}</td>
                 <td>{{ $employee->name }}</td>
-                <td>{{ $employee->salary?->basic_salary }}</td>
-                <td>{{ $employee->salary?->house_rent }}</td>
-                <td>{{ $employee->salary?->medical_allowance }}</td>
-                <td>{{ $employee->salary?->route_allowance }}</td>
-                <td>{{ $employee->salary?->phone_bill }}</td>
-                <td>{{ $employee->salary?->festival_bonus }}</td>
-                <td>{{ $employee->salary?->special_allowance }}</td>
-                <td>{{ $employee->salary?->total_salary }}</td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <!--Edit button -->
-                    <a class="btn btn-primary me-1" href="{{ route('admin.salary-info.edit', $employee->salary->id) }}" title="Edit"
-                      aria-describedby="Edit Designation" style="padding: 2px 5px;">
-                      <i class="fa-regular fa-pen-to-square"></i>
-                    </a>
-                  </div>
-                </td>
+                @if ($employee->salary)
+                  <td>{{ $employee->salary->basic_salary }}</td>
+                  <td>{{ $employee->salary->house_rent }}</td>
+                  <td>{{ $employee->salary->medical_allowance }}</td>
+                  <td>{{ $employee->salary->route_allowance }}</td>
+                  <td>{{ $employee->salary->phone_bill }}</td>
+                  <td>{{ $employee->salary->festival_bonus }}</td>
+                  <td>{{ $employee->salary->special_allowance }}</td>
+                  <td>{{ $employee->salary->total_salary }}</td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <!--Edit button -->
+                      <a class="btn btn-primary me-1"
+                        href="{{ route('admin.salary-info.edit', $employee->salary->id) }}" title="Edit"
+                        aria-describedby="Edit Designation" style="padding: 2px 5px;">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                      </a>
+                    </div>
+                  </td>
+                @endif
               </tr>
             @empty
               <tr>

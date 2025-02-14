@@ -8,39 +8,39 @@
       <div class="card-body" style="padding: 0.50rem 1.25rem">
         <table class="table-borderless table">
           <tr>
-            <td>Name:</td>
-            <td>{{ $employee->name }}</td>
+            <td>Name</td>
+            <td>: {{ $employee->name }}</td>
           </tr>
           <tr>
-            <td>Employee Code:</td>
-            <td>{{ $employee->employee_code }}</td>
+            <td>Employee Code</td>
+            <td>: {{ $employee->employee_code }}</td>
           </tr>
           <tr>
-            <td>DPS amount:</td>
-            <td>{{ $amount }} tk</td>
+            <td>DPS amount</td>
+            <td>: {{ $amount }} tk</td>
           </tr>
           <tr>
-            <td>Interest rate:</td>
-            <td>{{ $rate }}%</td>
+            <td>Interest rate</td>
+            <td>: {{ $rate }}%</td>
           </tr>
           <tr>
-            <td>Validity:</td>
-            <td>{{ $validity }} years</td>
+            <td>Validity</td>
+            <td>: {{ $validity }} years</td>
          </tr>  
           <tr>
             <td class="text-success fw-bold py-2 text-center" colspan="2">After {{ $validity }} years</td>
           </tr>
           <tr>
             <td>Main Balance</td>
-            <td class="text-primary">{{ $amount * ($validity * 12) }} tk</td>
+            <td class="text-primary">: {{ $amount * ($validity * 12) }} tk</td>
           </tr>
           <tr>
             <td>Interest</td>
-            <td class="text-primary">{{ ($amount * $rate/100) * ($validity * 12) }}</td>
+            <td class="text-primary">: {{ ceil($total_balance - $amount * ($validity * 12)) }} tk</td>
           </tr>
           <tr>
             <td>Payable Balance</td>
-            <td class="text-primary">{{ $amount * ($validity * 12) + ($amount * $rate/100) * ($validity * 12) }} tk</td>
+            <td class="text-primary">: {{ ceil($total_balance) }} tk</td>
           </tr>
         </table>
       </div>
