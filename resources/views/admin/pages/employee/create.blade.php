@@ -164,14 +164,14 @@
             </div>
 
             <!-- Father Information -->
-            <h5 class="card-title mt-4">Father Information</h5>
+            {{-- <h5 class="card-title mt-4">Father Information</h5>
             <div class="form-check form-switch">
               <input class="form-check-input" id="father_address" type="checkbox" role="switch">
               <label for="father_address">Same as employee address</label>
-            </div>
+            </div> --}}
 
             <!-- Name, Phone, NID, Village, Union, Post Office, Thana, District -->
-            <div class="row gx-1 mt-2">
+            {{-- <div class="row gx-1 mt-2">
               <div class="form-group col-3">
                 <label for="father_name">Name</label>
                 <input class="form-control" id="father_name" name="father_name" type="text" required
@@ -212,16 +212,16 @@
                 <input class="form-control" id="father_district" name="father_district" type="text"
                   required placeholder="Father District" value="{{ old('father_district') }}">
               </div>
-            </div>
+            </div> --}}
 
             <!-- Mother Information -->
-            <h5 class="card-title mt-4">Mother Information</h5>
+            {{-- <h5 class="card-title mt-4">Mother Information</h5>
             <div class="form-check form-switch">
               <input class="form-check-input" id="mother_address" type="checkbox" role="switch">
               <label for="mother_address">Same as employee address</label>
-            </div>
+            </div> --}}
             <!-- Name, Phone, NID, Village, Union, Post Office, Thana, District -->
-            <div class="row gx-1 mt-2">
+            {{-- <div class="row gx-1 mt-2">
               <div class="form-group col-3">
                 <label for="mother_name">Name</label>
                 <input class="form-control" id="mother_name" name="mother_name" type="text" required
@@ -261,6 +261,234 @@
                 <label for="mother_district">District</label>
                 <input class="form-control" id="mother_district" name="mother_district" type="text"
                   required placeholder="Mother District" value="{{ Old('mother_district') }}">
+              </div>
+            </div> --}}
+          </div>
+        </div>
+
+        <!-- Father Information -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Father Information</h5>
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" id="father_address" type="checkbox" role="switch">
+              <label for="father_address">Same as employee address</label>
+            </div>
+            <!-- Father Information -->
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <!-- Name, Email -->
+                <div class="row gx-1">
+                  <div class="form-group col-6">
+                    <label for="father_name">Name</label>
+                    <input class="form-control" id="father_name" name="father_name" type="text"
+                      required placeholder="Enter name" value="{{ old('father_name') }}">
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="father_phone">Phone</label>
+                    <input class="form-control" id="father_phone" name="father_phone" type="text"
+                      required placeholder="Enter Phone" value="{{ old('father_phone') }}">
+                  </div>
+                  <div class="form-group col-12 mt-2">
+                    <label for="father_nid">NID</label>
+                    <input class="form-control" id="father_nid" name="father_nid" type="text" required
+                      placeholder="Enter NID number" value="{{ old('father_nid') }}">
+                  </div>
+                </div>
+
+                <!-- Permanent Address -->
+                <div class="row gx-1 mt-2">
+                  <div class="form-group col-6">
+                    <label for="father_village">Village</label>
+                    <input class="form-control" id="father_village" name="father_village" type="text"
+                      required placeholder="Village" value="{{ old('father_village') }}">
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="father_union">Union</label>
+                    <input class="form-control" id="father_union" name="father_union" type="text"
+                      required placeholder="Union" value="{{ old('father_union') }}">
+                  </div>
+                  <div class="form-group col-6 mt-2">
+                    <label for="father_post_office">Post Office</label>
+                    <input class="form-control" id="father_post_office" name="father_post_office"
+                      type="text" required placeholder="Post Office" value="{{ old('father_post_office') }}">
+                  </div>
+                  <div class="form-group col-6 mt-2">
+                    <label for="father_thana">Thana</label>
+                    <input class="form-control" id="father_thana" name="father_thana" type="text"
+                      required placeholder="Thana" value="{{ old('father_thana') }}">
+                  </div>
+                  <div class="form-group col-12 mt-2">
+                    <label for="father_district">District</label>
+                    <input class="form-control" id="father_district" name="father_district" type="text"
+                      required placeholder="District" value="{{ old('father_district') }}">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-5">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="text-center">
+                      <div class="rounded-circle image-container bg-primary mx-auto"
+                        style="height: 40%; width: 40%; overflow: hidden;">
+                        <img class="rounded-circle" id="father_profile"
+                          src="{{ asset('assets/img/profiles/profile.jpg') }}" alt="Profile Picture"
+                          style="height: 160px">
+                        <label class="input-overlay d-flex align-items-center justify-content-center"
+                          for="father_photo"><i class="fa-solid fa-camera"></i></label>
+                        <input class="d-none" id="father_photo" name="father_photo" type="file"
+                          required data-id="father_profile" accept=".jpg,.png,.jpeg" value="{{ old('father_photo') }}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    {{-- NID Front --}}
+                    <div class="row gx-1 mt-3">
+                      <div class="col-6 image-container text-center">
+                        <!-- NID Front Image -->
+                        <img id="father_nid_front_photo" src="{{ asset('assets/img/front.jpg') }}"
+                          alt="NID Front" style="height: 130px; width: 100%">
+
+                        <!-- NID Front Camera Icon -->
+                        <label class="input-overlay d-flex align-items-center justify-content-center"
+                          for="father_nid_front"><i class="fa-solid fa-camera"></i></label>
+
+                        <!-- NID Front File Input -->
+                        <input class="d-none" id="father_nid_front" name="father_nid_front" type="file"
+                          required data-id="father_nid_front_photo" accept=".jpg,.png,.jpeg" value="{{ old('father_nid_front') }}">
+                      </div>
+
+                      {{-- NID Back --}}
+                      <div class="col-6 image-container text-center">
+                        <!-- NID back Image -->
+                        <img id="father_nid_back_photo" src="{{ asset('assets/img/back.jpg') }}"
+                          alt="NID back" style="height: 130px; width: 100%">
+
+                        <!-- NID back Camera Icon -->
+                        <label class="input-overlay d-flex align-items-center justify-content-center"
+                          for="father_nid_back"><i class="fa-solid fa-camera"></i></label>
+
+                        <!-- NID back File Input -->
+                        <input class="d-none" id="father_nid_back" name="father_nid_back" type="file"
+                          required data-id="father_nid_back_photo" accept=".jpg,.png,.jpeg" value="{{ old('father_nid_back') }}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mother Information -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Mother Information</h5>
+            <div class="form-check form-switch mb-2">
+              <input class="form-check-input" id="mother_address" type="checkbox" role="switch">
+              <label for="mother_address">Same as employee address</label>
+            </div>
+            <!-- Mother Information -->
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <!-- Name, Phone -->
+                <div class="row gx-1">
+                  <div class="form-group col-6">
+                    <label for="mother_name">Name</label>
+                    <input class="form-control" id="mother_name" name="mother_name" type="text"
+                      required placeholder="Enter name" value="{{ old('mother_name') }}">
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="mother_phone">Phone</label>
+                    <input class="form-control" id="mother_phone" name="mother_phone" type="text"
+                      required placeholder="Enter Phone" value="{{ old('mother_phone') }}">
+                  </div>
+                  <div class="form-group col-12 mt-2">
+                    <label for="mother_nid">NID</label>
+                    <input class="form-control" id="mother_nid" name="mother_nid" type="text" required
+                      placeholder="Enter NID number" value="{{ old('mother_nid') }}">
+                  </div>
+                </div>
+
+                <!-- Permanent Address -->
+                <div class="row gx-1 mt-2">
+                  <div class="form-group col-6">
+                    <label for="mother_village">Village</label>
+                    <input class="form-control" id="mother_village" name="mother_village" type="text"
+                      required placeholder="Village" value="{{ old('mother_village') }}">
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="mother_union">Union</label>
+                    <input class="form-control" id="mother_union" name="mother_union" type="text"
+                      required placeholder="Union" value="{{ old('mother_union') }}">
+                  </div>
+                  <div class="form-group col-6 mt-2">
+                    <label for="mother_post_office">Post Office</label>
+                    <input class="form-control" id="mother_post_office" name="mother_post_office"
+                      type="text" required placeholder="Post Office" value="{{ old('mother_post_office') }}">
+                  </div>
+                  <div class="form-group col-6 mt-2">
+                    <label for="mother_thana">Thana</label>
+                    <input class="form-control" id="mother_thana" name="mother_thana" type="text"
+                      required placeholder="Thana" value="{{ old('mother_thana') }}">
+                  </div>
+                  <div class="form-group col-12 mt-2">
+                    <label for="mother_district">District</label>
+                    <input class="form-control" id="mother_district" name="mother_district" type="text"
+                      required placeholder="District" value="{{ old('mother_district') }}">
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-5">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="text-center">
+                      <div class="rounded-circle image-container bg-primary mx-auto"
+                        style="height: 40%; width: 40%; overflow: hidden;">
+                        <img class="rounded-circle" id="mother_profile"
+                          src="{{ asset('assets/img/profiles/profile.jpg') }}" alt="Profile Picture"
+                          style="height: 160px">
+                        <label class="input-overlay d-flex align-items-center justify-content-center"
+                          for="mother_photo"><i class="fa-solid fa-camera"></i></label>
+                        <input class="d-none" id="mother_photo" name="mother_photo" type="file"
+                          required data-id="mother_profile" accept=".jpg,.png,.jpeg" value="{{ old('mother_photo') }}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    {{-- NID Front --}}
+                    <div class="row gx-1 mt-3">
+                      <div class="col-6 image-container text-center">
+                        <!-- NID Front Image -->
+                        <img id="mother_nid_front_photo" src="{{ asset('assets/img/front.jpg') }}"
+                          alt="NID Front" style="height: 130px; width: 100%">
+
+                        <!-- NID Front Camera Icon -->
+                        <label class="input-overlay d-flex align-items-center justify-content-center"
+                          for="mother_nid_front"><i class="fa-solid fa-camera"></i></label>
+
+                        <!-- NID Front File Input -->
+                        <input class="d-none" id="mother_nid_front" name="mother_nid_front" type="file"
+                          required data-id="mother_nid_front_photo" accept=".jpg,.png,.jpeg" value="{{ old('mother_nid_front') }}">
+                      </div>
+
+                      {{-- NID Back --}}
+                      <div class="col-6 image-container text-center">
+                        <!-- NID back Image -->
+                        <img id="mother_nid_back_photo" src="{{ asset('assets/img/back.jpg') }}"
+                          alt="NID back" style="height: 130px; width: 100%">
+
+                        <!-- NID back Camera Icon -->
+                        <label class="input-overlay d-flex align-items-center justify-content-center"
+                          for="mother_nid_back"><i class="fa-solid fa-camera"></i></label>
+
+                        <!-- NID back File Input -->
+                        <input class="d-none" id="mother_nid_back" name="mother_nid_back" type="file"
+                          required data-id="mother_nid_back_photo" accept=".jpg,.png,.jpeg" value="{{ old('mother_nid_back') }}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -318,7 +546,7 @@
                     <input class="form-control" id="guarantor_1_thana" name="guarantor_1_thana"
                       type="text" required placeholder="Thana" value="{{ old('guarantor_1_thana') }}">
                   </div>
-                  <div class="form-group col-6 mt-2">
+                  <div class="form-group col-12 mt-2">
                     <label for="guarantor_1_district">District</label>
                     <input class="form-control" id="guarantor_1_district" name="guarantor_1_district"
                       type="text" required placeholder="District" value="{{ old('guarantor_1_district') }}">
@@ -438,7 +666,7 @@
                     <input class="form-control" id="guarantor_2_thana" name="guarantor_2_thana"
                       type="text" placeholder="Thana" value="{{ old('guarantor_2_thana') }}">
                   </div>
-                  <div class="form-group col-6 mt-2">
+                  <div class="form-group col-12 mt-2">
                     <label for="guarantor_2_district">District</label>
                     <input class="form-control" id="guarantor_2_district" name="guarantor_2_district"
                       type="text" placeholder="District" value="{{ old('guarantor_2_district') }}">
@@ -556,7 +784,7 @@
                     <input class="form-control" id="nominee_thana" name="nominee_thana" type="text"
                       required placeholder="Thana" value="{{ old('nominee_thana') }}">
                   </div>
-                  <div class="form-group col-6 mt-2">
+                  <div class="form-group col-12 mt-2">
                     <label for="nominee_district">District</label>
                     <input class="form-control" id="nominee_district" name="nominee_district" type="text"
                       required placeholder="District" value="{{ old('nominee_district') }}">
@@ -630,9 +858,9 @@
                   placeholder="Enter Employee Code" value="{{ old('employee_code') }}">
               </div>
               <div class="form-group col-3">
-                <label for="basic_salary">Salary</label>
+                <label for="basic_salary">Basic Salary</label>
                 <input class="form-control" id="basic_salary" name="basic_salary" type="number" required
-                  placeholder="Enter Salary" value="{{ old('basic_salary') }}">
+                  placeholder="Enter Basic Salary" value="{{ old('basic_salary') }}">
               </div>
               <div class="form-group col-3">
                 <label for="application_date">Application Date</label>

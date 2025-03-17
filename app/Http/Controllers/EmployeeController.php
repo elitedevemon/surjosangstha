@@ -107,12 +107,18 @@ class EmployeeController extends Controller
     // Handle file uploads
     $images = [
       'own_photo',
+      'father_photo',
+      'mother_photo',
       'guarantor_1_photo',
       'nominee_photo',
       'own_nid_front',
+      'father_nid_front',
+      'mother_nid_front',
       'guarantor_1_nid_front',
       'nominee_nid_front',
       'own_nid_back',
+      'father_nid_back',
+      'mother_nid_back',
       'guarantor_1_nid_back',
       'nominee_nid_back'
     ];
