@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->group(function(){
+Route::controller(DashboardController::class)->prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function(){
   Route::get('/', 'index')->name('dashboard');
 
   # employee related routes
@@ -54,7 +54,7 @@ Route::controller(DashboardController::class)->prefix('admin')->name('admin.')->
   });
 });
 
-Route::prefix('employee')->name('employee.')->group(function(){
+Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){
   Route::view('/', 'employee.index')->name('dashboard');
   Route::post('/attendance/punch-in', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchIn'])->name('attendance.punch-in');
   Route::post('/attendance/punch-out', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchOut'])->name('attendance.punch-out');
