@@ -24,17 +24,17 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    // User::factory(10)->create();
-    Branch::factory(3)->create();
-    EmployeeDesignation::factory(3)->create();
-    Employee::factory(5)->create();
-    EmployeeContactInfo::factory(5)->create();
-    EmployeeUploadFile::factory(5)->create();
-    EmployeeAddress::factory(count: 5)->create();
-    EmployeeSalary::factory(5)->create();
-    EmployeeEducationDetail::factory(3)->create();
-    EmployeePF::factory(2)->create();
-    EmployeeSalaryHistory::factory(100)->create();
+    Branch::factory(1)->create();
+    EmployeeDesignation::factory(1)->create();
+    // Employee::factory(5)->create();
+    // EmployeeContactInfo::factory(5)->create();
+    // EmployeeUploadFile::factory(5)->create();
+    // EmployeeAddress::factory(count: 5)->create();
+    // EmployeeSalary::factory(5)->create();
+    // EmployeeEducationDetail::factory(3)->create();
+    // EmployeePF::factory(2)->create();
+    // EmployeeSalaryHistory::factory(100)->create();
+    User::factory(1)->create();
 
     // User::factory()->create([
     //     'name' => 'Test User',

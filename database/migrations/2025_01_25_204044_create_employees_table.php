@@ -14,6 +14,7 @@ return new class extends Migration {
     Schema::create('employees', function (Blueprint $table) {
       $table->id();
       $table->string('employee_code')->unique();
+      $table->string('name');
       $table->string('email');
       $table->enum('gender', ['male', 'female'])->nullable();
       $table->date('dob')->nullable();
@@ -22,7 +23,6 @@ return new class extends Migration {
       $table->string('password')->default(bcrypt('password'));
       $table->foreignId('employee_designation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->foreignId('branch_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-      $table->string('name');
       $table->string('father_name');
       $table->string('mother_name');
       $table->date('application_date');

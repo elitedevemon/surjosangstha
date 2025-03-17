@@ -18,7 +18,7 @@ class EmployeeDesignationFactory extends Factory
   {
     return [
       //designation
-      'designation' => $this->faker->jobTitle
+      'designation' => 'Credit Officer',
     ];
   }
 }

@@ -33,7 +33,7 @@
           <label for="status">Status</label>
           <select class="form-control @error('status') is-invalid @enderror" @error('status') aria-describedby="status-error" @enderror id="status" name="status">
             <option {{ $branch->status == 'active' ? 'selected' : '' }} value="1">Active</option>
-            <option {{ $branch->status != 'active' ? '' : 'selected' }} value="0">Inactive</option>
+            <option {{ $branch->status != 'active' ? 'selected' : '' }} value="0">Inactive</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary mt-4">Update Branch</button>

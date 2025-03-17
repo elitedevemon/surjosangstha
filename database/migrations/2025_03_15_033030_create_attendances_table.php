@@ -12,7 +12,7 @@ return new class extends Migration {
   {
     Schema::create('attendances', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('user_id')->constrained()->onDelete('cascade');
+      $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
       $table->timestamp('punch_in_time')->nullable();
       $table->timestamp('punch_out_time')->nullable();
       $table->string('total_hours')->nullable();
@@ -26,6 +26,6 @@ return new class extends Migration {
    */
   public function down(): void
   {
-    Schema::dropIfExists('attendance');
+    Schema::dropIfExists('attendances');
   }
 };
