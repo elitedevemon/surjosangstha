@@ -164,6 +164,11 @@ class EmployeeController extends Controller
       'total_salary' => $total_salary
     ]);
 
+    $employee->user()->create([
+      'email' => $request->email,
+      'name' => $request->name,
+    ]);
+
     toastr()->success('Employee has been created successfully');
     return back();
   }

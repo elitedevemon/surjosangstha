@@ -20,7 +20,6 @@ return new class extends Migration {
       $table->date('dob')->nullable();
       $table->string('religion')->nullable();
       $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed'])->default('single');
-      $table->string('password')->default(bcrypt('password'));
       $table->foreignId('employee_designation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->foreignId('branch_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
       $table->string('father_name');
