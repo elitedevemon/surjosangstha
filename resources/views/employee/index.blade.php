@@ -30,16 +30,26 @@
             </div>
           </div>
           <div class="text-center">
-            <div class="badge badge-dark badge-md mb-3">Production : <span id="production-hours">0.00</span> hrs
+            <div class="badge badge-dark badge-md mb-3">Production : 
+              @if ($attendance)
+                <span id="production-hours">{{ $attendance->production_hours }}</span> hrs
+              @else
+                <span id="production-hours">0.00</span> hrs
+              @endif
             </div>
             <h6 class="fw-medium d-flex align-items-center justify-content-center mb-4">
               <i class="ti ti-fingerprint text-primary me-1"></i>
-              Punch In at: <span id="punch-in-time">&nbsp;Not Punched In</span>
+              Punch In at:
+              @if ($attendance)
+                <span id="punch-in-time">&nbsp;{{ $attendance->created_at->format('h:i:s A') }}</span>
+              @else
+                <span id="punch-in-time">&nbsp;Not Punched In</span>
+              @endif
             </h6>
             {{-- <a class="btn btn-primary w-100" href="#">Punch Out</a> --}}
-            <button class="btn btn-success w-100" id="punch-in-btn" onmousedown="startPress()"
+            <button class="btn btn-success w-100 {{ $attendance ? 'd-none' : '' }}" id="punch-in-btn" onmousedown="startPress()"
               onmouseup="cancelPress()">Punch In</button>
-            <button class="btn btn-danger d-none w-100" id="punch-out-btn">Punch Out</button>
+            <button class="btn btn-danger {{ $attendance ? '' : 'd-none' }} w-100" id="punch-out-btn">Punch Out</button>
           </div>
         </div>
       </div>
@@ -1659,5 +1669,15 @@
     }
 
     document.getElementById("punch-out-btn").addEventListener("click", punchOut);
+  </script>
+
+  <script>
+    //logout function
+    function confirmLogout(event, element) {
+      event.preventDefault();
+      if (confirm("Are you sure you want to log out?")) {
+        element.closest('form').submit();
+      }
+    }
   </script>
 @endpush

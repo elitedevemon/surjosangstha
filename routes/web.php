@@ -8,19 +8,20 @@ use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\EmployeeDpsController;
 use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => view('welcome'));
+Route::get('/', fn() => view('welcome'))->name('welcome');
 
-Route::get('/dashboard', fn() => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', fn() => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::view('/index', 'frontend/index');
+// Route::view('/index', 'frontend/index');
 
-Route::middleware('auth')->group(function () {
-  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';
 
@@ -55,7 +56,11 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
 });
 
 Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){
-  Route::view('/', 'employee.index')->name('dashboard');
+  // Route::view('/', 'employee.index')->name('dashboard');
+  Route::get('/', function(){
+    $attendance = Auth::user()->attendance()->whereDate('created_at', now())->whereNull('punch_out_time')->first();
+    return view('employee.index', compact('attendance'));
+  })->name('dashboard');
   Route::post('/attendance/punch-in', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchIn'])->name('attendance.punch-in');
   Route::post('/attendance/punch-out', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchOut'])->name('attendance.punch-out');
 });
