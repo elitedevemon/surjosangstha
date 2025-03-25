@@ -11,7 +11,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => view('welcome'))->name('welcome');
+Route::get('/', fn() => redirect()->route('login'))->name('welcome');
 
 // Route::get('/dashboard', fn() => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
 
