@@ -1168,8 +1168,12 @@
                     <i class="ti ti-question-mark me-1"></i>Knowledge Base
                   </a>
                 </div>
+                <form action="{{ route('logout') }}" id="logout-form" method="post">
+                  @csrf
+                </form>
                 <div class="card-footer">
-                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="login.html">
+                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="javascript:void(0);"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="ti ti-login me-2"></i>Logout
                   </a>
                 </div>
