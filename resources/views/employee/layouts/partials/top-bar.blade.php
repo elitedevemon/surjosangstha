@@ -480,8 +480,7 @@
                           </ul>
                         </li>
                         <li class="submenu">
-                          <a href="javascript:void(0);">Financial Settings<span
-                              class="menu-arrow"></span></a>
+                          <a href="javascript:void(0);">Financial Settings<span class="menu-arrow"></span></a>
                           <ul>
                             <li><a href="payment-gateways.html">Payment Gateways</a></li>
                             <li><a href="tax-rates.html">Tax Rate</a></li>
@@ -554,8 +553,7 @@
                       </a>
                       <ul>
                         <li class="submenu">
-                          <a class="" href="javascript:void(0);">Login<span
-                              class="menu-arrow"></span></a>
+                          <a class="" href="javascript:void(0);">Login<span class="menu-arrow"></span></a>
                           <ul>
                             <li><a href="login.html">Cover</a></li>
                             <li><a href="login-2.html">Illustration</a></li>
@@ -563,8 +561,7 @@
                           </ul>
                         </li>
                         <li class="submenu">
-                          <a class="" href="javascript:void(0);">Register<span
-                              class="menu-arrow"></span></a>
+                          <a class="" href="javascript:void(0);">Register<span class="menu-arrow"></span></a>
                           <ul>
                             <li><a href="register.html">Cover</a></li>
                             <li><a href="register-2.html">Illustration</a></li>
@@ -588,8 +585,7 @@
                           </ul>
                         </li>
                         <li class="submenu">
-                          <a href="javascript:void(0);">Email Verification<span
-                              class="menu-arrow"></span></a>
+                          <a href="javascript:void(0);">Email Verification<span class="menu-arrow"></span></a>
                           <ul>
                             <li><a href="email-verification.html">Cover</a></li>
                             <li><a href="email-verification-2.html">Illustration</a></li>
@@ -597,8 +593,7 @@
                           </ul>
                         </li>
                         <li class="submenu">
-                          <a href="javascript:void(0);">2 Step Verification<span
-                              class="menu-arrow"></span></a>
+                          <a href="javascript:void(0);">2 Step Verification<span class="menu-arrow"></span></a>
                           <ul>
                             <li><a href="two-step-verification.html">Cover</a></li>
                             <li><a href="two-step-verification-2.html">Illustration</a></li>
@@ -793,8 +788,7 @@
                               </ul>
                             </li>
                             <li class="submenu submenu-two">
-                              <a href="javascript:void(0);">Layouts <span
-                                  class="menu-arrow inside-submenu"></span>
+                              <a href="javascript:void(0);">Layouts <span class="menu-arrow inside-submenu"></span>
                               </a>
                               <ul>
                                 <li>
@@ -934,13 +928,11 @@
                     <li><a href="#">Documentation</a></li>
                     <li><a href="#">Change Log</a></li>
                     <li class="submenu">
-                      <a href="javascript:void(0);"><span>Multi Level</span><span
-                          class="menu-arrow"></span></a>
+                      <a href="javascript:void(0);"><span>Multi Level</span><span class="menu-arrow"></span></a>
                       <ul>
                         <li><a href="javascript:void(0);">Multilevel 1</a></li>
                         <li class="submenu submenu-two">
-                          <a href="javascript:void(0);">Multilevel 2<span
-                              class="menu-arrow inside-submenu"></span></a>
+                          <a href="javascript:void(0);">Multilevel 2<span class="menu-arrow inside-submenu"></span></a>
                           <ul>
                             <li><a href="javascript:void(0);">Multilevel 2.1</a></li>
                             <li class="submenu submenu-two submenu-three">
@@ -1021,8 +1013,8 @@
             </a>
           </div>
           <div class="notification_item me-1">
-            <a class="btn btn-menubar position-relative me-1" id="notification_popup"
-              data-bs-toggle="dropdown" href="#">
+            <a class="btn btn-menubar position-relative me-1" id="notification_popup" data-bs-toggle="dropdown"
+              href="#">
               <i class="ti ti-bell"></i>
               <span class="notification-status-dot"></span>
             </a>
@@ -1032,8 +1024,7 @@
                 <div class="d-flex align-items-center">
                   <a class="text-primary fs-15 lh-1 me-3" href="#">Mark all as read</a>
                   <div class="dropdown">
-                    <a class="dropdown-toggle bg-white" data-bs-toggle="dropdown"
-                      href="javascript:void(0);">
+                    <a class="dropdown-toggle bg-white" data-bs-toggle="dropdown" href="javascript:void(0);">
                       <i class="ti ti-calendar-due me-1"></i>Today
                     </a>
                     <ul class="dropdown-menu mt-2 p-3">
@@ -1112,8 +1103,7 @@
                           <img src="{{ asset('assets/img/profiles/avatar-01.jpg') }}" alt="Profile">
                         </span>
                         <div class="flex-grow-1">
-                          <p class="mb-1">A new teacher record for <span
-                              class="text-dark fw-semibold">Elisa</span> </p>
+                          <p class="mb-1">A new teacher record for <span class="text-dark fw-semibold">Elisa</span> </p>
                           <span>09:45 AM</span>
                         </div>
                       </div>
@@ -1128,11 +1118,9 @@
             </div>
           </div>
           <div class="dropdown profile-dropdown">
-            <a class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown"
-              href="javascript:void(0);">
+            <a class="dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" href="javascript:void(0);">
               <span class="avatar avatar-sm online">
-                <img class="img-fluid rounded-circle" src="{{ asset('assets/img/profiles/avatar-12.jpg') }}"
-                  alt="Img">
+                <img class="img-fluid rounded-circle" src="{{ asset('assets/img/profiles/avatar-12.jpg') }}" alt="Img">
               </span>
             </a>
             <div class="dropdown-menu shadow-none">
@@ -1154,24 +1142,25 @@
                   <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="profile.html">
                     <i class="ti ti-user-circle me-1"></i>My Profile
                   </a>
-                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2"
-                    href="bussiness-settings.html">
+                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="bussiness-settings.html">
                     <i class="ti ti-settings me-1"></i>Settings
                   </a>
 
-                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2"
-                    href="profile-settings.html">
+                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="profile-settings.html">
                     <i class="ti ti-circle-arrow-up me-1"></i>My Account
                   </a>
-                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2"
-                    href="knowledgebase.html">
+                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="knowledgebase.html">
                     <i class="ti ti-question-mark me-1"></i>Knowledge Base
                   </a>
                 </div>
                 <div class="card-footer">
-                  <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="login.html">
-                    <i class="ti ti-login me-2"></i>Logout
-                  </a>
+                  <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <a class="dropdown-item d-inline-flex align-items-center p-0 py-2" href="javascript:void(0)"
+                      onclick="confirmLogout(event, this);">
+                      <i class="ti ti-login me-2"></i>Logout
+                    </a>
+                  </form>
                 </div>
               </div>
             </div>

@@ -11,7 +11,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn() => redirect()->route('login'))->name('welcome');
+Route::get('/', function(){
+  if (Auth::check()) {
+    if (Auth::user()->role === 'admin') {
+      return redirect()->route('admin.dashboard');
+    } elseif (Auth::user()->role === 'employee') {
+      return redirect()->route('employee.dashboard');
+    }
+  }
+  return redirect()->route('login');
+})->name('welcome');
 
 // Route::get('/dashboard', fn() => view('dashboard'))->middleware(['auth', 'verified'])->name('dashboard');
 

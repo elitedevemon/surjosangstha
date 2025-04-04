@@ -12,6 +12,22 @@ class AttendanceController extends Controller
 {
   public function punchIn(Request $request)
   {
+    $userId = Auth::id();
+    $today = Carbon::today();
+    // Check if the user has already punched in today
+    $existingPunch = Attendance::where('user_id', $userId)
+      ->whereDate('punch_in_time', $today)
+      ->first();
+
+    if ($existingPunch) {
+      return response()->json([
+        'status' => 'error',
+        'message' => 'You have already punched in today.',
+        'punch_in_time' => $existingPunch->punch_in_time
+      ], 409); // 409 Conflict
+    }
+
+    // If not already punched in, save new punch-in time
     $attendance = new Attendance();
     $attendance->user_id = Auth::id();
     $attendance->punch_in_time = Carbon::now();

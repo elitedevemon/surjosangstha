@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="text-center">
-            <div class="badge badge-dark badge-md mb-3">Production : 
+            <div class="badge badge-dark badge-md mb-3">Production :
               @if ($attendance)
                 <span id="production-hours">{{ $attendance->production_hours }}</span> hrs
               @else
@@ -47,9 +47,13 @@
               @endif
             </h6>
             {{-- <a class="btn btn-primary w-100" href="#">Punch Out</a> --}}
-            <button class="btn btn-success w-100 {{ $attendance ? 'd-none' : '' }}" id="punch-in-btn" onmousedown="startPress()"
-              onmouseup="cancelPress()">Punch In</button>
-            <button class="btn btn-danger {{ $attendance ? '' : 'd-none' }} w-100" id="punch-out-btn">Punch Out</button>
+            <button class="btn btn-success w-100 {{ $attendance ? 'd-none' : '' }}" id="punch-in-btn"
+              onmousedown="startPress()" onmouseup="cancelPress()" onmouseleave="cancelPress()">
+              Punch In
+              <span id="press-animation"></span>
+            </button>
+            <button class="btn btn-danger {{ $attendance ? '' : 'd-none' }} w-100" id="punch-out-btn">Punch
+              Out</button>
           </div>
         </div>
       </div>
@@ -79,14 +83,16 @@
                 <div class="col-xl-3">
                   <div class="mb-4">
                     <p class="d-flex align-items-center mb-1"><i
-                        class="ti ti-point-filled text-warning me-1"></i>Break hours</p>
+                        class="ti ti-point-filled text-warning me-1"></i>Break
+                      hours</p>
                     <h3>22m 15s</h3>
                   </div>
                 </div>
                 <div class="col-xl-3">
                   <div class="mb-4">
                     <p class="d-flex align-items-center mb-1"><i
-                        class="ti ti-point-filled text-info me-1"></i>Overtime</p>
+                        class="ti ti-point-filled text-info me-1"></i>Overtime
+                    </p>
                     <h3>02h 15m</h3>
                   </div>
                 </div>
@@ -431,7 +437,8 @@
             <div class="col-sm-12">
               <div>
                 <a class="btn btn-dark w-100" data-bs-toggle="modal" data-bs-target="#add_leaves"
-                  href="#">Apply New Leave</a>
+                  href="#">Apply New
+                  Leave</a>
               </div>
             </div>
           </div>
@@ -1590,6 +1597,7 @@
 @endsection
 
 @push('scripts')
+  <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
   <script>
     let punchInTime = null;
     let timerInterval = null;
@@ -1607,6 +1615,9 @@
 
     // Start timer when button is held
     function startPress() {
+      const btn = document.getElementById("punch-in-btn");
+      btn.classList.add("holding");
+
       pressTimer = setTimeout(() => {
         pressedFor3Sec = true;
         punchIn();
@@ -1615,7 +1626,10 @@
 
     // Cancel timer if button is released early
     function cancelPress() {
+      const btn = document.getElementById("punch-in-btn");
+      btn.classList.remove("holding");
       clearTimeout(pressTimer);
+      pressedFor3Sec = false;
     }
 
     // Punch In Function
@@ -1630,13 +1644,38 @@
         },
         success: function(response) {
           punchInTime = new Date(response.punch_in_time);
+          localStorage.setItem("punchInTime", punchInTime); // Save to localStorage
+
           document.getElementById("punch-in-time").innerText = punchInTime.toLocaleTimeString();
           document.getElementById("punch-in-btn").classList.add('d-none');
           document.getElementById("punch-out-btn").classList.remove('d-none');
           startWorkTimer();
+
+          // Show success toastr
+          toastr.success("Successfully punched in at " + punchInTime.toLocaleTimeString(), "Success");
+        },
+        error: function(response) {
+          if (response.status === 409) {
+            // Already punched in
+            toastr.warning(response.responseJSON.message || "You have already punched in today.",
+              "Warning");
+          } else {
+            // Other errors
+            toastr.error("Something went wrong. Please try again.", "Error");
+          }
         }
       });
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const storedTime = localStorage.getItem("punchInTime");
+      if (storedTime) {
+        punchInTime = new Date(storedTime);
+        document.getElementById("punch-in-btn").classList.add('d-none');
+        document.getElementById("punch-out-btn").classList.remove('d-none');
+        startWorkTimer();
+      }
+    });
 
     // Punch Out Function
     function punchOut() {
@@ -1647,25 +1686,44 @@
           _token: "{{ csrf_token() }}"
         },
         success: function(response) {
-          clearInterval(timerInterval);
+          clearInterval(timerInterval); // Stop the timer
+          localStorage.removeItem("punchInTime"); // Clear punchInTime from localStorage
           document.getElementById("total-hours").innerText = response.total_hours;
           document.getElementById("production-hours").innerText = response.production_hours;
           document.getElementById("punch-in-btn").classList.remove('d-none');
           document.getElementById("punch-out-btn").classList.add('d-none');
+          // Show success toastr
+          toastr.success("Successfully punched out at " + new Date().toLocaleTimeString(), "Success");
+        },
+        error: function() {
+          toastr.error("Failed to punch out. Please try again.", "Error");
         }
       });
     }
 
     // Timer Function for Live Work Hours Calculation
     function startWorkTimer() {
+      if (!punchInTime) {
+        const storedTime = localStorage.getItem("punchInTime");
+        if (storedTime) {
+          punchInTime = new Date(storedTime);
+        } else {
+          return;
+        }
+      }
+
       timerInterval = setInterval(() => {
         let now = new Date();
         let diff = new Date(now - punchInTime);
         let hours = diff.getUTCHours();
         let minutes = diff.getUTCMinutes();
         let seconds = diff.getUTCSeconds();
-        document.getElementById("total-hours").innerText = `${hours}:${minutes}:${seconds}`;
+        document.getElementById("total-hours").innerText = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
       }, 1000);
+    }
+
+    function pad(num) {
+      return num.toString().padStart(2, '0');
     }
 
     document.getElementById("punch-out-btn").addEventListener("click", punchOut);
@@ -1680,4 +1738,29 @@
       }
     }
   </script>
+@endpush
+
+@push('styles')
+  <link href="{{ asset('vendor/flasher/toastr.min.css') }}" rel="stylesheet">
+  <style>
+    #punch-in-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #press-animation {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      background-color: #267a658e;
+      width: 0%;
+      transition: width 0s;
+    }
+
+    #punch-in-btn.holding #press-animation {
+      width: 100%;
+      transition: width 3s linear;
+    }
+  </style>
 @endpush

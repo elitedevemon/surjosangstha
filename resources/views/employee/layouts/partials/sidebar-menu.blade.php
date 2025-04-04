@@ -70,10 +70,10 @@
       </li>
       <li>
         <ul>
-          <li class="{{ Route::is('admin.dashboard') ? 'active' : '' }}">
+          <li class="{{ Route::is('logout') ? 'active' : '' }}">
             <form action="{{ route('logout') }}" method="POST">
               @csrf
-              <a href="#" onclick="confirmLogout(event, this);">
+              <a href="javascript:void(0);" onclick="confirmLogout(event, this);">
                 <i class="ti ti-logout"></i><span>Logout</span>
               </a>
             </form>

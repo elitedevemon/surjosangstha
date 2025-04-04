@@ -44,9 +44,11 @@
               <i class="ti ti-users"></i><span>Employees</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul  style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
-              <li class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}"><a href="{{ route('admin.employee.list') }}">Employee Lists</a></li>
-              <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a href="{{ route('admin.employee.create') }}">Add Employee</a></li>
+            <ul style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}"><a
+                  href="{{ route('admin.employee.list') }}">Employee Lists</a></li>
+              <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a
+                  href="{{ route('admin.employee.create') }}">Add Employee</a></li>
               <li><a href="{{ route('admin.salary-info.index') }}">Salary Info</a></li>
               <li><a href="#">PF Info</a></li>
               <li><a href="#">DPS Info</a></li>
@@ -59,9 +61,11 @@
               <i class="ti ti-users"></i><span>Branch</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul  style="{{ Route::is('admin.branch*') ? 'display:block' : '' }}">
-              <li class="{{ Route::is('admin.branch.index') || Route::is('admin.branch.show') ? 'active' : '' }}"><a href="{{ route('admin.branch.index') }}">Branch List</a></li>
-              <li class="{{ Route::is('admin.branch.create') ? 'active' : '' }}"><a href="{{ route('admin.branch.create') }}">Add Branch</a></li>
+            <ul style="{{ Route::is('admin.branch*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.branch.index') || Route::is('admin.branch.show') ? 'active' : '' }}"><a
+                  href="{{ route('admin.branch.index') }}">Branch List</a></li>
+              <li class="{{ Route::is('admin.branch.create') ? 'active' : '' }}"><a
+                  href="{{ route('admin.branch.create') }}">Add Branch</a></li>
             </ul>
           </li>
 
@@ -71,9 +75,13 @@
               <i class="ti ti-users"></i><span>Designation</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul  style="{{ Route::is('admin.designation*') ? 'display:block' : '' }}">
-              <li class="{{ Route::is('admin.designation.index') || Route::is('admin.designation.show') ? 'active' : '' }}"><a href="{{ route('admin.designation.index') }}">Designation List</a></li>
-              <li class="{{ Route::is('admin.designation.create') ? 'active' : '' }}"><a href="{{ route('admin.designation.create') }}">Add Designation</a></li>
+            <ul style="{{ Route::is('admin.designation*') ? 'display:block' : '' }}">
+              <li
+                class="{{ Route::is('admin.designation.index') || Route::is('admin.designation.show') ? 'active' : '' }}">
+                <a href="{{ route('admin.designation.index') }}">Designation List</a>
+              </li>
+              <li class="{{ Route::is('admin.designation.create') ? 'active' : '' }}"><a
+                  href="{{ route('admin.designation.create') }}">Add Designation</a></li>
             </ul>
           </li>
 
@@ -83,9 +91,11 @@
               <i class="ti ti-users"></i><span>DPS</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul  style="{{ Route::is('admin.dps*') ? 'display:block' : '' }}">
-              <li class="{{ Route::is('admin.dps.index') ? 'active' : '' }}"><a href="{{ route('admin.dps.index') }}">DPS List</a></li>
-              <li class="{{ Route::is('admin.dps.create') ? 'active' : '' }}"><a href="{{ route('admin.dps.create') }}">Add New DPS</a></li>
+            <ul style="{{ Route::is('admin.dps*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.dps.index') ? 'active' : '' }}"><a
+                  href="{{ route('admin.dps.index') }}">DPS List</a></li>
+              <li class="{{ Route::is('admin.dps.create') ? 'active' : '' }}"><a
+                  href="{{ route('admin.dps.create') }}">Add New DPS</a></li>
             </ul>
           </li>
 
@@ -114,7 +124,6 @@
               <li class="submenu submenu-two">
                 <a href="javascript:void(0);">Leaves<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
-                  <li><a href="leaves.html">Leaves (Admin)</a></li>
                   <li><a href="leaves-employee.html">Leave (Employee)</a></li>
                   <li><a href="leave-settings.html">Leave Settings</a></li>
                 </ul>
@@ -288,8 +297,7 @@
             </a>
             <ul>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">General Settings<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">General Settings<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="profile-settings.html">Profile</a></li>
                   <li><a href="security-settings.html">Security</a></li>
@@ -298,8 +306,7 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">Website Settings<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">Website Settings<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="bussiness-settings.html">Business Settings</a></li>
                   <li><a href="seo-settings.html">SEO Settings</a></li>
@@ -313,8 +320,7 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">App Settings<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">App Settings<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="salary-settings.html">Salary Settings</a></li>
                   <li><a href="approval-settings.html">Approval Settings</a></li>
@@ -324,8 +330,7 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">System Settings<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">System Settings<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="email-settings.html">Email Settings</a></li>
                   <li><a href="email-template.html">Email Templates</a></li>
@@ -337,8 +342,7 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">Financial Settings<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">Financial Settings<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="payment-gateways.html">Payment Gateways</a></li>
                   <li><a href="tax-rates.html">Tax Rate</a></li>
@@ -346,8 +350,7 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">Other Settings<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">Other Settings<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="custom-css.html">Custom CSS</a></li>
                   <li><a href="custom-js.html">Custom JS</a></li>
@@ -495,8 +498,7 @@
           </li>
           <li class="submenu">
             <a href="javascript:void(0);">
-              <i class="ti ti-help-triangle"></i><span>Forgot Password</span><span
-                class="menu-arrow"></span>
+              <i class="ti ti-help-triangle"></i><span>Forgot Password</span><span class="menu-arrow"></span>
             </a>
             <ul>
               <li><a href="forgot-password.html">Cover</a></li>
@@ -516,8 +518,7 @@
           </li>
           <li class="submenu">
             <a href="javascript:void(0);">
-              <i class="ti ti-mail-exclamation"></i><span>Email Verification</span><span
-                class="menu-arrow"></span>
+              <i class="ti ti-mail-exclamation"></i><span>Email Verification</span><span class="menu-arrow"></span>
             </a>
             <ul>
               <li><a href="email-verification.html">Cover</a></li>
@@ -872,8 +873,7 @@
             <ul>
               <li><a href="javascript:void(0);">Multilevel 1</a></li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">Multilevel 2<span
-                    class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">Multilevel 2<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="javascript:void(0);">Multilevel 2.1</a></li>
                   <li class="submenu submenu-two submenu-three">
