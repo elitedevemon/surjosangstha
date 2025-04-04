@@ -11,7 +11,7 @@
   <div class="d-flex align-items-center justify-content-between menu-item mb-3">
     <div class="me-3">
       <a class="btn btn-menubar" href="calendar.html">
-        <i class="ti ti-layout-grid-remove"></i>
+        <i class="ti ti-layout-grid-remove"></i> 
       </a>
     </div>
     <div class="me-3">
