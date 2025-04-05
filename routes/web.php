@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
@@ -62,6 +63,12 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
     Route::get('/','index')->name('index');
     Route::post('/artisan/run', 'runCommand')->name('run.artisan');
   });
+
+  # Attendance related routes
+  Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+  Route::get('/attendance/settings', [AttendanceController::class, 'settings'])->name('attendance.settings');
+  Route::put('/attendance/settings/update', [AttendanceController::class, 'updateSettings'])->name('attendance.settings.update');
+
 });
 
 Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){

@@ -116,11 +116,11 @@
             </a>
           </li>
           <li class="submenu">
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" class="{{ Route::is('admin.attendance*') ? 'subdrop' : '' }}">
               <i class="ti ti-file-time"></i><span>Attendance</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul>
+            <ul style="{{ Route::is('admin.attendance*') ? 'display:block' : '' }}">
               <li class="submenu submenu-two">
                 <a href="javascript:void(0);">Leaves<span class="menu-arrow inside-submenu"></span></a>
                 <ul>
@@ -128,11 +128,16 @@
                   <li><a href="leave-settings.html">Leave Settings</a></li>
                 </ul>
               </li>
-              <li><a href="attendance-admin.html">Attendance (Admin)</a></li>
-              <li><a href="attendance-employee.html">Attendance (Employee)</a></li>
-              <li><a href="timesheets.html">Timesheets</a></li>
+              <li class="{{ Route::is('admin.attendance.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.attendance.index') }}">Attendance</a>
+              </li>
+              <li><a href="{{ route('admin.attendance.settings') }}">Attendance Sheet</a></li>
+              <li class="{{ Route::is('admin.attendance.settings') ? 'active' : '' }}">
+                <a href="{{ route('admin.attendance.settings') }}">Attendance Settings</a>
+              </li>
+              {{-- <li><a href="timesheets.html">Timesheets</a></li>
               <li><a href="schedule-timing.html">Shift & Schedule</a></li>
-              <li><a href="overtime.html">Overtime</a></li>
+              <li><a href="overtime.html">Overtime</a></li> --}}
             </ul>
           </li>
           <li class="submenu">

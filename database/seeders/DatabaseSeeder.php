@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Http\Controllers\EmployeeController;
+use App\Models\Admin\AttendanceSettings;
 use App\Models\Branch;
 use App\Models\Employee;
 use App\Models\EmployeeAddress;
@@ -35,6 +36,7 @@ class DatabaseSeeder extends Seeder
     // EmployeePF::factory(2)->create();
     // EmployeeSalaryHistory::factory(100)->create();
     User::factory(1)->create();
+    AttendanceSettings::factory(1)->create();
 
     // User::factory()->create([
     //     'name' => 'Test User',
