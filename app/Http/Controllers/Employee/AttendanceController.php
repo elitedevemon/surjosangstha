@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AttendanceSettings;
 use App\Models\Employee\Attendance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,10 +28,31 @@ class AttendanceController extends Controller
       ], 409); // 409 Conflict
     }
 
+    $attendance_settings = AttendanceSettings::first();
+
+    // Parse scheduled punch-in time
+    $scheduledTime = Carbon::createFromFormat('H:i:s', $attendance_settings->office_start);
+
+    // Add grace period (assumed to be in minutes)
+    $gracePeriod = intval($attendance_settings->grace_period); // make sure this is an integer
+    $allowedPunchInTime = $scheduledTime->copy()->addMinutes($gracePeriod);
+
+    // Get current time
+    $now = Carbon::now();
+
+    // Calculate lateness if any
+    $lateBy = null;
+    if ($now->gt($allowedPunchInTime)) {
+      $lateMinutes = $now->diffInMinutes($allowedPunchInTime);
+      $lateBy = $lateMinutes;
+    }
+
     // If not already punched in, save new punch-in time
     $attendance = new Attendance();
-    $attendance->user_id = Auth::id();
-    $attendance->punch_in_time = Carbon::now();
+    $attendance->user_id = $userId;
+    $attendance->punch_in_time = $now;
+    $attendance->late_duration = $lateBy;
+    $lateBy !== null ? $attendance->status = 'late' : $attendance->status = 'present';
     $attendance->save();
 
     return response()->json([

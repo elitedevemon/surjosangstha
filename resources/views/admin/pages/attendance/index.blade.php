@@ -26,7 +26,8 @@
       <div class="row align-items-center mb-4">
         <div class="col-md-5">
           <div class="mb-md-0 mb-3">
-            <h4 class="mb-1">Attendance Details Today ({{ \Carbon\Carbon::now()->toFormattedDateString() }})</h4>
+            <h4 class="mb-1">Attendance Details Today ({{ \Carbon\Carbon::now()->toFormattedDateString() }})
+            </h4>
             <p>Data from the {{ $total_employees }} total no of employees</p>
           </div>
         </div>
@@ -149,42 +150,52 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="form-check form-check-md">
-                  <input class="form-check-input" type="checkbox">
-                </div>
-              </td>
-              <td>
-                <div class="d-flex align-items-center file-name-icon">
-                  <a class="avatar avatar-md avatar-rounded border" href="#">
-                    <img class="img-fluid" src="assets/img/users/user-49.jpg" alt="img">
-                  </a>
-                  <div class="ms-2">
-                    <h6 class="fw-medium"><a href="#">Anthony Lewis</a></h6>
-                    <span class="fs-12 fw-normal">UI/UX Team</span>
+            @foreach ($today_attendance as $employee)
+              <tr>
+                <td>
+                  <div class="form-check form-check-md">
+                    <input class="form-check-input" type="checkbox">
                   </div>
-                </div>
-              </td>
-              <td><span class="badge badge-success-transparent d-inline-flex align-items-center"><i
-                    class="ti ti-point-filled me-1"></i>Present</span></td>
-              <td>09:00 AM</td>
-              <td>
-                06:45 PM
-              </td>
-              <td>30 Min</td>
-              <td>
-                32 Min
-              </td>
-              <td><span class="badge badge-success d-inline-flex align-items-center"><i
-                    class="ti ti-clock-hour-11 me-1"></i>8.55 Hrs</span></td>
-              <td>
-                <div class="action-icon d-inline-flex">
-                  <a class="me-2" data-bs-toggle="modal" data-bs-target="#edit_attendance"
-                    href="#"><i class="ti ti-edit"></i></a>
-                </div>
-              </td>
-            </tr>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center file-name-icon">
+                    <a class="avatar avatar-md avatar-rounded border" href="#">
+                      <img class="img-fluid" src="{{ asset("storage/".$employee->employee->upload_file->own_photo) }}" alt="img">
+                    </a>
+                    <div class="ms-2">
+                      <h6 class="fw-medium"><a href="#">{{ $employee->name }}</a></h6>
+                      {{-- <span class="fs-12 fw-normal">UI/UX Team</span> --}}
+                    </div>
+                  </div>
+                </td>
+                @foreach ($employee->attendance as $attendance)
+                  <td>
+                    <span
+                      class="badge badge-{{ $attendance->status === 'present' ? 'success' : 'danger' }}-transparent d-inline-flex align-items-center">
+                      <i class="ti ti-point-filled me-1"></i>
+                      {{ ucfirst($attendance->status) }}
+                    </span>
+                  </td>
+                  <td>{{ \Carbon\Carbon::parse($attendance->punch_in_time)->format('h:i A') }}</td>
+                  <td>
+                    {{-- {{ \Carbon\Carbon::parse($attendance->punch_out_time)->format('h:i A') }} --}}
+                    {{ $attendance->punch_out_time ? \Carbon\Carbon::parse($attendance->punch_out_time)->format('h:i A') : '' }}
+                  </td>
+                  <td>00 Min</td>
+                  <td>
+                    {{ number_format($attendance->late_duration, 2) }} Min
+                  </td>
+                  <td><span class="badge badge-success d-inline-flex align-items-center {{ $attendance->production_hours ? '' : 'd-none' }}"><i
+                        class="ti ti-clock-hour-11 me-1"></i>{{ $attendance->production_hours?:'' }} Hrs</span></td>
+                  <td>
+                    <div class="action-icon d-inline-flex">
+                      <a class="me-2" data-bs-toggle="modal" data-bs-target="#edit_attendance"
+                        href="#"><i class="ti ti-edit"></i></a>
+                    </div>
+                  </td>
+                @endforeach
+              </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -430,8 +441,8 @@
 @push('scripts')
   <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
   <!-- Datatable JS -->
-	<script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}" type="text/javascript"></script>
   <script>
     $(document).ready(function() {
       // delete confirmation
@@ -463,6 +474,6 @@
 
 @push('styles')
   <link href="{{ asset('vendor/flasher/toastr.min.css') }}" rel="stylesheet">
-  	<!-- Datatable CSS -->
-	<link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}">
+  <!-- Datatable CSS -->
+  <link href="{{ asset('assets/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
 @endpush

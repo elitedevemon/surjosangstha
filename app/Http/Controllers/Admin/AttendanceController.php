@@ -14,12 +14,16 @@ class AttendanceController extends Controller
   {
     $total_employees = User::where('role', 'employee')->count();
     $today = now()->format('Y-m-d');
-    $today_attendance = User::where('role', 'employee')
+    $today_attendance = User::with(['attendance' => function ($query) use ($today) {
+        $query->whereDate('created_at', $today);
+      }, 'employee'])
+      ->where('role', 'employee')
       ->whereHas('attendance', function ($query) use ($today) {
         $query->whereDate('created_at', $today);
       })
-      ->count();
-    $today_absent = $total_employees - $today_attendance;
+      ->get();
+    // return $today_attendance;
+    $today_absent = $total_employees - count($today_attendance);
     $today_late = User::where('role', 'employee')
       ->whereHas('attendance', function ($query) use ($today) {
         $query->whereDate('created_at', $today)
@@ -32,20 +36,21 @@ class AttendanceController extends Controller
     //       ->where('status', 'half_day');
     //   })
     //   ->count();
-    
+
     // $today_present = User::where('role', 'employee')
     //   ->whereHas('attendance', function ($query) use ($today) {
     //     $query->whereDate('created_at', $today)
     //       ->where('status', 'present');
     //   })
     //   ->count();
-    $today_leave = User::where('role', 'employee')
-      ->whereHas('attendance', function ($query) use ($today) {
-        $query->whereDate('created_at', $today)
-          ->where('status', 'leave');
-      })
-      ->count();
-    return view('admin.pages.attendance.index', compact('total_employees'));
+
+    // $today_leave = User::where('role', 'employee')
+    //   ->whereHas('attendance', function ($query) use ($today) {
+    //     $query->whereDate('created_at', $today)
+    //       ->where('status', 'leave');
+    //   })
+    //   ->count();
+    return view('admin.pages.attendance.index', compact('total_employees', 'today_attendance', 'today_absent', 'today_late'));
   }
 
   public function settings()
@@ -101,6 +106,6 @@ class AttendanceController extends Controller
       // return redirect()->back()->with('error', 'Failed to update attendance settings. Please try again.');
     }
 
-    
+
   }
 }
