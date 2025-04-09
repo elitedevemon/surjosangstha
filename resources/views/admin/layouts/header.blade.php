@@ -52,4 +52,10 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+  <style>
+    .fl-flasher {
+      display: none;
+    }
+  </style>
+
 </head>

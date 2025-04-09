@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\EmployeeController;
@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\EmployeeDpsController;
 use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,7 @@ Route::get('/', function(){
 
 require __DIR__ . '/auth.php';
 
+// admin routes
 Route::controller(DashboardController::class)->prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function(){
   Route::get('/', 'index')->name('dashboard');
 
@@ -65,9 +67,13 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
   });
 
   # Attendance related routes
-  Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
-  Route::get('/attendance/settings', [AttendanceController::class, 'settings'])->name('attendance.settings');
-  Route::put('/attendance/settings/update', [AttendanceController::class, 'updateSettings'])->name('attendance.settings.update');
+  Route::get('/attendance', [\App\Http\Controllers\Admin\AttendanceController::class, 'index'])->name('attendance.index');
+  Route::get('/attendance/settings', [\App\Http\Controllers\Admin\AttendanceController::class, 'settings'])->name('attendance.settings');
+  Route::put('/attendance/settings/update', [\App\Http\Controllers\Admin\AttendanceController::class, 'updateSettings'])->name('attendance.settings.update');
+
+  # Groups related routes
+  Route::resource('group', GroupController::class)->except('show');
+  Route::post('group/change/status/', [GroupController::class, 'changeStatus'])->name('group.change.status');
 
 });
 
