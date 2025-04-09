@@ -1,90 +1,80 @@
 @extends('admin.layouts.master')
-@section('title', 'Add Group')
+@section('title', 'Add Customer')
 
 @section('content')
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Add Group</h5>
-      <form action="{{ route('admin.group.store') }}" method="POST">
+      <h5 class="card-title">Add Customer</h5>
+      <form action="{{ route('admin.customer.store') }}" method="POST">
         @csrf
         <div class="form-group mt-3">
-          <!-- branch name -->
-          <label for="branch_id">Branch Name</label>
-          <select class="@error('branch_id') is_invalid @enderror form-select" id="branch_id" name="branch_id"
-            aria-label="Groups" @error('branch_id') aria-describedby="branch_id-error" @enderror required>
-            <option disabled selected>--Select Branch--</option>
-            @forelse ($branches as $branch)
-              <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
+          <!-- group name -->
+          <label for="group_id">Group Name</label>
+          <select class="@error('group_id') is_invalid @enderror form-select" id="group_id" name="group_id"
+            aria-label="Groups" @error('group_id') aria-describedby="group_id-error" @enderror required>
+            <option disabled selected>--Select Group--</option>
+            @forelse ($groups as $group)
+              <option value="{{ $group->id }}">{{ $group->group_name }}</option>
             @empty
-              <option disabled>No branches found</option>
+              <option disabled>No groups found</option>
             @endforelse
           </select>
-          @error('branch_id')
-            <div class="invalid-feedback" id="branch_id-error">{{ $message }}</div>
+          @error('group_id')
+            <div class="invalid-feedback" id="group_id-error">{{ $message }}</div>
           @enderror
         </div>
-        <!-- group code & group name -->
+        <!-- customer code & customer name -->
         <div class="row">
           <div class="form-group col-md-6 mt-3">
-            <label for="group_code">Group Code</label>
-            <input class="form-control @error('group_code') is-invalid @enderror" id="group_code"
-              name="group_code" type="text" value="{{ old('group_code') }}"
-              @error('group_code') aria-describedby="group_code-error" @enderror placeholder="Enter group code"
-              required>
-            @error('group_code')
-              <div class="invalid-feedback" id="group_code-error">{{ $message }}</div>
+            <label for="code">Customer Code</label>
+            <input class="form-control @error('code') is-invalid @enderror" id="code" name="code"
+              type="text" value="{{ old('code') }}" @error('code') aria-describedby="code-error" @enderror
+              placeholder="Enter customer code" required>
+            @error('code')
+              <div class="invalid-feedback" id="code-error">{{ $message }}</div>
             @enderror
           </div>
           <div class="form-group col-md-6 mt-3">
-            <label for="group_name">Group Name</label>
-            <input class="form-control @error('group_name') is-invalid @enderror" id="group_name"
-              name="group_name" type="text" value="{{ old('group_name') }}"
-              @error('group_name') aria-describedby="group_name-error" @enderror placeholder="Enter group name"
-              required>
-            @error('group_name')
-              <div class="invalid-feedback" id="group_name-error">{{ $message }}</div>
+            <label for="name">Customer Name</label>
+            <input class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+              type="text" value="{{ old('name') }}" @error('name') aria-describedby="name-error" @enderror
+              placeholder="Enter customer name" required>
+            @error('name')
+              <div class="invalid-feedback" id="name-error">{{ $message }}</div>
             @enderror
           </div>
         </div>
-        <div class="row">
-          <!-- group address -->
-          <div class="form-group col-md-6 mt-3">
-            <label for="group_address">Group Address</label>
-            <input class="form-control @error('group_address') is-invalid @enderror" id="group_address"
-              name="group_address" type="text" value="{{ old('group_address') }}"
-              @error('group_address') aria-describedby="group_address-error" @enderror
-              placeholder="Enter group name" required>
-            @error('group_address')
-              <div class="invalid-feedback" id="group_address-error">{{ $message }}</div>
-            @enderror
-          </div>
-          <!-- group by employee -->
-          <div class="form-group col-md-6 mt-3">
-            <label for="employee_id">Employee Name</label>
-            <select class="@error('employee_id') is_invalid @enderror form-select" id="employee_id"
-              name="employee_id" aria-label="Groups"
-              @error('employee_id') aria-describedby="employee_id-error" @enderror required>
-              <option disabled selected>--Select Employee--</option>
-              @forelse ($employees as $employee)
-                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-              @empty
-                <option disabled>No employee found</option>
-              @endforelse
-            </select>
-            @error('employee_id')
-              <div class="invalid-feedback" id="employee_id-error">{{ $message }}</div>
-            @enderror
-          </div>
+        <!-- customer address -->
+        <div class="form-group mt-3">
+          <label for="address">Customer Address</label>
+          <input class="form-control @error('address') is-invalid @enderror" id="address" name="address"
+            type="text" value="{{ old('address') }}"
+            @error('address') aria-describedby="address-error" @enderror placeholder="Enter customer address"
+            required>
+          @error('address')
+            <div class="invalid-feedback" id="address-error">{{ $message }}</div>
+          @enderror
+        </div>
+        <!-- customer phone -->
+        <div class="form-group mt-3">
+          <label for="phone">Customer Phone Number</label>
+          <input class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"
+            type="text" value="{{ old('phone') }}"
+            @error('phone') aria-describedby="phone-error" @enderror placeholder="Enter customer phone number"
+            required>
+          @error('phone')
+            <div class="invalid-feedback" id="phone-error">{{ $message }}</div>
+          @enderror
         </div>
         <div class="form-group mt-3">
           <label for="status">Status</label>
-          <select class="form-control @error('status') is-invalid @enderror" id="status" name="status"
+          <select class="form-select @error('status') is-invalid @enderror" id="status" name="status"
             @error('status') aria-describedby="status-error" @enderror required>
             <option value="active" selected>Active</option>
             <option value="inactive">Inactive</option>
           </select>
         </div>
-        <button class="btn btn-primary mt-4" type="submit">Add Group</button>
+        <button class="btn btn-primary mt-4" type="submit">Add Customer</button>
     </div>
   </div>
 @endsection
@@ -94,10 +84,9 @@
     $(document).ready(function() {
       $('button[type=submit]').click(function() {
         $(this).attr('disabled', true);
-        $(this).html('Adding Group <i class="fas fa-spinner fa-spin"></i>');
+        $(this).html('Adding Customer <i class="fas fa-spinner fa-spin"></i>');
         $(this).closest('form').submit();
       });
     });
   </script>
 @endpush
-

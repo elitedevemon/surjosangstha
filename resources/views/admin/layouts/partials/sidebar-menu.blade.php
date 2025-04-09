@@ -9,42 +9,38 @@
               <i class="ti ti-smart-home"></i><span>Dashboard</span>
             </a>
           </li>
-        </ul>
-      </li>
-      <!-- Commands -->
-      <li>
-        <ul>
+          <!-- Commands -->
           <li class="{{ Route::is('admin.command*') ? 'active' : '' }}">
             <a href="{{ route('admin.command.index') }}">
               <i class="ti ti-smart-home"></i><span>Commands</span>
             </a>
           </li>
-        </ul>
-      </li>
-      <li>
-        <ul>
           <li class="submenu">
-            <a href="javascript:void(0);">
+            <a class="{{ Route::is('admin.group*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-box"></i><span>Groups</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul>
-              <li><a href="{{ route('admin.group.index') }}">Group List</a></li>
-              <li><a href="{{ route('admin.group.create') }}">Add Group</a></li>
+            <ul style="{{ Route::is('admin.group*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.group.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.group.index') }}">Group List</a>
+              </li>
+              <li class="{{ Route::is('admin.group.create') ? 'active' : '' }}">
+                <a href="{{ route('admin.group.create') }}">Add Group</a>
+              </li>
             </ul>
           </li>
-        </ul>
-      </li>
-      <li>
-        <ul>
           <li class="submenu">
-            <a href="javascript:void(0);">
+            <a class="{{ Route::is('admin.customer*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-box"></i><span>Customers</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul>
-              <li><a href="{{ route('admin.group.index') }}">Customer List</a></li>
-              <li><a href="{{ route('admin.group.create') }}">Add Customer</a></li>
+            <ul style="{{ Route::is('admin.customer*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('admin.customer.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.customer.index') }}">Customer List</a>
+              </li>
+              <li class="{{ Route::is('admin.customer.create') ? 'active' : '' }}">
+                <a href="{{ route('admin.customer.create') }}">Add Customer</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -54,13 +50,15 @@
         <ul>
           <!-- Employees menu -->
           <li class="submenu">
-            <a href="javascript:void(0);" class="{{ Route::is('admin.employee*') ? 'subdrop' : '' }}">
+            <a class="{{ Route::is('admin.employee*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-users"></i><span>Employees</span>
               <span class="menu-arrow"></span>
             </a>
             <ul style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
-              <li class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}"><a
-                  href="{{ route('admin.employee.list') }}">Employee Lists</a></li>
+              <li
+                class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}">
+                <a href="{{ route('admin.employee.list') }}">Employee Lists</a>
+              </li>
               <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a
                   href="{{ route('admin.employee.create') }}">Add Employee</a></li>
               <li><a href="{{ route('admin.salary-info.index') }}">Salary Info</a></li>
@@ -71,13 +69,15 @@
 
           <!-- Branches menu -->
           <li class="submenu">
-            <a href="javascript:void(0);" class="{{ Route::is('admin.branch*') ? 'subdrop' : '' }}">
+            <a class="{{ Route::is('admin.branch*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-users"></i><span>Branch</span>
               <span class="menu-arrow"></span>
             </a>
             <ul style="{{ Route::is('admin.branch*') ? 'display:block' : '' }}">
-              <li class="{{ Route::is('admin.branch.index') || Route::is('admin.branch.show') ? 'active' : '' }}"><a
-                  href="{{ route('admin.branch.index') }}">Branch List</a></li>
+              <li
+                class="{{ Route::is('admin.branch.index') || Route::is('admin.branch.show') ? 'active' : '' }}">
+                <a href="{{ route('admin.branch.index') }}">Branch List</a>
+              </li>
               <li class="{{ Route::is('admin.branch.create') ? 'active' : '' }}"><a
                   href="{{ route('admin.branch.create') }}">Add Branch</a></li>
             </ul>
@@ -85,7 +85,7 @@
 
           <!-- Designation menu -->
           <li class="submenu">
-            <a href="javascript:void(0);" class="{{ Route::is('admin.designation*') ? 'subdrop' : '' }}">
+            <a class="{{ Route::is('admin.designation*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-users"></i><span>Designation</span>
               <span class="menu-arrow"></span>
             </a>
@@ -101,7 +101,7 @@
 
           <!-- DPS menu -->
           <li class="submenu">
-            <a href="javascript:void(0);" class="{{ Route::is('admin.dps*') ? 'subdrop' : '' }}">
+            <a class="{{ Route::is('admin.dps*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-users"></i><span>DPS</span>
               <span class="menu-arrow"></span>
             </a>
@@ -112,7 +112,6 @@
                   href="{{ route('admin.dps.create') }}">Add New DPS</a></li>
             </ul>
           </li>
-
 
           <li class="submenu">
             <a href="javascript:void(0);">
@@ -130,7 +129,7 @@
             </a>
           </li>
           <li class="submenu">
-            <a href="javascript:void(0);" class="{{ Route::is('admin.attendance*') ? 'subdrop' : '' }}">
+            <a class="{{ Route::is('admin.attendance*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-file-time"></i><span>Attendance</span>
               <span class="menu-arrow"></span>
             </a>
@@ -260,7 +259,8 @@
             </a>
             <ul>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">General Settings<span class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">General Settings<span
+                    class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="profile-settings.html">Profile</a></li>
                   <li><a href="security-settings.html">Security</a></li>
@@ -269,7 +269,8 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">Website Settings<span class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">Website Settings<span
+                    class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="bussiness-settings.html">Business Settings</a></li>
                   <li><a href="seo-settings.html">SEO Settings</a></li>
@@ -283,7 +284,8 @@
                 </ul>
               </li>
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">App Settings<span class="menu-arrow inside-submenu"></span></a>
+                <a href="javascript:void(0);">App Settings<span
+                    class="menu-arrow inside-submenu"></span></a>
                 <ul>
                   <li><a href="salary-settings.html">Salary Settings</a></li>
                   <li><a href="approval-settings.html">Approval Settings</a></li>

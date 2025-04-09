@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\EmployeeDpsController;
@@ -74,6 +75,10 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
   # Groups related routes
   Route::resource('group', GroupController::class)->except('show');
   Route::post('group/change/status/', [GroupController::class, 'changeStatus'])->name('group.change.status');
+
+  # Customers related routes
+  Route::resource('customer', CustomerController::class)->except('show');
+  Route::post('customer/change/status/', [CustomerController::class, 'changeStatus'])->name('customer.change.status');
 
 });
 
