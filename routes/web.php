@@ -82,6 +82,8 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
 
   # Target related routes
   Route::get('/target', [\App\Http\Controllers\Admin\TargetController::class, 'index'])->name('target.index');
+  Route::post('target/check', [\App\Http\Controllers\Admin\TargetController::class, 'check'])->name('target.check');
+  Route::post('/target/store', [\App\Http\Controllers\Admin\TargetController::class, 'store'])->name('target.store');
 
 });
 

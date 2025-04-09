@@ -12,7 +12,15 @@ return new class extends Migration {
   {
     Schema::create('targets', function (Blueprint $table) {
       $table->id();
-      
+      $table->foreignId('employee_id')->constrained()->onDelete('cascade');
+      $table->integer('admission')->default(0);
+      $table->integer('collection')->default(0);
+      $table->integer('new_od')->default(0);
+      $table->integer('od_realization')->default(0);
+      $table->integer('savings')->default(0);
+      $table->integer('disbursement')->default(0);
+      $table->integer('late_od_realization')->default(0);
+      $table->integer('loan_scheme')->default(0);
       $table->timestamps();
     });
   }

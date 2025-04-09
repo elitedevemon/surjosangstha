@@ -1,103 +1,125 @@
 @extends('admin.layouts.master')
-@section('title', 'Add Group')
+@section('title', 'Daily Target')
 
 @section('content')
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Add Group</h5>
-      <form action="{{ route('admin.group.store') }}" method="POST">
+      <h5 class="card-title">Add Target</h5>
+      <form id="target-form">
         @csrf
+        <!-- group by employee -->
         <div class="form-group mt-3">
-          <!-- branch name -->
-          <label for="branch_id">Branch Name</label>
-          <select class="@error('branch_id') is_invalid @enderror form-select" id="branch_id" name="branch_id"
-            aria-label="Groups" @error('branch_id') aria-describedby="branch_id-error" @enderror required>
-            <option disabled selected>--Select Branch--</option>
-            @forelse ($branches as $branch)
-              <option value="{{ $branch->id }}">{{ $branch->branch_name }}</option>
+          <label for="employee_id">Employee Name</label>
+          <select class="@error('employee_id') is_invalid @enderror form-select" id="employee_id"
+            name="employee_id" aria-label="Groups"
+            @error('employee_id') aria-describedby="employee_id-error" @enderror required>
+            <option disabled selected>--Select Employee--</option>
+            @forelse ($employees as $employee)
+              <option value="{{ $employee->id }}">{{ $employee->name }}</option>
             @empty
-              <option disabled>No branches found</option>
+              <option disabled>No employee found</option>
             @endforelse
           </select>
-          @error('branch_id')
-            <div class="invalid-feedback" id="branch_id-error">{{ $message }}</div>
+          @error('employee_id')
+            <div class="invalid-feedback" id="employee_id-error">{{ $message }}</div>
           @enderror
         </div>
-        <!-- group code & group name -->
-        <div class="row">
-          <div class="form-group col-md-6 mt-3">
-            <label for="group_code">Group Code</label>
-            <input class="form-control @error('group_code') is-invalid @enderror" id="group_code"
-              name="group_code" type="text" value="{{ old('group_code') }}"
-              @error('group_code') aria-describedby="group_code-error" @enderror placeholder="Enter group code"
-              required>
-            @error('group_code')
-              <div class="invalid-feedback" id="group_code-error">{{ $message }}</div>
-            @enderror
-          </div>
-          <div class="form-group col-md-6 mt-3">
-            <label for="group_name">Group Name</label>
-            <input class="form-control @error('group_name') is-invalid @enderror" id="group_name"
-              name="group_name" type="text" value="{{ old('group_name') }}"
-              @error('group_name') aria-describedby="group_name-error" @enderror placeholder="Enter group name"
-              required>
-            @error('group_name')
-              <div class="invalid-feedback" id="group_name-error">{{ $message }}</div>
-            @enderror
-          </div>
+
+        <!-- group by target -->
+        <div class="row" id="target-fields">
+
         </div>
-        <div class="row">
-          <!-- group address -->
-          <div class="form-group col-md-6 mt-3">
-            <label for="group_address">Group Address</label>
-            <input class="form-control @error('group_address') is-invalid @enderror" id="group_address"
-              name="group_address" type="text" value="{{ old('group_address') }}"
-              @error('group_address') aria-describedby="group_address-error" @enderror
-              placeholder="Enter group name" required>
-            @error('group_address')
-              <div class="invalid-feedback" id="group_address-error">{{ $message }}</div>
-            @enderror
-          </div>
-          <!-- group by employee -->
-          <div class="form-group col-md-6 mt-3">
-            <label for="employee_id">Employee Name</label>
-            <select class="@error('employee_id') is_invalid @enderror form-select" id="employee_id"
-              name="employee_id" aria-label="Groups"
-              @error('employee_id') aria-describedby="employee_id-error" @enderror required>
-              <option disabled selected>--Select Employee--</option>
-              @forelse ($employees as $employee)
-                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-              @empty
-                <option disabled>No employee found</option>
-              @endforelse
-            </select>
-            @error('employee_id')
-              <div class="invalid-feedback" id="employee_id-error">{{ $message }}</div>
-            @enderror
-          </div>
-        </div>
-        <div class="form-group mt-3">
-          <label for="status">Status</label>
-          <select class="form-control @error('status') is-invalid @enderror" id="status" name="status"
-            @error('status') aria-describedby="status-error" @enderror required>
-            <option value="active" selected>Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </div>
-        <button class="btn btn-primary mt-4" type="submit">Add Group</button>
+        <button class="btn btn-primary mt-4" type="submit" disabled>Add Target</button>
+      </form>
     </div>
   </div>
 @endsection
 
 @push('scripts')
+  <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
   <script>
     $(document).ready(function() {
       $('button[type=submit]').click(function() {
         $(this).attr('disabled', true);
-        $(this).html('Adding Group <i class="fas fa-spinner fa-spin"></i>');
+        $(this).html('Adding Target <i class="fas fa-spinner fa-spin"></i>');
         $(this).closest('form').submit();
+      });
+
+      // update the target record
+      $('#target-form').on('submit', function(e) {
+        e.preventDefault();
+
+        let formData = new FormData(this);
+
+        $.ajax({
+          url: "{{ route('admin.target.store') }}", // update this to your correct route
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          beforeSend: function() {
+            $('.invalid-feedback').text(''); // Clear previous errors
+            $('button[type="submit"]').attr('disabled', true);
+          },
+          success: function(response) {
+            toastr.success(response.message);
+            // Clear the form fields
+            $('button[type="submit"]').attr('disabled', false);
+            $('button[type="submit"]').html('Add Target');
+          },
+          error: function(xhr) {
+            if (xhr.status === 422) {
+              let errors = xhr.responseJSON.errors;
+              $.each(errors, function(key, val) {
+                // Display error messages for each field
+                $('#' + key).addClass('is_invalid');
+                $('#' + key).attr('aria-describedby', key + '-error');
+                $('#' + key + '-error').text(val[0]);
+                // Display toastr error message
+                toastr.error(val[0]);
+              });
+              
+              $('button[type="submit"]').attr('disabled', false);
+              $('button[type="submit"]').html('Add Target');
+            } else {
+              toastr.error('Something went wrong!');
+              $('button[type="submit"]').attr('disabled', false);
+              $('button[type="submit"]').html('Add Target');
+            }
+            $('button[type="submit"]').attr('disabled', false);
+          }
+        });
+      });
+
+      // Search the employee record
+      $('#employee_id').on('change', function() {
+        $('button[type="submit"]').prop('disabled', false);
+        let employeeId = $(this).val();
+
+        $.ajax({
+          url: "{{ route('admin.target.check') }}",
+          type: 'POST',
+          data: {
+            employee_id: employeeId,
+            _token: '{{ csrf_token() }}'
+          },
+          beforeSend: function() {
+            $('.card-title').html(
+            'Add Target <i class="fas fa-spinner fa-spin"></i>'); // Clear previous fields
+          },
+          success: function(response) {
+            $('#target-fields').html(response.html);
+            $('.card-title').html('Add Target'); // Clear previous fields
+          },
+          error: function(xhr) {
+            console.error(xhr);
+          }
+        });
       });
     });
   </script>
 @endpush
 
+@push('styles')
+  <link href="{{ asset('vendor/flasher/toastr.min.css') }}" rel="stylesheet">
+@endpush
