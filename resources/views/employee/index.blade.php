@@ -1729,15 +1729,6 @@
     document.getElementById("punch-out-btn").addEventListener("click", punchOut);
   </script>
 
-  <script>
-    //logout function
-    function confirmLogout(event, element) {
-      event.preventDefault();
-      if (confirm("Are you sure you want to log out?")) {
-        element.closest('form').submit();
-      }
-    }
-  </script>
 @endpush
 
 @push('styles')

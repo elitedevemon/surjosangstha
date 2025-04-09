@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GroupRequest;
 use App\Models\Admin\Groups;
-use App\Models\Branch;
-use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -16,19 +15,9 @@ class GroupController extends Controller
    */
   public function index()
   {
-    $groups = Groups::with(['employee:id,name', 'branch:id,branch_name', 'customer:id,group_id'])->get();
+    $groups = Groups::with(['customer:id,group_id'])->where('employee_id', Auth::user()->employee_id)->get();
     // return $groups;
-    return view('admin.pages.groups.index', compact('groups'));
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    $branches = Branch::all();
-    $employees = Employee::all();
-    return view('admin.pages.groups.create', compact(['branches', 'employees']));
+    return view('employee.pages.groups.index', compact('groups'));
   }
 
   /**
@@ -39,7 +28,7 @@ class GroupController extends Controller
     try {
       Groups::create($request->all());
       toastr()->success('Group has been created successfully');
-      return redirect()->route('admin.group.index')->with('success', 'Group has been created successfully');
+      return redirect()->route('employee.group.index')->with('success', 'Group has been created successfully');
     } catch (\Throwable $th) {
       toastr()->error('Something went wrong');
       return back();
@@ -47,21 +36,11 @@ class GroupController extends Controller
   }
 
   /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    //
-  }
-
-  /**
    * Show the form for editing the specified resource.
    */
   public function edit(Groups $group)
   {
-    $branches = Branch::all();
-    $employees = Employee::all();
-    return view('admin.pages.groups.edit', compact(['group','branches','employees']));
+    return view('employee.pages.groups.edit', compact('group'));
   }
 
   /**
@@ -71,8 +50,8 @@ class GroupController extends Controller
   {
     try {
       $group->update($request->all());
-      toastr()->success('Group edited sucessfully');
-      return redirect()->route('admin.group.index');
+      toastr()->success('Group edited successfully');
+      return redirect()->route('employee.group.index');
     } catch (\Throwable $th) {
       toastr()->error('Something went wrong');
       return back();
@@ -80,19 +59,13 @@ class GroupController extends Controller
   }
 
   /**
-   * Remove the specified resource from storage.
+   * Show the form for creating a new resource.
    */
-  public function destroy(Groups $group)
+  public function create()
   {
-    try {
-      $group->delete();
-      toastr()->success('Group deleted successfully');
-      return back();
-    } catch (\Throwable $th) {
-      toastr()->error('Something went wrong');
-      return back();
-    }
+    return view('employee.pages.groups.create');
   }
+
 
   public function changeStatus(Request $request)
   {

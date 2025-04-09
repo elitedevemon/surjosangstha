@@ -53,3 +53,13 @@
   <script src="{{ asset('assets/js/theme-colorpicker.js') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
 
+  <script>
+    //logout function
+    function confirmLogout(event, element) {
+      event.preventDefault();
+      if (confirm("Are you sure you want to log out?")) {
+        element.closest('form').submit();
+      }
+    }
+  </script>
+

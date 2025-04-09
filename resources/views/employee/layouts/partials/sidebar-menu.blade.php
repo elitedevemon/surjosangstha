@@ -4,28 +4,31 @@
       <li class="menu-title"><span>MAIN MENU</span></li>
       <li>
         <ul>
-          <li class="{{ Route::is('admin.dashboard') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}">
+          <!-- Dashboard -->
+          <li class="{{ Route::is('employee.dashboard') ? 'active' : '' }}">
+            <a href="{{ route('employee.dashboard') }}">
               <i class="ti ti-smart-home"></i><span>Dashboard</span>
             </a>
           </li>
-        </ul>
-      </li>
-      <!-- Groups -->
-      <li>
-        <ul>
+
+          <!-- Groups menu -->
           <li class="submenu">
-            <a href="javascript:void(0);">
+            <a class="{{ Route::is('employee.group*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-box"></i><span>Groups</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul>
-              <li><a href="projects-grid.html">Group List</a></li>
-              <li><a href="projects-grid.html">Add Group</a></li>
+            <ul style="{{ Route::is('employee.group*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('employee.group.index') ? 'active' : '' }}">
+                <a href="{{ route('employee.group.index') }}">Group List</a>
+              </li>
+              <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
+                <a href="{{ route('employee.group.create') }}">Add Group</a>
+              </li>
             </ul>
           </li>
         </ul>
       </li>
+
       <li class="menu-title"><span>FINANCE & ACCOUNTS</span></li>
       <li>
         <ul>

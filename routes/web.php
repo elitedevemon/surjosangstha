@@ -87,12 +87,22 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
 
 });
 
+// employee routes
 Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){
-  // Route::view('/', 'employee.index')->name('dashboard');
   Route::get('/', function(){
     $attendance = Auth::user()->attendance()->whereDate('created_at', now())->whereNull('punch_out_time')->first();
     return view('employee.index', compact('attendance'));
   })->name('dashboard');
+
+  # attendance related routes
   Route::post('/attendance/punch-in', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchIn'])->name('attendance.punch-in');
   Route::post('/attendance/punch-out', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchOut'])->name('attendance.punch-out');
+
+  # group related routes
+  Route::get('/group', [\App\Http\Controllers\Employee\GroupController::class, 'index'])->name('group.index');
+  Route::get('/group/create', [\App\Http\Controllers\Employee\GroupController::class, 'create'])->name('group.create');
+  Route::post('/group/store', [\App\Http\Controllers\Employee\GroupController::class, 'store'])->name('group.store');
+  Route::get('/group/edit/{group}', [\App\Http\Controllers\Employee\GroupController::class, 'edit'])->name('group.edit');
+  Route::put('/group/update/{group}', [\App\Http\Controllers\Employee\GroupController::class, 'update'])->name('group.update');
+  Route::post('group/change/status/', [\App\Http\Controllers\Employee\GroupController::class, 'changeStatus'])->name('group.change.status');
 });
