@@ -80,6 +80,9 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
   Route::resource('customer', CustomerController::class)->except('show');
   Route::post('customer/change/status/', [CustomerController::class, 'changeStatus'])->name('customer.change.status');
 
+  # Target related routes
+  Route::get('/target', [\App\Http\Controllers\Admin\TargetController::class, 'index'])->name('target.index');
+
 });
 
 Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){

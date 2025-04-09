@@ -20,4 +20,9 @@ class Groups extends Model
   {
     return $this->belongsTo(Branch::class);
   }
+
+  public function customer()
+  {
+    return $this->hasMany(Customer::class, 'group_id');
+  }
 }

@@ -16,7 +16,7 @@ class GroupController extends Controller
    */
   public function index()
   {
-    $groups = Groups::with(['employee:id,name', 'branch:id,branch_name'])->get();
+    $groups = Groups::with(['employee:id,name', 'branch:id,branch_name', 'customer:id,group_id'])->get();
     // return $groups;
     return view('admin.pages.groups.index', compact('groups'));
   }

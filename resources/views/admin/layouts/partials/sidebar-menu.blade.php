@@ -15,6 +15,7 @@
               <i class="ti ti-smart-home"></i><span>Commands</span>
             </a>
           </li>
+          <!-- Groups menu -->
           <li class="submenu">
             <a class="{{ Route::is('admin.group*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-box"></i><span>Groups</span>
@@ -29,6 +30,7 @@
               </li>
             </ul>
           </li>
+          <!-- Customers menu -->
           <li class="submenu">
             <a class="{{ Route::is('admin.customer*') ? 'subdrop' : '' }}" href="javascript:void(0);">
               <i class="ti ti-box"></i><span>Customers</span>
@@ -43,30 +45,6 @@
               </li>
             </ul>
           </li>
-        </ul>
-      </li>
-      <li class="menu-title"><span>HRM</span></li>
-      <li>
-        <ul>
-          <!-- Employees menu -->
-          <li class="submenu">
-            <a class="{{ Route::is('admin.employee*') ? 'subdrop' : '' }}" href="javascript:void(0);">
-              <i class="ti ti-users"></i><span>Employees</span>
-              <span class="menu-arrow"></span>
-            </a>
-            <ul style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
-              <li
-                class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}">
-                <a href="{{ route('admin.employee.list') }}">Employee Lists</a>
-              </li>
-              <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a
-                  href="{{ route('admin.employee.create') }}">Add Employee</a></li>
-              <li><a href="{{ route('admin.salary-info.index') }}">Salary Info</a></li>
-              <li><a href="#">PF Info</a></li>
-              <li><a href="#">DPS Info</a></li>
-            </ul>
-          </li>
-
           <!-- Branches menu -->
           <li class="submenu">
             <a class="{{ Route::is('admin.branch*') ? 'subdrop' : '' }}" href="javascript:void(0);">
@@ -96,6 +74,36 @@
               </li>
               <li class="{{ Route::is('admin.designation.create') ? 'active' : '' }}"><a
                   href="{{ route('admin.designation.create') }}">Add Designation</a></li>
+            </ul>
+          </li>
+
+          <!-- Target menu -->
+          <li class="{{ Route::is('admin.target.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.target.index') }}">
+              <i class="ti ti-smart-home"></i><span>Target</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="menu-title"><span>HRM</span></li>
+      <li>
+        <ul>
+          <!-- Employees menu -->
+          <li class="submenu">
+            <a class="{{ Route::is('admin.employee*') ? 'subdrop' : '' }}" href="javascript:void(0);">
+              <i class="ti ti-users"></i><span>Employees</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
+              <li
+                class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}">
+                <a href="{{ route('admin.employee.list') }}">Employee Lists</a>
+              </li>
+              <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a
+                  href="{{ route('admin.employee.create') }}">Add Employee</a></li>
+              <li><a href="{{ route('admin.salary-info.index') }}">Salary Info</a></li>
+              <li><a href="#">PF Info</a></li>
+              <li><a href="#">DPS Info</a></li>
             </ul>
           </li>
 

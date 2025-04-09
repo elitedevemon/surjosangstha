@@ -13,15 +13,15 @@
         <table class="table-striped table-hover table" id="employeeTable">
           <thead>
             <tr>
-              <th scope="col">SI</th>
-              <th scope="col">Code</th>
-              <th scope="col">Name</th>
-              <th scope="col">Address</th>
-              <th scope="col">By Group</th>
-              <th scope="col">By Employee</th>
-              <th scope="col">By Branch</th>
-              <th scope="col">Status</th>
-              <th scope="col">Action</th>
+              <th class="col-si">SI</th>
+              <th class="col-code">Code</th>
+              <th class="col-name">Name</th>
+              <th class="col-address">Address</th>
+              <th class="col-group">By Group</th>
+              <th class="col-employee">By Employee</th>
+              <th class="col-branch">By Branch</th>
+              <th class="col-status">Status</th>
+              <th class="col-action">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -66,6 +66,7 @@
           </tbody>
         </table>
       </div>
+      {{ $customers->links('pagination::bootstrap-5') }}
     </div>
   </div>
 @endsection
@@ -113,4 +114,41 @@
 
 @push('styles')
   <link href="{{ asset('vendor/flasher/toastr.min.css') }}" rel="stylesheet">
+  <style>
+    th.col-si {
+      width: 3%;
+    }
+
+    th.col-code {
+      width: 8%;
+    }
+
+    th.col-name {
+      width: 20%;
+    }
+
+    th.col-address {
+      width: 20%;
+    }
+
+    th.col-group,
+    th.col-employee,
+    th.col-branch {
+      width: 12%;
+    }
+
+    th.col-status {
+      width: 7%;
+    }
+
+    th.col-action {
+      width: 6%;
+    }
+
+    .table th,
+    .table td {
+      padding: 5px;
+      white-space: normal !important;
+    }
+  </style>
 @endpush

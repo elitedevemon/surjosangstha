@@ -33,7 +33,7 @@
                 <td>{{ $group->group_address }}</td>
                 <td>{{ $group->employee->name }}</td>
                 <td>{{ $group->branch->branch_name }}</td>
-                <td>0</td>
+                <td>{{ count($group->customer) ?? 0 }}</td>
                 <td>
                   <div class="form-check form-switch">
                     <input class="form-check-input status-btn" data-id="{{ $group->id }}" type="checkbox"
