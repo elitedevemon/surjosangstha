@@ -26,6 +26,21 @@
               </li>
             </ul>
           </li>
+          <!-- Customers menu -->
+          <li class="submenu">
+            <a class="{{ Route::is('employee.customer*') ? 'subdrop' : '' }}" href="javascript:void(0);">
+              <i class="ti ti-box"></i><span>Customers</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul style="{{ Route::is('employee.customer*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('employee.customer.index') ? 'active' : '' }}">
+                <a href="{{ route('employee.customer.index') }}">Customer List</a>
+              </li>
+              <li class="{{ Route::is('employee.customer.create') ? 'active' : '' }}">
+                <a href="{{ route('employee.customer.create') }}">Add Customer</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </li>
 

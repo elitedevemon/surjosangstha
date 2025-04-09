@@ -105,4 +105,8 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
   Route::get('/group/edit/{group}', [\App\Http\Controllers\Employee\GroupController::class, 'edit'])->name('group.edit');
   Route::put('/group/update/{group}', [\App\Http\Controllers\Employee\GroupController::class, 'update'])->name('group.update');
   Route::post('group/change/status/', [\App\Http\Controllers\Employee\GroupController::class, 'changeStatus'])->name('group.change.status');
+
+  # customer related routes
+  Route::resource('customer', \App\Http\Controllers\Employee\CustomerController::class)->except('show', 'destroy');
+  Route::post('customer/change/status/', [CustomerController::class, 'changeStatus'])->name('customer.change.status');
 });
