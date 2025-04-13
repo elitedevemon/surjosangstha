@@ -138,5 +138,7 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
     Route::get('new-od/edit/{overdue}', [ODController::class, 'newOdEdit'])->name('new-od.edit');
     Route::put('new-od/update/{overdue}', [ODController::class, 'newOdUpdate'])->name('new-od.update');
 
+    # od realization
+    Route::get('od-realization', [ODController::class, 'odRealizationIndex'])->name('od-realization.index');
   });
 });

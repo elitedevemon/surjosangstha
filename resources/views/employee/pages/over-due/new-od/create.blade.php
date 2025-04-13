@@ -22,6 +22,7 @@
           @csrf
 
           <input id="customer_id_field" name="customer_id" type="hidden">
+          <input id="customer_od_status_field" name="od_status" type="hidden">
           <input type="hidden" name="employee_id" value="{{ auth()->user()->employee_id }}">
 
           <div class="mb-3">
@@ -32,15 +33,6 @@
           <div class="mb-3">
             <label class="form-label">Due Paid Date</label>
             <input class="form-control" name="due_paid_date" type="date" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Overdue Status</label>
-            <select class="form-select" name="od_status" required>
-              <option value="">-- Select Status --</option>
-              <option value="new">New</option>
-              <option value="block">Block Customer</option>
-            </select>
           </div>
 
           <button class="btn btn-primary" type="submit" id="submit_overdue">Save Overdue</button>
@@ -73,6 +65,7 @@
               `Customer: <strong>${response.data.name}</strong> (ID: ${response.data.code})` +
               `<br>Address: ${response.data.address}`);
             $('#customer_id_field').val(response.data.id);
+            $('#customer_od_status_field').val(response.data.od_status);
             $('#message').html('');
             $('#search_customer_btn').html('Search Customer');
           } else {

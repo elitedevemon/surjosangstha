@@ -62,10 +62,6 @@
                 <a class="menu-item" id="add-group" href="{{ route('employee.group.create') }}">OD
                   Realization</a>
               </li>
-              <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
-                <a class="menu-item" id="add-group" href="{{ route('employee.group.create') }}">Late OD
-                  Realization</a>
-              </li>
             </ul>
           </li>
         </ul>

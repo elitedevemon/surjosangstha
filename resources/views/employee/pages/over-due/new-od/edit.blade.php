@@ -15,8 +15,9 @@
           @csrf
           @method('PUT')
 
-          <input id="customer_id_field" name="customer_id" type="hidden" value="{{ $overdue->customer_id }}">
+          <input name="customer_id" type="hidden" value="{{ $overdue->customer_id }}">
           <input name="employee_id" type="hidden" value="{{ auth()->user()->employee_id }}">
+          <input name="od_status" type="hidden" value="{{ $overdue->od_status }}">
 
           <div class="mb-3">
             <label class="form-label">Overdue Amount (৳)</label>
@@ -29,16 +30,6 @@
             <input class="form-control" name="due_paid_date" type="date"
               value="{{ $overdue->due_paid_date ? \Carbon\Carbon::parse($overdue->due_paid_date)->format('Y-m-d') : '' }}"
               required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Overdue Status</label>
-            <select class="form-select" name="od_status" required>
-              <option value="">-- Select Status --</option>
-              <option value="new" {{ $overdue->od_status === 'new' ? 'selected' : '' }}>New</option>
-              <option value="block" {{ $overdue->od_status === 'block' ? 'selected' : '' }}>Block Customer
-              </option>
-            </select>
           </div>
 
           <button class="btn btn-primary" id="submit_overdue" type="submit">Save Overdue</button>

@@ -17,7 +17,6 @@ class ODController extends Controller
 
     $customers = OverDue::with('customer')
       ->where('paid_status', 'pending')
-      ->where('od_status', 'new')
       ->where('employee_id', Auth::user()->employee_id)
       ->whereDate('created_at', $today)
       ->paginate(10);
@@ -91,5 +90,17 @@ class ODController extends Controller
       toastr()->error('Something went wrong');
       return back();
     }
+  }
+
+  public function odRealizationIndex()
+  {
+    $today = Carbon::today();
+
+    $customers = OverDue::with('customer')
+      ->where('paid_status', 'pending')
+      ->where('employee_id', Auth::user()->employee_id)
+      ->whereDate('created_at', $today)
+      ->paginate(10);
+    return view("employee.pages.over-due.od-realization.index", compact("customers"));
   }
 }
