@@ -6,7 +6,7 @@
         <ul>
           <!-- Dashboard -->
           <li class="{{ Route::is('employee.dashboard') ? 'active' : '' }}">
-            <a href="{{ route('employee.dashboard') }}">
+            <a href="{{ route('employee.dashboard') }}" class="menu-item" id="dashboard">
               <i class="ti ti-smart-home"></i><span>Dashboard</span>
             </a>
           </li>
@@ -19,10 +19,10 @@
             </a>
             <ul style="{{ Route::is('employee.group*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('employee.group.index') ? 'active' : '' }}">
-                <a href="{{ route('employee.group.index') }}">Group List</a>
+                <a href="{{ route('employee.group.index') }}" class="menu-item" id="group-list">Group List</a>
               </li>
               <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
-                <a href="{{ route('employee.group.create') }}">Add Group</a>
+                <a href="{{ route('employee.group.create') }}" class="menu-item" id="add-group">Add Group</a>
               </li>
             </ul>
           </li>
@@ -34,10 +34,13 @@
             </a>
             <ul style="{{ Route::is('employee.customer*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('employee.customer.index') ? 'active' : '' }}">
-                <a href="{{ route('employee.customer.index') }}">Customer List</a>
+                <a href="{{ route('employee.customer.index') }}" class="menu-item" id="customer-list">Customer List</a>
+              </li>
+              <li class="{{ Route::is('employee.customer.block-od') ? 'active' : '' }}">
+                <a href="{{ route('employee.customer.block-od') }}" class="menu-item" id="block-od-list">Block OD List</a>
               </li>
               <li class="{{ Route::is('employee.customer.create') ? 'active' : '' }}">
-                <a href="{{ route('employee.customer.create') }}">Add Customer</a>
+                <a href="{{ route('employee.customer.create') }}" class="menu-item" id="add-customer">Add Customer</a>
               </li>
             </ul>
           </li>

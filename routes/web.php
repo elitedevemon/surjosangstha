@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\BlockODController;
+use App\Http\Controllers\Admin\DailyReportController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GroupController;
+use App\Http\Controllers\Admin\ODReportController;
 use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Employee\BlockCustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\EmployeeDpsController;
@@ -85,6 +89,18 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
   Route::post('target/check', [\App\Http\Controllers\Admin\TargetController::class, 'check'])->name('target.check');
   Route::post('/target/store', [\App\Http\Controllers\Admin\TargetController::class, 'store'])->name('target.store');
 
+  # Report related route
+  Route::prefix('reports')->name('report.')->group(function(){
+    # daily report
+    Route::get('daily-report', [DailyReportController::class,'index'])->name('daily-report');
+
+    # block od
+    Route::get('block-od', [BlockODController::class,'index'])->name('block-od');
+
+    # od reports
+    Route::get('od-report', [ODReportController::class, 'index'])->name('od-report');
+  });
+
 });
 
 // employee routes
@@ -109,4 +125,5 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
   # customer related routes
   Route::resource('customer', \App\Http\Controllers\Employee\CustomerController::class)->except('show', 'destroy');
   Route::post('customer/change/status/', [CustomerController::class, 'changeStatus'])->name('customer.change.status');
+  Route::get('customer/block_od', [BlockCustomerController::class, 'index'])->name('customer.block-od');
 });

@@ -5,13 +5,13 @@
       <li>
         <ul>
           <li class="{{ Route::is('admin.dashboard') ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="{{ route('admin.dashboard') }}" class="admin-menu-item" id="dashboard">
               <i class="ti ti-smart-home"></i><span>Dashboard</span>
             </a>
           </li>
           <!-- Commands -->
           <li class="{{ Route::is('admin.command*') ? 'active' : '' }}">
-            <a href="{{ route('admin.command.index') }}">
+            <a href="{{ route('admin.command.index') }}" class="admin-menu-item" id="commands">
               <i class="ti ti-smart-home"></i><span>Commands</span>
             </a>
           </li>
@@ -23,10 +23,10 @@
             </a>
             <ul style="{{ Route::is('admin.group*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('admin.group.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.group.index') }}">Group List</a>
+                <a href="{{ route('admin.group.index') }}" class="admin-menu-item" id="group-list">Group List</a>
               </li>
               <li class="{{ Route::is('admin.group.create') ? 'active' : '' }}">
-                <a href="{{ route('admin.group.create') }}">Add Group</a>
+                <a href="{{ route('admin.group.create') }}" class="admin-menu-item" id="add-group">Add Group</a>
               </li>
             </ul>
           </li>
@@ -38,10 +38,10 @@
             </a>
             <ul style="{{ Route::is('admin.customer*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('admin.customer.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.customer.index') }}">Customer List</a>
+                <a href="{{ route('admin.customer.index') }}" class="admin-menu-item" id="customer-list">Customer List</a>
               </li>
               <li class="{{ Route::is('admin.customer.create') ? 'active' : '' }}">
-                <a href="{{ route('admin.customer.create') }}">Add Customer</a>
+                <a href="{{ route('admin.customer.create') }}" class="admin-menu-item" id="add-customer">Add Customer</a>
               </li>
             </ul>
           </li>
@@ -54,10 +54,10 @@
             <ul style="{{ Route::is('admin.branch*') ? 'display:block' : '' }}">
               <li
                 class="{{ Route::is('admin.branch.index') || Route::is('admin.branch.show') ? 'active' : '' }}">
-                <a href="{{ route('admin.branch.index') }}">Branch List</a>
+                <a href="{{ route('admin.branch.index') }}" class="admin-menu-item" id="branch-list">Branch List</a>
               </li>
               <li class="{{ Route::is('admin.branch.create') ? 'active' : '' }}"><a
-                  href="{{ route('admin.branch.create') }}">Add Branch</a></li>
+                  href="{{ route('admin.branch.create') }}" class="admin-menu-item" id="add-branch">Add Branch</a></li>
             </ul>
           </li>
 
@@ -70,16 +70,16 @@
             <ul style="{{ Route::is('admin.designation*') ? 'display:block' : '' }}">
               <li
                 class="{{ Route::is('admin.designation.index') || Route::is('admin.designation.show') ? 'active' : '' }}">
-                <a href="{{ route('admin.designation.index') }}">Designation List</a>
+                <a href="{{ route('admin.designation.index') }}" class="admin-menu-item" id="designation-list">Designation List</a>
               </li>
               <li class="{{ Route::is('admin.designation.create') ? 'active' : '' }}"><a
-                  href="{{ route('admin.designation.create') }}">Add Designation</a></li>
+                  href="{{ route('admin.designation.create') }}" class="admin-menu-item" id="add-designation">Add Designation</a></li>
             </ul>
           </li>
 
           <!-- Target menu -->
           <li class="{{ Route::is('admin.target.index') ? 'active' : '' }}">
-            <a href="{{ route('admin.target.index') }}">
+            <a href="{{ route('admin.target.index') }}" class="admin-menu-item" id="target">
               <i class="ti ti-smart-home"></i><span>Target</span>
             </a>
           </li>
@@ -97,11 +97,11 @@
             <ul style="{{ Route::is('admin.employee*') ? 'display:block' : '' }}">
               <li
                 class="{{ Route::is('admin.employee.list') || Route::is('admin.employee.show') ? 'active' : '' }}">
-                <a href="{{ route('admin.employee.list') }}">Employee Lists</a>
+                <a href="{{ route('admin.employee.list') }}" class="admin-menu-item" id="employee-list">Employee Lists</a>
               </li>
               <li class="{{ Route::is('admin.employee.create') ? 'active' : '' }}"><a
-                  href="{{ route('admin.employee.create') }}">Add Employee</a></li>
-              <li><a href="{{ route('admin.salary-info.index') }}">Salary Info</a></li>
+                  href="{{ route('admin.employee.create') }}" class="admin-menu-item" id="add-employee">Add Employee</a></li>
+              <li><a href="{{ route('admin.salary-info.index') }}" class="admin-menu-item" id="salary-info">Salary Info</a></li>
               <li><a href="#">PF Info</a></li>
               <li><a href="#">DPS Info</a></li>
             </ul>
@@ -115,9 +115,9 @@
             </a>
             <ul style="{{ Route::is('admin.dps*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('admin.dps.index') ? 'active' : '' }}"><a
-                  href="{{ route('admin.dps.index') }}">DPS List</a></li>
+                  href="{{ route('admin.dps.index') }}" class="admin-menu-item" id="dps-list">DPS List</a></li>
               <li class="{{ Route::is('admin.dps.create') ? 'active' : '' }}"><a
-                  href="{{ route('admin.dps.create') }}">Add New DPS</a></li>
+                  href="{{ route('admin.dps.create') }}" class="admin-menu-item" id="add-new-dps">Add New DPS</a></li>
             </ul>
           </li>
 
@@ -150,11 +150,11 @@
                 </ul>
               </li>
               <li class="{{ Route::is('admin.attendance.index') ? 'active' : '' }}">
-                <a href="{{ route('admin.attendance.index') }}">Attendance</a>
+                <a href="{{ route('admin.attendance.index') }}" class="admin-menu-item" id="attendance">Attendance</a>
               </li>
-              <li><a href="{{ route('admin.attendance.settings') }}">Attendance Sheet</a></li>
+              <li><a href="{{ route('admin.attendance.settings') }}" class="admin-menu-item" id="attendance-sheet">Attendance Sheet</a></li>
               <li class="{{ Route::is('admin.attendance.settings') ? 'active' : '' }}">
-                <a href="{{ route('admin.attendance.settings') }}">Attendance Settings</a>
+                <a href="{{ route('admin.attendance.settings') }}" class="admin-menu-item" id="attendance-settings">Attendance Settings</a>
               </li>
               {{-- <li><a href="timesheets.html">Timesheets</a></li>
               <li><a href="schedule-timing.html">Shift & Schedule</a></li>
@@ -242,12 +242,12 @@
             </ul>
           </li>
           <li class="submenu">
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" class="{{ Route::is('admin.report*') ? 'subdrop' : '' }}">
               <i class="ti ti-user-star"></i><span>Reports</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul>
-              <li><a href="expenses-report.html">Expense Report</a></li>
+            <ul style="{{ Route::is('admin.report*') ? 'display:block' : '' }}">
+              {{-- <li><a href="expenses-report.html">Expense Report</a></li>
               <li><a href="invoice-report.html">Invoice Report</a></li>
               <li><a href="payment-report.html">Payment Report</a></li>
               <li><a href="project-report.html">Project Report</a></li>
@@ -256,8 +256,16 @@
               <li><a href="employee-report.html">Employee Report</a></li>
               <li><a href="payslip-report.html">Payslip Report</a></li>
               <li><a href="attendance-report.html">Attendance Report</a></li>
-              <li><a href="leave-report.html">Leave Report</a></li>
-              <li><a href="daily-report.html">Daily Report</a></li>
+              <li><a href="leave-report.html">Leave Report</a></li> --}}
+              <li class="{{ Route::is('admin.report.block-od') ? 'active' : '' }}">
+                <a href="{{ route('admin.report.block-od') }}" class="admin-menu-item" id="block-od">Block OD</a>
+              </li>
+              <li class="{{ Route::is('admin.report.daily-report') ? 'active' : '' }}">
+                <a href="{{ route('admin.report.daily-report') }}" class="admin-menu-item" id="daily-employee-report">Daily Report</a>
+              </li>
+              <li class="{{ Route::is('admin.report.od-report') ? 'active' : '' }}">
+                <a href="{{ route('admin.report.od-report') }}" class="admin-menu-item" id="od-reports">OD Reports</a>
+              </li>
             </ul>
           </li>
           <li class="submenu">

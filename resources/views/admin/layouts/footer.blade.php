@@ -53,3 +53,26 @@
   <script src="{{ asset('assets/js/theme-colorpicker.js') }}" type="text/javascript"></script>
   <script src="{{ asset('assets/js/script.js') }}" type="text/javascript"></script>
 
+  <script>
+    $(document).ready(function() {
+      document.querySelectorAll('.admin-menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+          localStorage.setItem('selectedMenuItem', this.id);
+        });
+      });
+
+      window.addEventListener('load', function() {
+        const selectedId = localStorage.getItem('selectedMenuItem');
+        if (selectedId) {
+          const selectedItem = document.getElementById(selectedId);
+          if (selectedItem) {
+            // Scroll into view smoothly
+            selectedItem.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center'
+            });
+          }
+        }
+      });
+    })
+  </script>
