@@ -74,7 +74,7 @@
             <label for="od_status">OD Status</label>
             <select class="@error('od_status') is_invalid @enderror form-select" id="od_status" name="od_status"
               aria-label="Groups" @error('od_status') aria-describedby="od_status-error" @enderror required>
-              <option selected value="running">Running</option>
+              <option selected value="new">New</option>
               <option value="block">Block</option>
             </select>
             @error('od_status')

@@ -6,7 +6,7 @@
         <ul>
           <!-- Dashboard -->
           <li class="{{ Route::is('employee.dashboard') ? 'active' : '' }}">
-            <a href="{{ route('employee.dashboard') }}" class="menu-item" id="dashboard">
+            <a class="menu-item" id="dashboard" href="{{ route('employee.dashboard') }}">
               <i class="ti ti-smart-home"></i><span>Dashboard</span>
             </a>
           </li>
@@ -19,10 +19,10 @@
             </a>
             <ul style="{{ Route::is('employee.group*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('employee.group.index') ? 'active' : '' }}">
-                <a href="{{ route('employee.group.index') }}" class="menu-item" id="group-list">Group List</a>
+                <a class="menu-item" id="group-list" href="{{ route('employee.group.index') }}">Group List</a>
               </li>
               <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
-                <a href="{{ route('employee.group.create') }}" class="menu-item" id="add-group">Add Group</a>
+                <a class="menu-item" id="add-group" href="{{ route('employee.group.create') }}">Add Group</a>
               </li>
             </ul>
           </li>
@@ -34,13 +34,37 @@
             </a>
             <ul style="{{ Route::is('employee.customer*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('employee.customer.index') ? 'active' : '' }}">
-                <a href="{{ route('employee.customer.index') }}" class="menu-item" id="customer-list">Customer List</a>
+                <a class="menu-item" id="customer-list"
+                  href="{{ route('employee.customer.index') }}">Customer List</a>
               </li>
               <li class="{{ Route::is('employee.customer.block-od') ? 'active' : '' }}">
-                <a href="{{ route('employee.customer.block-od') }}" class="menu-item" id="block-od-list">Block OD List</a>
+                <a class="menu-item" id="block-od-list"
+                  href="{{ route('employee.customer.block-od') }}">Block OD List</a>
               </li>
               <li class="{{ Route::is('employee.customer.create') ? 'active' : '' }}">
-                <a href="{{ route('employee.customer.create') }}" class="menu-item" id="add-customer">Add Customer</a>
+                <a class="menu-item" id="add-customer" href="{{ route('employee.customer.create') }}">Add
+                  Customer</a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Over Due -->
+          <li class="submenu">
+            <a class="{{ Route::is('employee.over-due*') ? 'subdrop' : '' }}" href="javascript:void(0);">
+              <i class="ti ti-box"></i><span>Over Due</span>
+              <span class="menu-arrow"></span>
+            </a>
+            <ul style="{{ Route::is('employee.over-due*') ? 'display:block' : '' }}">
+              <li class="{{ Route::is('employee.over-due.new-od.index') ? 'active' : '' }}">
+                <a class="menu-item" id="group-list" href="{{ route('employee.over-due.new-od.index') }}">New OD</a>
+              </li>
+              <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
+                <a class="menu-item" id="add-group" href="{{ route('employee.group.create') }}">OD
+                  Realization</a>
+              </li>
+              <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
+                <a class="menu-item" id="add-group" href="{{ route('employee.group.create') }}">Late OD
+                  Realization</a>
               </li>
             </ul>
           </li>

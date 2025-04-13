@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Employee\BlockCustomerController;
+use App\Http\Controllers\Employee\ODController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\EmployeeDpsController;
@@ -126,4 +127,16 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
   Route::resource('customer', \App\Http\Controllers\Employee\CustomerController::class)->except('show', 'destroy');
   Route::post('customer/change/status/', [CustomerController::class, 'changeStatus'])->name('customer.change.status');
   Route::get('customer/block_od', [BlockCustomerController::class, 'index'])->name('customer.block-od');
+
+  #overdue related routes
+  Route::prefix('over-due')->name('over-due.')->group(function(){
+    # new od
+    Route::get('new-od', [ODController::class, 'newOdIndex'])->name('new-od.index');
+    Route::get('new-od/create', [ODController::class, 'newOdCreate'])->name('new-od.create');
+    Route::post('new-od/store', [ODController::class, 'newOdStore'])->name('new-od.store');
+    Route::get('new-od/check-customer)', [ODController::class, 'checkCustomer'])->name('new-od.check-customer');
+    Route::get('new-od/edit/{overdue}', [ODController::class, 'newOdEdit'])->name('new-od.edit');
+    Route::put('new-od/update/{overdue}', [ODController::class, 'newOdUpdate'])->name('new-od.update');
+
+  });
 });

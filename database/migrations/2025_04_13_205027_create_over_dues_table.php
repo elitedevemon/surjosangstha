@@ -10,16 +10,14 @@ return new class extends Migration {
    */
   public function up(): void
   {
-    Schema::create('customers', function (Blueprint $table) {
+    Schema::create('over_dues', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('group_id')->constrained()->onDelete('cascade');
-      $table->string('code')->unique();
-      $table->string('name');
-      $table->string('phone')->unique();
-      $table->string('address');
+      $table->foreignId('customer_id')->constrained()->onDelete('cascade');
+      $table->string('amount');
+      $table->date('due_paid_date');
+      $table->enum('paid_status', ['paid', 'pending'])->default('pending'); 
       $table->enum('od_status', ['new', 'block'])->default('new');
-      $table->string('block_customer_due')->nullable();
-      $table->enum('status', ['active', 'inactive'])->default('active');
+      $table->foreignId('employee_id')->constrained()->onDelete('cascade');
       $table->timestamps();
     });
   }
@@ -29,6 +27,6 @@ return new class extends Migration {
    */
   public function down(): void
   {
-    Schema::dropIfExists('customers');
+    Schema::dropIfExists('over_dues');
   }
 };
