@@ -19,6 +19,7 @@ class ODController extends Controller
       ->where('paid_status', 'pending')
       ->where('employee_id', Auth::user()->employee_id)
       ->whereDate('created_at', $today)
+      ->whereDate('updated_at', $today)
       ->paginate(10);
     return view("employee.pages.over-due.new-od.index", compact("customers"));
   }
@@ -99,8 +100,45 @@ class ODController extends Controller
     $customers = OverDue::with('customer')
       ->where('paid_status', 'pending')
       ->where('employee_id', Auth::user()->employee_id)
-      ->whereDate('created_at', $today)
+      ->whereDate('due_paid_date', $today)
       ->paginate(10);
     return view("employee.pages.over-due.od-realization.index", compact("customers"));
+  }
+
+  public function odRealizationPayment(OverDue $overdue)
+  {
+    $overdue->load('customer');
+    return view("employee.pages.over-due.od-realization.payment", compact("overdue"));
+  }
+
+  public function odRealizationPayNow(OverDue $overdue)
+  {
+    try {
+      if ($overdue->od_status === 'block') {
+        if ($overdue->customer->block_customer_due === $overdue->amount) {
+          $overdue->customer->update([
+            'block_customer_due' => 0,
+            'status' => 'inactive',
+          ]);
+        } else {
+          $overdue->customer->update([
+            'block_customer_due' => ($overdue->customer->block_customer_due - $overdue->amount),
+          ]);
+        }
+      }
+      $overdue->update([
+        'paid_status' => 'paid',
+      ]);
+      return response()->json([
+        'status' => 'success',
+        'message' => 'Payment successful.',
+        'redirect_url' => route('employee.over-due.od-realization.index')
+      ])->setStatusCode(200);
+    } catch (\Throwable $th) {
+      return response()->json([
+        'status' => 'error',
+        'message' => 'Something went wrong.' . $th->getMessage()
+      ])->setStatusCode(500);
+    }
   }
 }

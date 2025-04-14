@@ -1,11 +1,15 @@
 @extends('admin.layouts.master')
-@section('title', 'Employee List')
+@section('title', 'Block Customer (List)')
 
 @section('content')
   <div class="card">
     <div class="card-header justify-content-between">
-      <div class="card-title">
-        Small Tables
+      <div class="card-title d-flex justify-content-between align-items-center">
+        Block Customer (List)
+        <div class="col-3">
+          <input type="search" name="search" id="search_block_customer" class="form-control form-control-sm"
+          placeholder="Search by code" aria-label="Search">
+        </div>
       </div>
 
     </div>
@@ -15,6 +19,7 @@
           <thead>
             <tr>
               <th scope="col">SI</th>
+              <th scope="col">Code</th>
               <th scope="col">Name</th>
               <th scope="col">Phone</th>
               <th scope="col">Address</th>
@@ -24,27 +29,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">
-                <div class="form-check">
-                  {{-- <input class="form-check-input" id="checkebox-sm" type="checkbox" value=""
-                    checked=""> --}}
-                  <label class="form-check-label" for="checkebox-sm">
-                    Zelensky
-                  </label>
-                </div>
-              </th>
-              <td>25-Apr-2021</td>
-              <td><span class="badge bg-soft-success">Paid</span></td>
-              <td>
-                <div class="hstack fs-15 gap-2">
-                  <a class="btn btn-icon btn-sm btn-light" href="javascript:void(0);"><i
-                      class="feather-download"></i></a>
-                  <a class="btn btn-icon btn-sm btn-light" href="javascript:void(0);"><i
-                      class="feather-edit"></i></a>
-                </div>
-              </td>
-            </tr>
+            @forelse ($customers as $customer)
+              <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $customer->code }}</td>
+                <td>{{ $customer->name }}</td>
+                <td>{{ $customer->phone }}</td>
+                <td>{{ $customer->address }}</td>
+                <td>{{ $customer->block_customer_due }}</td>
+                <td>{{ $customer->group->employee->name }}</td>
+                <td>
+                  <button class="btn btn-secondary btn-sm">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                  <button class="btn btn-secondary btn-sm">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button class="btn btn-danger btn-sm">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            @empty
+              <td colspan="8">No data found</td>
+            @endforelse
           </tbody>
         </table>
       </div>

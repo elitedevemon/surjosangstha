@@ -49,20 +49,45 @@
           </li>
 
           <!-- Over Due -->
+          @php
+            $today = Carbon\Carbon::today();
+            $od_realization = \App\Models\OverDue::
+                where('paid_status', 'pending')
+                ->where('employee_id', Auth::user()->employee_id)
+                ->whereDate('due_paid_date', $today)
+                ->count();
+          @endphp
           <li class="submenu">
             <a class="{{ Route::is('employee.over-due*') ? 'subdrop' : '' }}" href="javascript:void(0);">
-              <i class="ti ti-box"></i><span>Over Due</span>
+              <i class="ti ti-box"></i>
+              <span>
+                Over Due
+                <span class="badge rounded-pill badge-danger m-1 text-white"
+                  style="font-size: 12px; padding: 3px;">{{ $od_realization > 0 ? $od_realization : '' }}</span>
+              </span>
               <span class="menu-arrow"></span>
             </a>
             <ul style="{{ Route::is('employee.over-due*') ? 'display:block' : '' }}">
               <li class="{{ Route::is('employee.over-due.new-od.index') ? 'active' : '' }}">
-                <a class="menu-item" id="group-list" href="{{ route('employee.over-due.new-od.index') }}">New OD</a>
+                <a class="menu-item" id="group-list" href="{{ route('employee.over-due.new-od.index') }}">New
+                  OD</a>
               </li>
-              <li class="{{ Route::is('employee.group.create') ? 'active' : '' }}">
-                <a class="menu-item" id="add-group" href="{{ route('employee.group.create') }}">OD
-                  Realization</a>
+              <li class="{{ Route::is('employee.over-due.od-realization.index') ? 'active' : '' }}">
+                <a class="menu-item" id="add-group"
+                  href="{{ route('employee.over-due.od-realization.index') }}">
+                  OD Realization
+                  <span class="badge rounded-pill badge-danger m-1 text-white"
+                    style="font-size: 12px; padding: 3px;">{{ $od_realization > 0 ? $od_realization : '' }}</span>
+                </a>
               </li>
             </ul>
+          </li>
+
+          <!-- Vehicles -->
+          <li class="{{ Route::is('employee.vehicle.index') ? 'active' : '' }}">
+            <a class="menu-item" id="vehicle" href="{{ route('employee.vehicle.index') }}">
+              <i class="ti ti-smart-home"></i><span>Vehicle</span>
+            </a>
           </li>
         </ul>
       </li>

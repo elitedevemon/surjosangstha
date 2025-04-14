@@ -5,7 +5,7 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title d-flex justify-content-between align-items-center">
-        Today New OD (List)
+        OD Realization Target (List)
         <a class="btn btn-sm btn-primary" id="addNewOD" href="{{ route('employee.over-due.new-od.create') }}"
           onclick="addNewOD()">Add New</a>
       </h5>
@@ -17,8 +17,6 @@
               <th scope="col">Code</th>
               <th scope="col">Name</th>
               <th scope="col">Address</th>
-              <th scope="col">Pay Date</th>
-              <th scope="col">Status</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -29,14 +27,17 @@
                 <td>{{ $customer->customer->code }}</td>
                 <td>{{ $customer->customer->name }}</td>
                 <td>{{ $customer->customer->address }}</td>
-                <td>{{ date_format($customer->due_paid_date, 'd-m-Y') }}</td>
-                <td>{{ ucfirst($customer->od_status) }}</td>
                 <td>
                   <div class="d-flex align-items-center">
                     <!--Edit button -->
                     <a class="btn btn-primary me-1" href="{{ route('employee.over-due.new-od.edit', $customer->id) }}"
                       title="Edit" aria-describedby="Edit customer" style="padding: 2px 5px;">
                       <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <!--Pay button -->
+                    <a class="btn btn-primary me-1" href="{{ route('employee.over-due.od-realization.payment', $customer->id) }}"
+                      title="Pay now" aria-describedby="Pay customer due" style="padding: 2px 5px;">
+                      <i class="fa-solid fa-credit-card"></i>
                     </a>
                   </div>
                 </td>

@@ -9,12 +9,14 @@ use App\Http\Controllers\AdminCommands;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Employee\BlockCustomerController;
+use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Employee\ODController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
 use App\Http\Controllers\EmployeeDpsController;
 use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -106,10 +108,7 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
 
 // employee routes
 Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){
-  Route::get('/', function(){
-    $attendance = Auth::user()->attendance()->whereDate('created_at', now())->whereNull('punch_out_time')->first();
-    return view('employee.index', compact('attendance'));
-  })->name('dashboard');
+  Route::get('/', [EmployeeDashboardController::class, 'index'])->name('dashboard');
 
   # attendance related routes
   Route::post('/attendance/punch-in', [\App\Http\Controllers\Employee\AttendanceController::class, 'punchIn'])->name('attendance.punch-in');
@@ -140,5 +139,15 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
 
     # od realization
     Route::get('od-realization', [ODController::class, 'odRealizationIndex'])->name('od-realization.index');
+    Route::get('od-realization/payment/{overdue}', [ODController::class, 'odRealizationPayment'])->name('od-realization.payment');
+    Route::get('od-realization/pay-now/{overdue}', [ODController::class, 'odRealizationPayNow'])->name('od-realization.pay-now');
   });
+
+  # vehicle related routes
+  Route::get('vehicle', [VehicleController::class, 'index'])->name('vehicle.index');
+  Route::get('vehicle/create', [VehicleController::class, 'create'])->name('vehicle.create');
+  Route::post('vehicle/store', [VehicleController::class, 'store'])->name('vehicle.store');
+  Route::get('vehicle/edit/{vehicle}', [VehicleController::class, 'edit'])->name('vehicle.edit');
+  Route::put('vehicle/update/{vehicle}', [VehicleController::class, 'update'])->name('vehicle.update');
+  Route::post('vehicle/book', [VehicleController::class, 'booking'])->name('vehicle.book');
 });

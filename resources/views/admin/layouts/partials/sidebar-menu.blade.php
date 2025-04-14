@@ -257,6 +257,13 @@
               <li><a href="payslip-report.html">Payslip Report</a></li>
               <li><a href="attendance-report.html">Attendance Report</a></li>
               <li><a href="leave-report.html">Leave Report</a></li> --}}
+              <li class="submenu submenu-two">
+                <a href="javascript:void(0);">Vehicles<span class="menu-arrow inside-submenu"></span></a>
+                <ul>
+                  <li><a href="leaves-employee.html">Vehicle list</a></li>
+                  <li><a href="leave-settings.html">Occupied Today</a></li>
+                </ul>
+              </li>
               <li class="{{ Route::is('admin.report.block-od') ? 'active' : '' }}">
                 <a href="{{ route('admin.report.block-od') }}" class="admin-menu-item" id="block-od">Block OD</a>
               </li>

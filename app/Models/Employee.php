@@ -71,4 +71,9 @@ class Employee extends Model
   {
     return $this->hasOne(User::class);
   }
+
+  public function overdues(): HasMany
+  {
+    return $this->hasMany(OverDue::class);
+  }
 }
