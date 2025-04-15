@@ -84,4 +84,10 @@ class VehicleController extends Controller
 
     
   }
+
+  public function adminIndex()
+  {
+    $vehicles = Vehicle::with('branch:id,branch_name')->get();
+    return view('admin.pages.vehicle.index', compact('vehicles'));
+  }
 }

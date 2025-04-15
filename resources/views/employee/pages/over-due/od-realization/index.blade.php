@@ -16,6 +16,7 @@
               <th scope="col">SI</th>
               <th scope="col">Code</th>
               <th scope="col">Name</th>
+              <th scope="col">Phone</th>
               <th scope="col">Address</th>
               <th scope="col">Action</th>
             </tr>
@@ -26,6 +27,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $customer->customer->code }}</td>
                 <td>{{ $customer->customer->name }}</td>
+                <td>{{ $customer->customer->phone }}</td>
                 <td>{{ $customer->customer->address }}</td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -33,6 +35,11 @@
                     <a class="btn btn-primary me-1" href="{{ route('employee.over-due.new-od.edit', $customer->id) }}"
                       title="Edit" aria-describedby="Edit customer" style="padding: 2px 5px;">
                       <i class="fa-regular fa-pen-to-square"></i>
+                    </a>
+                    <!--Call button -->
+                    <a class="btn btn-primary me-1" href="tel:{{ $customer->customer->phone }}"
+                      title="Call" aria-describedby="Call Customer" style="padding: 2px 5px;">
+                      <i class="fa-solid fa-phone"></i>
                     </a>
                     <!--Pay button -->
                     <a class="btn btn-primary me-1" href="{{ route('employee.over-due.od-realization.payment', $customer->id) }}"

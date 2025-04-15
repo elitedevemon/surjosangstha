@@ -10,6 +10,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Employee\BlockCustomerController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
+use App\Http\Controllers\Employee\LocationController;
 use App\Http\Controllers\Employee\ODController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployeeDesignationController;
@@ -104,6 +105,9 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
     Route::get('od-report', [ODReportController::class, 'index'])->name('od-report');
   });
 
+  # vehicle related routes
+  Route::get('vehicle', [VehicleController::class, 'adminIndex'])->name('vehicle.index');
+
 });
 
 // employee routes
@@ -150,4 +154,7 @@ Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee
   Route::get('vehicle/edit/{vehicle}', [VehicleController::class, 'edit'])->name('vehicle.edit');
   Route::put('vehicle/update/{vehicle}', [VehicleController::class, 'update'])->name('vehicle.update');
   Route::post('vehicle/book', [VehicleController::class, 'booking'])->name('vehicle.book');
+
+  # location related routes
+  Route::post('location/store', [LocationController::class, 'store'])->name('location.store');
 });

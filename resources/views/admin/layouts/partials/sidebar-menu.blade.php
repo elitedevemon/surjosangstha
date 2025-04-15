@@ -242,11 +242,11 @@
             </ul>
           </li>
           <li class="submenu">
-            <a href="javascript:void(0);" class="{{ Route::is('admin.report*') ? 'subdrop' : '' }}">
+            <a href="javascript:void(0);" class="{{ Route::is('admin.report*') || Route::is('admin.vehicle*') ? 'subdrop' : '' }}">
               <i class="ti ti-user-star"></i><span>Reports</span>
               <span class="menu-arrow"></span>
             </a>
-            <ul style="{{ Route::is('admin.report*') ? 'display:block' : '' }}">
+            <ul style="{{ Route::is('admin.report*') || Route::is('admin.vehicle*') ? 'display:block' : '' }}">
               {{-- <li><a href="expenses-report.html">Expense Report</a></li>
               <li><a href="invoice-report.html">Invoice Report</a></li>
               <li><a href="payment-report.html">Payment Report</a></li>
@@ -258,9 +258,11 @@
               <li><a href="attendance-report.html">Attendance Report</a></li>
               <li><a href="leave-report.html">Leave Report</a></li> --}}
               <li class="submenu submenu-two">
-                <a href="javascript:void(0);">Vehicles<span class="menu-arrow inside-submenu"></span></a>
-                <ul>
-                  <li><a href="leaves-employee.html">Vehicle list</a></li>
+                <a href="javascript:void(0);" class=" {{ Route::is('admin.vehicle*') ? 'subdrop' : '' }}">Vehicles<span class="menu-arrow inside-submenu"></span></a>
+                <ul style="{{ Route::is('admin.vehicle*') ? 'display:block' : '' }}">
+                  <li>
+                    <a href="{{ route('admin.vehicle.index') }}" class="admin-menu-item {{ Route::is('admin.vehicle.index') ? 'active' : '' }}" id="vehicle-list">Vehicle list</a>
+                  </li>
                   <li><a href="leave-settings.html">Occupied Today</a></li>
                 </ul>
               </li>

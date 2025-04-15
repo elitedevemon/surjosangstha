@@ -58,6 +58,36 @@
         </div>
       </div>
     </div>
+    <div class="col-xl-4 d-flex" id="task_location_section">
+      <div class="card flex-fill border-primary attendance-bg">
+        <div class="card-body">
+          <h2 class="mb-4">Post Your Current Task & Location</h2>
+          <form id="locationForm" method="POST" action="{{ route('employee.location.store') }}">
+            @csrf
+            <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+            <div class="mb-3">
+              <label class="form-label" for="task">Current Task</label>
+              <input class="form-control" id="task" name="task" type="text"
+                placeholder="e.g., কিস্তি তুলতে, বকেয়া আদায়" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="location">Your Current Location</label>
+              <input class="form-control" id="location" name="location" type="text"
+                placeholder="e.g., Kandabari, Mazgram" required>
+            </div>
+
+            <!-- Optional: Auto-fetch location -->
+            <button class="btn btn-secondary mb-3" type="button" onclick="getLocation()">Auto Detect
+              Location</button>
+
+            <div class="mb-3" id="autoLocationInfo"></div>
+
+            <button class="btn btn-primary" type="submit" id="location_submit_button">Post Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- total working hours -->
     <div class="col-xl-8 d-flex">
@@ -1651,6 +1681,8 @@
           document.getElementById("punch-out-btn").classList.remove('d-none');
           startWorkTimer();
 
+          // $('#task_location_section').removeClass('d-none');
+
           // Show success toastr
           toastr.success("Successfully punched in at " + punchInTime.toLocaleTimeString(), "Success");
         },
@@ -1729,6 +1761,55 @@
     document.getElementById("punch-out-btn").addEventListener("click", punchOut);
   </script>
 
+  <!-- Employee location -->
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        $('#autoLocationInfo').html('<div class="alert alert-info">Detecting location...</div>');
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const coords = position.coords.latitude + "," + position.coords.longitude;
+          document.getElementById("location").value = coords;
+          $('#autoLocationInfo').html('<div class="alert alert-success">Auto location detected: ' + coords +
+            '</div>');
+        }, function(error) {
+          $('#autoLocationInfo').html('<div class="alert alert-danger">Failed to detect location.</div>');
+        });
+      } else {
+        $('#autoLocationInfo').html(
+          '<div class="alert alert-warning">Geolocation is not supported by this browser.</div>');
+      }
+    }
+
+    $("document").ready(function() {
+      $("#locationForm").on('submit', function(e) {
+        e.preventDefault();
+        $('#location_submit_button').attr('disabled', true).html('<i class="ti ti-loader ti-pulse"></i> Saving...'),
+        $.ajax({
+          url: "{{ route('employee.location.store') }}",
+          method: "POST",
+          data: $(this).serialize(),
+          success: function(response) {
+            $('#responseMessage').html('<div class="alert alert-success">' + response.message +
+              '</div>');
+            $('#locationForm')[0].reset();
+            $('#location_submit_button').attr('disabled', false).html('Post Update');
+            toastr.success(response.message, "Success");
+          },
+          error: function(xhr) {
+            let errors = xhr.responseJSON.errors;
+            let errorHtml = '<div class="alert alert-danger"><ul>';
+            $.each(errors, function(key, value) {
+              errorHtml += '<li>' + value + '</li>';
+            });
+            errorHtml += '</ul></div>';
+            $('#responseMessage').html(errorHtml);
+            $('#location_submit_button').attr('disabled', false).html('Post Update');
+          }
+        });
+      })
+    })
+  </script>
 @endpush
 
 @push('styles')
