@@ -48,7 +48,8 @@
             </h6>
             {{-- <a class="btn btn-primary w-100" href="#">Punch Out</a> --}}
             <button class="btn btn-success w-100 {{ $attendance ? 'd-none' : '' }}" id="punch-in-btn"
-              onmousedown="startPress()" onmouseup="cancelPress()" onmouseleave="cancelPress()">
+              onmousedown="startPress()" onmouseup="cancelPress()" onmouseleave="cancelPress()"
+              ontouchstart="startPress()" ontouchend="cancelPress()" ontouchcancel="cancelPress()">
               Punch In
               <span id="press-animation"></span>
             </button>
@@ -83,7 +84,7 @@
 
             <div class="mb-3" id="autoLocationInfo"></div>
 
-            <button class="btn btn-primary" type="submit" id="location_submit_button">Post Update</button>
+            <button class="btn btn-primary" id="location_submit_button" type="submit">Post Update</button>
           </form>
         </div>
       </div>
@@ -1784,29 +1785,30 @@
     $("document").ready(function() {
       $("#locationForm").on('submit', function(e) {
         e.preventDefault();
-        $('#location_submit_button').attr('disabled', true).html('<i class="ti ti-loader ti-pulse"></i> Saving...'),
-        $.ajax({
-          url: "{{ route('employee.location.store') }}",
-          method: "POST",
-          data: $(this).serialize(),
-          success: function(response) {
-            $('#responseMessage').html('<div class="alert alert-success">' + response.message +
-              '</div>');
-            $('#locationForm')[0].reset();
-            $('#location_submit_button').attr('disabled', false).html('Post Update');
-            toastr.success(response.message, "Success");
-          },
-          error: function(xhr) {
-            let errors = xhr.responseJSON.errors;
-            let errorHtml = '<div class="alert alert-danger"><ul>';
-            $.each(errors, function(key, value) {
-              errorHtml += '<li>' + value + '</li>';
-            });
-            errorHtml += '</ul></div>';
-            $('#responseMessage').html(errorHtml);
-            $('#location_submit_button').attr('disabled', false).html('Post Update');
-          }
-        });
+        $('#location_submit_button').attr('disabled', true).html(
+            '<i class="ti ti-loader ti-pulse"></i> Saving...'),
+          $.ajax({
+            url: "{{ route('employee.location.store') }}",
+            method: "POST",
+            data: $(this).serialize(),
+            success: function(response) {
+              $('#responseMessage').html('<div class="alert alert-success">' + response.message +
+                '</div>');
+              $('#locationForm')[0].reset();
+              $('#location_submit_button').attr('disabled', false).html('Post Update');
+              toastr.success(response.message, "Success");
+            },
+            error: function(xhr) {
+              let errors = xhr.responseJSON.errors;
+              let errorHtml = '<div class="alert alert-danger"><ul>';
+              $.each(errors, function(key, value) {
+                errorHtml += '<li>' + value + '</li>';
+              });
+              errorHtml += '</ul></div>';
+              $('#responseMessage').html(errorHtml);
+              $('#location_submit_button').attr('disabled', false).html('Post Update');
+            }
+          });
       })
     })
   </script>

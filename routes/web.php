@@ -110,6 +110,8 @@ Route::controller(DashboardController::class)->prefix('admin')->middleware(['aut
 
 });
 
+
+
 // employee routes
 Route::middleware(['auth', 'role:employee'])->prefix('employee')->name('employee.')->group(function(){
   Route::get('/', [EmployeeDashboardController::class, 'index'])->name('dashboard');
